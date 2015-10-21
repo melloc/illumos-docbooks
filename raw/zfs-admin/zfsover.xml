@@ -1,5 +1,4 @@
-<chapter id="zfsover-1"><title>Solaris ZFS
-File System (Introduction)</title><highlights><para>This chapter provides an overview of the <trademark>Solaris</trademark> ZFS
+<chapter xml:id="zfsover-1"><title>ZFS File System (Introduction)</title><para>This chapter provides an overview of the ZFS
 file system and its features and benefits. This chapter also covers some basic
 terminology used throughout the rest of this book.</para><para>The following sections are provided in this chapter:</para><itemizedlist><listitem><para><olink targetptr="gbscy" remap="internal">What's New in ZFS?</olink></para>
 </listitem><listitem><para><olink targetptr="zfsover-2" remap="internal">What Is ZFS?</olink></para>
@@ -7,7 +6,7 @@ terminology used throughout the rest of this book.</para><para>The following sec
 </listitem><listitem><para><olink targetptr="gbcpt" remap="internal">ZFS Component Naming Requirements</olink></para>
 </listitem>
 </itemizedlist>
-</highlights><sect1 id="gbscy"><title>What's New in ZFS?</title><para>This section summarizes new features in the ZFS file system.</para><itemizedlist><listitem><para><olink targetptr="gfxul" remap="internal">Using
+<sect1 xml:id="gbscy"><title>What's New in ZFS?</title><para>This section summarizes new features in the ZFS file system.</para><itemizedlist><listitem><para><olink targetptr="gfxul" remap="internal">Using
 Cache Devices in Your ZFS Storage Pool</olink></para>
 </listitem><listitem><para><olink targetptr="gfwqj" remap="internal">Enhancements to the zfs send Command</olink></para>
 </listitem><listitem><para><olink targetptr="gfwpz" remap="internal">ZFS Quotas and Reservations for File System
@@ -55,7 +54,7 @@ Renamed</olink></para>
 </listitem><listitem><para><olink targetptr="gcakl" remap="internal">File System Monitoring Tool (fsstat)</olink></para>
 </listitem><listitem><para><olink targetptr="gbsbp" remap="internal">ZFS Web-Based Management</olink></para>
 </listitem>
-</itemizedlist><sect2 id="gfxul"><title>Using Cache Devices in Your ZFS Storage Pool</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> In
+</itemizedlist><sect2 xml:id="gfxul"><title>Using Cache Devices in Your ZFS Storage Pool</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> In
 this Solaris release, you can create pool and specify <emphasis>cache devices</emphasis>,
 which are used to cache storage pool data.</para><para>Cache devices provide an additional layer of caching between main memory
 and disk. Using cache devices provide the greatest performance improvement
@@ -80,7 +79,7 @@ main memory. Depending on the size of your cache device, it could take over
 an hour for them to fill. Capacity and reads can be monitored by using the <command>zpool iostat</command> command as follows:</para><screen># zpool iostat -v pool 5</screen><para>Cache devices can be added or removed from the pool after the pool is
 created.</para><para>For more information, see <olink targetptr="gfxtd" remap="internal">Creating a ZFS Storage
 Pool with Cache Devices</olink> and <olink targetptr="gfxrx" remap="internal">Example&nbsp;4&ndash;3</olink>.</para>
-</sect2><sect2 id="gfwqj"><title>Enhancements to the <command>zfs send</command> Command</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> This
+</sect2><sect2 xml:id="gfwqj"><title>Enhancements to the <command>zfs send</command> Command</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> This
 release includes the following enhancements to the <command>zfs send</command> command.</para><itemizedlist><listitem><para>Send all incremental streams from one snapshot to a cumulative
 snapshot. For example:</para><screen># zfs list
 NAME                      USED  AVAIL  REFER  MOUNTPOINT
@@ -104,7 +103,7 @@ file systems, and clones are preserved. For example:</para><screen>zfs send -R p
 </listitem>
 </itemizedlist><para>For more information, see <olink targetptr="gfwqb" remap="internal">Sending and Receiving
 Complex ZFS Snapshot Streams</olink>.</para>
-</sect2><sect2 id="gfwpz"><title>ZFS Quotas and Reservations for File System Data
+</sect2><sect2 xml:id="gfwpz"><title>ZFS Quotas and Reservations for File System Data
 Only</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> In
 addition to the existing ZFS quota and reservation features, this release
 includes dataset quotas and reservations that do not include descendents,
@@ -119,7 +118,7 @@ amount of space that is guaranteed to a dataset, not including its descendents.<
 For additional flexibility, you can set a 20-Gbyte quota that allows you to
 manage <literal>studentA</literal>'s snapshots.</para><screen># zfs set refquota=10g tank/studentA
 # zfs set quota=20g tank/studentA</screen><para>For more information, see <olink targetptr="gazvb" remap="internal">ZFS Quotas and Reservations</olink>.</para>
-</sect2><sect2 id="gftgg"><title>ZFS File System Properties for the Solaris CIFS Service</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> This
+</sect2><sect2 xml:id="gftgg"><title>ZFS File System Properties for the Solaris CIFS Service</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> This
 release provides support for the Solaris Common Internet
 File System (CIFS) service. This product provides the ability to share files
 between Solaris and Windows or MacOS systems.</para><para>To facilitate sharing files between
@@ -137,7 +136,7 @@ in a Solaris CIFS Environment</olink>.</para><para>In addition to the ZFS proper
 the Solaris CIFS software product, the <literal>vscan</literal> property is
 available for scanning ZFS files if you have a 3rd-party virus
 scanning engine.</para>
-</sect2><sect2 id="gftgp"><title>ZFS Storage Pool Properties</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> ZFS
+</sect2><sect2 xml:id="gftgp"><title>ZFS Storage Pool Properties</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> ZFS
 storage pool properties were introduced in an earlier release. This release
 provides for additional property information. For example:</para><screen># zpool get all users
 NAME   PROPERTY     VALUE       SOURCE
@@ -178,7 +177,7 @@ NAME  PROPERTY  VALUE     SOURCE
 tank  failmode  continue  local</screen><screen># zpool create -o failmode=continue</screen><para>For a description of all ZFS pool properties, see <olink targetptr="gfiex" remap="internal">Table&nbsp;4&ndash;1</olink>.</para>
 </listitem>
 </itemizedlist>
-</sect2><sect2 id="gfwqw"><title>ZFS and File System Mirror Mounts</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> In
+</sect2><sect2 xml:id="gfwqw"><title>ZFS and File System Mirror Mounts</title><para><emphasis role="strong">Solaris Express Developer Edition 1/08:</emphasis> In
 this Solaris release, NFSv4 mount enhancements are provided to make ZFS file
 systems more accessible to NFS clients.</para><para>When file systems are created on the NFS server, the NFS client can
 automatically discover these newly created file systems within their existing
@@ -193,8 +192,10 @@ zee% ls /mnt
 baa    bar    baz
 zee% ls /mnt/baz
 file1    file2 </screen>
-</sect2><sect2 id="gfiit"><title>ZFS Command History Enhancements (<command>zpool
-history</command>)</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> The <command>zpool history</command> command has been enhanced to provide the following
+</sect2>
+<sect2 xml:id="gfiit">
+<title>ZFS Command History Enhancements (<command>zpool history</command>)</title>
+<para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> The <command>zpool history</command> command has been enhanced to provide the following
 new features:</para><itemizedlist><listitem><para>ZFS file system event information</para>
 </listitem><listitem><para>A <option>l</option> option for displaying a long format that
 includes the user  name, the hostname, and the zone in which the operation
@@ -240,7 +241,7 @@ History for 'tank':
 2007-07-19.10:55:49 zfs allow cindys create,destroy,mount,snapshot tank/cindys [user root on neo:global]
 2007-07-19.10:56:24 zfs create tank/cindys/data [user cindys on neo:global]</screen><para>For more information about using the <command>zpool history</command> command,
 see <olink targetptr="gbbuw" remap="internal">Identifying Problems in ZFS</olink>.</para>
-</sect2><sect2 id="gffys"><title>Upgrading ZFS File Systems (<command>zfs upgrade</command>)</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> The <command>zfs upgrade</command> command is included in this release to provide future
+</sect2><sect2 xml:id="gffys"><title>Upgrading ZFS File Systems (<command>zfs upgrade</command>)</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> The <command>zfs upgrade</command> command is included in this release to provide future
 ZFS file system enhancements to existing file systems. ZFS storage pools have
 a similar upgrade feature to provide pool enhancements to existing storage
 pools.</para><para>For example:</para><screen># zfs upgrade
@@ -259,7 +260,7 @@ upgraded file systems by the <command>zfs send</command> command are not accessi
 on systems that are running older software releases.</para>
 </note><para>However, no new ZFS file system upgrade features are provided in this
 release.</para>
-</sect2><sect2 id="gfgak"><title>ZFS Delegated Administration</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> In
+</sect2><sect2 xml:id="gfgak"><title>ZFS Delegated Administration</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> In
 this release, you can delegate fine-grained permissions to perform ZFS administration
 tasks to non-privileged users.</para><para>You can use the <command>zfs allow</command> and <command>zfs unallow</command> commands
 to grant and remove permissions.</para><para>You can modify the ability to use delegated administration with the
@@ -271,7 +272,7 @@ users  delegation  on          default
 NAME  PROPERTY    VALUE       SOURCE
 users  delegation  off         local</screen><para>By default, the <literal>delegation</literal> property is enabled.</para><para>For more information, see <olink targetptr="gbchv" remap="internal">Chapter&nbsp;8, ZFS
 Delegated Administration</olink> and <olink targetdoc="refman1m" targetptr="zfs-1m" remap="external"><citerefentry><refentrytitle>zfs</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gfgaa"><title>Setting Up Separate ZFS Logging Devices</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> The
+</sect2><sect2 xml:id="gfgaa"><title>Setting Up Separate ZFS Logging Devices</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> The
 ZFS intent log (ZIL) is provided to satisfy POSIX requirements for synchronous
 transactions. For example, databases often require their transactions to be
 on stable storage devices when returning  from a system call. NFS and other
@@ -285,7 +286,7 @@ storage pool.</para><para>Consider the following points when determining whether
 ZFS log device is appropriate for your environment:</para><itemizedlist><listitem><para>Any performance improvement seen by implementing a separate
 log device depends on the device type, the hardware configuration of the pool,
 and the application workload. For preliminary performance information, see
-this blog:</para><para><ulink url="http://blogs.sun.com/perrin/entry/slog_blog_or_blogging_on" type="url"></ulink></para>
+this blog:</para><para><link xl:href="http://blogs.oracle.com/perrin/entry/slog_blog_or_blogging_on">http://blogs.oracle.com/perrin/entry/slog_blog_or_blogging_on</link></para>
 </listitem><listitem><para>Log devices can be unreplicated or mirrored, but RAIDZ is
 not supported for log devices.</para>
 </listitem><listitem><para>If a separate log device is not mirrored and the device that
@@ -303,7 +304,7 @@ in-play data that can be stored. For example, if a system has 16 Gbytes of
 physical memory, consider a maximum log device size of 8 Gbytes.</para>
 </listitem>
 </itemizedlist>
-</sect2><sect2 id="gfgam"><title>Creating Intermediate ZFS Datasets</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> You
+</sect2><sect2 xml:id="gfgam"><title>Creating Intermediate ZFS Datasets</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> You
 can use the <option>p</option> option with the <command>zfs create</command>, <command>zfs clone</command>, and <command>zfs rename</command> commands to quickly
 create a non-existent intermediate dataset, if it doesn't already exist.</para><para>For example, create ZFS datasets (<literal>users/area51</literal>) in
 the <literal>datab</literal> storage pool.</para><screen># zfs list
@@ -319,7 +320,7 @@ additional properties are disabled for the intermediate dataset. For example:</p
 NAME         PROPERTY     VALUE         SOURCE
 datab/users  mountpoint   /datab/users  default
 datab/users  compression  off           default</screen><para>For more information, see <olink targetdoc="refman1m" targetptr="zfs-1m" remap="external"><citerefentry><refentrytitle>zfs</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gfgac"><title>ZFS Hotplugging Enhancements</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> 
+</sect2><sect2 xml:id="gfgac"><title>ZFS Hotplugging Enhancements</title><para><emphasis role="strong">Solaris Express Developer Edition 9/07:</emphasis> 
 In this release, ZFS more effectively responds to devices that are removed
 and provides a mechanism to automatically identify devices that are inserted
 with the following enhancements:</para><itemizedlist><listitem><para>You can replace an existing device with an equivalent device
@@ -345,7 +346,7 @@ to configure a SATA drive.</para>
 online and available.</para>
 </listitem>
 </itemizedlist><para>For more information, see <olink targetdoc="refman1m" targetptr="zpool-1m" remap="external"><citerefentry><refentrytitle>zpool</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gevnp"><title>Recursively Renaming ZFS Snapshots (<command>zfs
+</sect2><sect2 xml:id="gevnp"><title>Recursively Renaming ZFS Snapshots (<command>zfs
 rename</command> <option>r</option>)</title><para><emphasis role="strong">Solaris Express Developer Edition 5/07:</emphasis> You
 can recursively rename all descendent ZFS snapshots by using the <command>zfs
 rename</command> <option>r</option> command. </para><para>For example, snapshot a set of ZFS file systems.</para><screen># <userinput>zfs snapshot -r users/home@today</userinput>
@@ -370,10 +371,9 @@ users/home/markm@yesterday      0      -    18K  -
 users/home/marks              18K  16.5G    18K  /users/home/marks
 users/home/marks@yesterday      0      -    18K  -
 users/home/neil               18K  16.5G    18K  /users/home/neil
-users/home/neil@yesterday       0      -    18K  -</screen><para>Snapshots are the only dataset that can be renamed recursively. </para><para>For more information about snapshots, see <olink targetptr="gbciq" remap="internal">Overview
-of ZFS Snapshots</olink> and this blog entry that describes how to create
-rolling snapshots:</para><para><ulink url="http://blogs.sun.com/mmusante/entry/rolling_snapshots_made_easy" type="url">http://blogs.sun.com/mmusante/entry/rolling_snapshots_made_easy</ulink></para>
-</sect2><sect2 id="gevpi"><title>GZIP Compression is Available for ZFS</title><para><emphasis role="strong">Solaris Express Developer Edition 5/07:</emphasis> In
+users/home/neil@yesterday       0      -    18K  -</screen>
+<para>Snapshots are the only dataset that can be renamed recursively. For more information about snapshots, see <olink targetptr="gbciq" remap="internal">Overview of ZFS Snapshots</olink>.</para>
+</sect2><sect2 xml:id="gevpi"><title>GZIP Compression is Available for ZFS</title><para><emphasis role="strong">Solaris Express Developer Edition 5/07:</emphasis> In
 this Solaris release, you can set <literal>gzip</literal> compression on ZFS
 file systems in addition to <literal>lzjb</literal> compression. You can specify
 compression as <literal>gzip</literal>, the default, or <literal>gzip-</literal><replaceable>N</replaceable>, where <replaceable>N</replaceable> equals 1 through 9. For
@@ -385,7 +385,7 @@ users/home/snapshots  compression  gzip             local
 # zfs get compression users/home/oldfiles
 NAME                  PROPERTY     VALUE           SOURCE
 users/home/oldfiles   compression  gzip-9          local</screen><para>For more information about setting ZFS properties, see <olink targetptr="gazsp" remap="internal">Setting ZFS Properties</olink>.</para>
-</sect2><sect2 id="gevpg"><title>Storing Multiple Copies of ZFS User Data</title><para><emphasis role="strong">Solaris Express Developer Edition 5/07:</emphasis> As
+</sect2><sect2 xml:id="gevpg"><title>Storing Multiple Copies of ZFS User Data</title><para><emphasis role="strong">Solaris Express Developer Edition 5/07:</emphasis> As
 a reliability feature, ZFS file system metadata is automatically stored multiple
 times across different disks, if possible. This feature is known as <emphasis>ditto
 blocks</emphasis>.</para><para>In this Solaris release, you can specify that multiple copies of user
@@ -407,14 +407,14 @@ multiple copies might be placed on a single disk. A subsequent full disk failure
 might cause all ditto blocks to be unavailable.</para><para>You might consider using ditto blocks when you accidentally create a
 non-redundant pool and when you need to set data retention policies.</para><para>For a detailed description of how setting copies on a system with a
 single-disk pool or a multiple-disk pool might impact overall data protection,
-see this blog:</para><para><ulink url="http://blogs.sun.com/relling/entry/zfs_copies_and_data_protection" type="text">http://blogs.sun.com/relling/entry/zfs_copies_and_data_protection</ulink></para><para>For more information about setting ZFS properties, see <olink targetptr="gazsp" remap="internal">Setting ZFS Properties</olink>.</para>
-</sect2><sect2 id="gebws"><title>Improved <command>zpool status</command> Output</title><para><emphasis role="strong">Solaris Express 1/07:</emphasis> You
+see <link xl:href="https://blogs.oracle.com/relling/entry/zfs_copies_and_data_protection">this blog entry</link>. For more information about setting ZFS properties, see <olink targetptr="gazsp" remap="internal">Setting ZFS Properties</olink>.</para>
+</sect2><sect2 xml:id="gebws"><title>Improved <command>zpool status</command> Output</title><para><emphasis role="strong">Solaris Express 1/07:</emphasis> You
 can use the <command>zpool status</command> <option>v</option> command to
 display a list of files with persistent errors. Previously, you had to use
 the <command>find</command> <option>inum</option> command to identify the
 filenames from the list of displayed inodes.</para><para>For more information about displaying a list of files with persistent
 errors, see <olink targetptr="gbctx" remap="internal">Repairing a Corrupted File or Directory</olink>.</para>
-</sect2><sect2 id="gebwq"><title>ZFS and Solaris iSCSI Improvements</title><para><emphasis role="strong">Solaris Express, Developer Edition 2/07:</emphasis> In
+</sect2><sect2 xml:id="gebwq"><title>ZFS and Solaris iSCSI Improvements</title><para><emphasis role="strong">Solaris Express, Developer Edition 2/07:</emphasis> In
 this Solaris release, you can create a ZFS volume as a Solaris iSCSI target
 device by setting the <literal>shareiscsi</literal> property on the ZFS volume.
 This method is a convenient way to quickly set up a Solaris iSCSI target.
@@ -428,7 +428,7 @@ about setting up a Solaris iSCSI initiator, see <olink targetdoc="sagdfs" target
 iSCSI Targets and Initiators (Tasks),</citetitle> in <citetitle remap="book">System
 Administration Guide: Devices and File Systems</citetitle></olink>.</para><para>For more information about managing a ZFS volume as an iSCSI target,
 see <olink targetptr="gechv" remap="internal">Using a ZFS Volume as a Solaris iSCSI Target</olink>.</para>
-</sect2><sect2 id="gebwp"><title>Sharing ZFS File System Enhancements</title><para><emphasis role="strong">Solaris Express, Developer Edition 2/07:</emphasis> In
+</sect2><sect2 xml:id="gebwp"><title>Sharing ZFS File System Enhancements</title><para><emphasis role="strong">Solaris Express, Developer Edition 2/07:</emphasis> In
 this Solaris release, the process of sharing file systems has been improved.
 Although modifying system configuration files, such as <filename>/etc/dfs/dfstab</filename>,
 is unnecessary for sharing ZFS file systems, you can use the <command>sharemgr</command> command
@@ -455,7 +455,7 @@ zfs nfs=()
           /tank/data/1
           /tank/data/2
           /tank/data/3</screen><para>For more information, see <olink targetdoc="refman1m" targetptr="sharemgr-1m" remap="external"><citerefentry><refentrytitle>sharemgr</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gdswe"><title>ZFS Command History (<command>zpool history</command>)</title><para><emphasis role="strong">Solaris Express 12/06:</emphasis> In
+</sect2><sect2 xml:id="gdswe"><title>ZFS Command History (<command>zpool history</command>)</title><para><emphasis role="strong">Solaris Express 12/06:</emphasis> In
 this Solaris release, ZFS automatically logs successful <command>zfs</command> and <command>zpool</command> commands that modify pool state information. For example:</para><screen remap="wide"># <userinput>zpool history</userinput>
 History for 'newpool':
 2007-04-25.11:37:31 zpool create newpool mirror c0t8d0 c0t10d0
@@ -488,40 +488,40 @@ the log or changing the location of the log is unnecessary.</para>
 </itemizedlist><para>Currently, the <command>zpool history</command> command does not record
  <replaceable>user-ID</replaceable>, <replaceable>hostname</replaceable>,
 or <replaceable>zone-name</replaceable>.</para><para>For more information about troubleshooting ZFS problems, see <olink targetptr="gbbuw" remap="internal">Identifying Problems in ZFS</olink>.</para>
-</sect2><sect2 id="gdswf"><title>ZFS Property Improvements</title><sect3 id="gebwr"><title>ZFS <literal>xattr</literal> Property</title><para><emphasis role="strong">Solaris Express 1/07:</emphasis> You
+</sect2><sect2 xml:id="gdswf"><title>ZFS Property Improvements</title><sect3 xml:id="gebwr"><title>ZFS <literal>xattr</literal> Property</title><para><emphasis role="strong">Solaris Express 1/07:</emphasis> You
 can use the <literal>xattr</literal> property to disable or enable extended
 attributes for a specific ZFS file system. The default value is on. For a
 description of ZFS properties, see <olink targetptr="gazss" remap="internal">Introducing ZFS
 Properties</olink>.</para>
-</sect3><sect3 id="gdswd"><title>ZFS <command>canmount</command> Property</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> The
+</sect3><sect3 xml:id="gdswd"><title>ZFS <command>canmount</command> Property</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> The
 new <command>canmount</command> property allows you to specify whether a dataset
 can be mounted by using the <command>zfs mount</command> command. For more
 information, see <olink targetptr="gdrcf" remap="internal">The canmount Property</olink>.</para>
-</sect3><sect3 id="gdsus"><title>ZFS User Properties</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> In
+</sect3><sect3 xml:id="gdsus"><title>ZFS User Properties</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> In
 addition to the standard native properties that can either export internal
 statistics or control ZFS file system behavior, ZFS supports user properties.
 User properties have no effect on ZFS behavior, but you can use them to annotate
 datasets with information that is meaningful in your environment.</para><para>For more information, see <olink targetptr="gdrcw" remap="internal">ZFS User Properties</olink>.</para>
-</sect3><sect3 id="gdsvx"><title>Setting Properties When Creating ZFS File Systems</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> In
+</sect3><sect3 xml:id="gdsvx"><title>Setting Properties When Creating ZFS File Systems</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> In
 this Solaris release, you can set properties when you create a file system,
 in addition to setting properties after the file system is created.</para><para>The following examples illustrate equivalent syntax:</para><screen># <userinput>zfs create tank/home</userinput>
 # <userinput>zfs set mountpoint=/export/zfs tank/home</userinput>
 # <userinput>zfs set sharenfs=on tank/home</userinput>
 # <userinput>zfs set compression=on tank/home</userinput></screen><screen># <userinput>zfs create -o mountpoint=/export/zfs -o sharenfs=on -o compression=on tank/home</userinput></screen>
 </sect3>
-</sect2><sect2 id="gdsvh"><title>Displaying All ZFS File System Information</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> In
+</sect2><sect2 xml:id="gdsvh"><title>Displaying All ZFS File System Information</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> In
 this Solaris release, you can use various forms of the <command>zfs get</command> command
 to display information about all datasets if you do not specify a dataset.
 In previous releases, all dataset information was not retreivable with the <command>zfs get</command> command.</para><para>For example:</para><screen># <userinput>zfs get -s local all</userinput>
 tank/home               atime          off                    local
 tank/home/bonwick       atime          off                    local
 tank/home/marks         quota          50G                    local</screen>
-</sect2><sect2 id="gdsup"><title>New <command>zfs receive</command> <option>F</option> Option</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> In
+</sect2><sect2 xml:id="gdsup"><title>New <command>zfs receive</command> <option>F</option> Option</title><para><emphasis role="strong">Solaris Express 10/06:</emphasis> In
 this Solaris release, you can use the new <option>F</option> option to the <command>zfs receive</command> command to force a rollback of the file system to the
 most recent snapshot before doing the receive. Using this option might be
 necessary when the file system is modified between the time a rollback occurs
 and the receive is initiated.</para><para>For more information, see <olink targetptr="gbimy" remap="internal">Restoring a ZFS Snapshot</olink>.</para>
-</sect2><sect2 id="gdfdt"><title>Recursive ZFS Snapshots</title><para><emphasis role="strong">Solaris Express 8/06:</emphasis> When
+</sect2><sect2 xml:id="gdfdt"><title>Recursive ZFS Snapshots</title><para><emphasis role="strong">Solaris Express 8/06:</emphasis> When
 you use the <command>zfs snapshot</command> command to create a file system
 snapshot, you can use the <option>r</option> option to recursively create
 snapshots for all descendent file systems. In addition, using the <option>r</option> option
@@ -530,27 +530,27 @@ The snapshots are created together (all at once) or not created at all. The
 benefit of atomic snapshots operations is that the snapshot data is always
 taken at one consistent time, even across descendent file systems.</para><para>For more information, see <olink targetptr="gbcya" remap="internal">Creating and Destroying
 ZFS Snapshots</olink>.</para>
-</sect2><sect2 id="gcviu"><title>Double Parity RAID-Z (<literal>raidz2</literal>)</title><para><emphasis role="strong">Solaris Express 7/06:</emphasis> A
+</sect2><sect2 xml:id="gcviu"><title>Double Parity RAID-Z (<literal>raidz2</literal>)</title><para><emphasis role="strong">Solaris Express 7/06:</emphasis> A
 redundant RAID-Z configuration can now have either single- or double-parity,
 which means that one or two device failures can be sustained respectively,
 without any data loss. You can specify the <literal>raidz2</literal> keyword
 for a double-parity RAID-Z configuration. Or,  you can specify the <literal>raidz</literal> or <literal>raidz1</literal> keyword for a single-parity RAID-Z
 configuration.</para><para>For more information, see <olink targetptr="gcvjg" remap="internal">Creating RAID-Z Storage
 Pools</olink> or <olink targetdoc="refman1m" targetptr="zpool-1m" remap="external"><citerefentry><refentrytitle>zpool</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gcvdm"><title>Hot Spares for ZFS Storage Pool Devices</title><para><emphasis role="strong">Solaris Express 7/06:</emphasis> The
+</sect2><sect2 xml:id="gcvdm"><title>Hot Spares for ZFS Storage Pool Devices</title><para><emphasis role="strong">Solaris Express 7/06:</emphasis> The
 ZFS hot spares feature enables you to identify disks that could be used to
 replace a failed or faulted device in one or more storage pools. Designating
 a device as a <emphasis>hot spare</emphasis> means that if an active device
 in the pool fails, the hot spare automatically replaces the failed device.
 Or, you can manually replace a device in a storage pool with a hot spare.</para><para>For more information, see <olink targetptr="gcvcw" remap="internal">Designating Hot Spares
 in Your Storage Pool</olink> and <olink targetdoc="refman1m" targetptr="zpool-1m" remap="external"><citerefentry><refentrytitle>zpool</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gcvgc"><title>Replacing a ZFS File System With a ZFS Clone (<command>zfs
+</sect2><sect2 xml:id="gcvgc"><title>Replacing a ZFS File System With a ZFS Clone (<command>zfs
 promote</command>)</title><para><emphasis role="strong">Solaris Express 7/06:</emphasis> The <command>zfs promote</command> command enables you to replace an existing ZFS file
 system with a clone of that file system. This feature is helpful when you
 want to run tests on an alternative version of a file system and then, make
 that alternative version of the file system the active file system.</para><para>For more information, see <olink targetptr="gcvfl" remap="internal">Replacing a ZFS File
 System With a ZFS Clone</olink> and <olink targetdoc="refman1m" targetptr="zfs-1m" remap="external"><citerefentry><refentrytitle>zfs</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gcvit"><title>Upgrading ZFS Storage Pools (<command>zpool upgrade</command>)</title><para><emphasis role="strong">Solaris Express 6/06:</emphasis> You
+</sect2><sect2 xml:id="gcvit"><title>Upgrading ZFS Storage Pools (<command>zpool upgrade</command>)</title><para><emphasis role="strong">Solaris Express 6/06:</emphasis> You
 can upgrade your storage pools to a newer version to take advantage of the
 latest features by using the <command>zpool upgrade</command> command. In
 addition, the <command>zpool status</command> command has been modified to
@@ -560,7 +560,7 @@ pool from a previous Solaris release, make sure you upgrade your pools before
 using the ZFS Administration console. To see if your pools need to be upgraded,
 use the <command>zpool status</command> command. For information about the
 ZFS Administration console, see <olink targetptr="gbsbp" remap="internal">ZFS Web-Based Management</olink>.</para>
-</sect2><sect2 id="gcsxk"><title>Using ZFS to Clone Non-Global Zones and Other Enhancements</title><para><emphasis role="strong">Solaris Express 6/06:</emphasis> When
+</sect2><sect2 xml:id="gcsxk"><title>Using ZFS to Clone Non-Global Zones and Other Enhancements</title><para><emphasis role="strong">Solaris Express 6/06:</emphasis> When
 the source <literal>zonepath</literal> and the target <literal>zonepath</literal> both
 reside on ZFS and are in the same pool, <command>zoneadm clone</command> now
 automatically uses the ZFS  clone feature to clone a zone. This enhancement
@@ -576,8 +576,8 @@ The system validates that the existing snapshot is usable on the target. Additio
 the zone install process now has the capability to detect when a ZFS file
 system can be created for a zone, and the uninstall process can detect when
 a ZFS file system in a zone can be destroyed. These steps are then performed
-automatically by the <command>zoneadm</command> command.</para><para>Keep the following points in mind when using ZFS on a system with Solaris
-containers installed:</para><itemizedlist><listitem><para>Do not use the ZFS snapshot features to clone a zone</para>
+automatically by the <command>zoneadm</command> command.</para><para>Keep the following points in mind when using ZFS on a system with
+containers:</para><itemizedlist><listitem><para>Do not use the ZFS snapshot features to clone a zone</para>
 </listitem><listitem><para>You can delegate or a add a ZFS file system to a non-global
 zone. For more information, see <olink targetptr="gbbrq" remap="internal">Adding ZFS File Systems
 to a Non-Global Zone</olink> or <olink targetptr="gbbst" remap="internal">Delegating Datasets
@@ -589,17 +589,17 @@ or upgrading these zones is not supported.</para>
 </listitem>
 </itemizedlist><para>For more information, see <olink targetdoc="sysadrm" remap="external"><citetitle remap="book">System Administration Guide:  Virtualization Using the Solaris
 Operating System</citetitle></olink>.</para>
-</sect2><sect2 id="gciui"><title>ZFS Backup and Restore Commands are Renamed</title><para><emphasis role="strong">Solaris Express 5/06:</emphasis> In
+</sect2><sect2 xml:id="gciui"><title>ZFS Backup and Restore Commands are Renamed</title><para><emphasis role="strong">Solaris Express 5/06:</emphasis> In
 this Solaris release, the <command>zfs backup</command> and <command>zfs restore</command> commands
 are renamed to <command>zfs send</command> and <command>zfs receive</command> to
 more accurately describe their function. The function of these commands is
 to save and restore ZFS data stream representations.</para><para>For more information about these commands, see <olink targetptr="gbchx" remap="internal">Saving
 and Restoring ZFS Data</olink>.</para>
-</sect2><sect2 id="gcitn"><title>Recovering Destroyed Storage Pools</title><para><emphasis role="strong">Solaris Express 5/06:</emphasis> This
+</sect2><sect2 xml:id="gcitn"><title>Recovering Destroyed Storage Pools</title><para><emphasis role="strong">Solaris Express 5/06:</emphasis> This
 release includes the <command>zpool import</command> <option>D</option> command,
 which enables you to recover pools that were previously destroyed with the <command>zpool destroy</command> command.</para><para>For more information, see <olink targetptr="gcfhw" remap="internal">Recovering Destroyed
 ZFS Storage Pools</olink>.</para>
-</sect2><sect2 id="gcfhy"><title>ZFS is Integrated With Fault Manager</title><para><emphasis role="strong">Solaris Express 4/06:</emphasis> This
+</sect2><sect2 xml:id="gcfhy"><title>ZFS is Integrated With Fault Manager</title><para><emphasis role="strong">Solaris Express 4/06:</emphasis> This
 release includes the integration of a ZFS diagnostic engine that is capable
 of diagnosing and reporting pool failures and device failures. Checksum, I/O,
 device, and pool errors associated with pool or device failures are also reported.</para><para>The diagnostic engine does not include predictive analysis of  checksum
@@ -609,26 +609,26 @@ EVENT-TIME: Fri Mar 10 11:09:06 MST 2006
 PLATFORM: SUNW,Ultra-60, CSN: -, HOSTNAME: neo
 SOURCE: zfs-diagnosis, REV: 1.0
 EVENT-ID: b55ee13b-cd74-4dff-8aff-ad575c372ef8
-DESC: A ZFS device failed.  Refer to http://sun.com/msg/ZFS-8000-D3 for more information.
+DESC: A ZFS device failed.  Refer to http://illumos.org/msg/ZFS-8000-D3 for more information.
 AUTO-RESPONSE: No automated response will occur.
 IMPACT: Fault tolerance of the pool may be compromised.
 REC-ACTION: Run 'zpool status -x' and replace the bad device.</screen><para>By reviewing the recommended action, which will be to follow the more
 specific directions in the <command>zpool status</command> command, you will
 be able to quickly identify and resolve the failure. </para><para>For an example of recovering from a reported ZFS problem, see <olink targetptr="gbbvb" remap="internal">Repairing a Missing Device</olink>.</para>
-</sect2><sect2 id="gcfiw"><title>New <command>zpool clear</command> Command</title><para><emphasis role="strong">Solaris Express 4/06:</emphasis> This
+</sect2><sect2 xml:id="gcfiw"><title>New <command>zpool clear</command> Command</title><para><emphasis role="strong">Solaris Express 4/06:</emphasis> This
 release includes the <command>zpool clear</command> command for clearing error
 counts associated with a device or the pool. Previously, error counts were
 cleared when a device in a pool was brought online with the <command>zpool
 online</command> command. For more information, see <olink targetdoc="refman1m" targetptr="zpool-1m" remap="external"><citerefentry><refentrytitle>zpool</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> and <olink targetptr="gazge" remap="internal">Clearing
 Storage Pool Devices</olink>.</para>
-</sect2><sect2 id="gcajn"><title>Compact NFSv4 ACL Format</title><para><emphasis role="strong">Solaris Express 4/06:</emphasis> In
+</sect2><sect2 xml:id="gcajn"><title>Compact NFSv4 ACL Format</title><para><emphasis role="strong">Solaris Express 4/06:</emphasis> In
 this release, three NFSv4 ACL formats are available: verbose, positional,
 and compact. The new compact and positional ACL formats are available to set
 and display ACLs. You can use the <command>chmod</command> command to set
 all 3 ACL formats. You can use the <command>ls</command> <option>V</option> command
 to display compact and positional ACL formats and the <command>ls</command> <option>v</option> command to display verbose ACL formats.</para><para>For more information, see <olink targetptr="gbchf" remap="internal">Setting and Displaying
 ACLs on ZFS Files in Compact Format</olink>, <olink targetdoc="refman1" targetptr="chmod-1" remap="external"><citerefentry><refentrytitle>chmod</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink>, and <olink targetdoc="refman1" targetptr="ls-1" remap="external"><citerefentry><refentrytitle>ls</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gcakl"><title>File System Monitoring Tool (<command>fsstat</command>)</title><para><emphasis role="strong">Solaris Express 4/06:</emphasis> A
+</sect2><sect2 xml:id="gcakl"><title>File System Monitoring Tool (<command>fsstat</command>)</title><para><emphasis role="strong">Solaris Express 4/06:</emphasis> A
 new file system monitoring tool, <command>fsstat</command>, is available to
 report file system operations. Activity can be reported by mount point or
 by file system type.  The following example shows general ZFS file system
@@ -636,7 +636,7 @@ activity.</para><screen>$ <userinput>fsstat zfs</userinput>
  new  name   name  attr  attr lookup rddir  read read  write write
  file remov  chng   get   set    ops   ops   ops bytes   ops bytes
 7.82M 5.92M 2.76M 1.02G 3.32M  5.60G 87.0M  363M 1.86T 20.9M  251G zfs</screen><para>For more information, see <olink targetdoc="refman1m" targetptr="fsstat-1m" remap="external"><citerefentry><refentrytitle>fsstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para>
-</sect2><sect2 id="gbsbp"><title>ZFS Web-Based Management</title><para><emphasis role="strong">Solaris Express 1/06:</emphasis> A
+</sect2><sect2 xml:id="gbsbp"><title>ZFS Web-Based Management</title><para><emphasis role="strong">Solaris Express 1/06:</emphasis> A
 web-based ZFS management tool is available to perform many administrative
 actions. With this tool, you can perform the following tasks:</para><itemizedlist><listitem><para>Create a new storage pool.</para>
 </listitem><listitem><para>Add capacity to an existing pool.</para>
@@ -661,10 +661,10 @@ console because of a change in a recent Solaris release, which shutdown some
 network services automatically. Use the following command to enable these
 services:</para><screen># <userinput>netservices open</userinput></screen>
 </sect2>
-</sect1><sect1 id="zfsover-2"><title>What Is ZFS?</title><para>The ZFS file system is a revolutionary new file
+</sect1><sect1 xml:id="zfsover-2"><title>What Is ZFS?</title><para>The ZFS file system is a revolutionary new file
 system that fundamentally changes the way file systems are administered, with
 features and benefits not found in any other file system available today.
-ZFS has been designed to be robust, scalable, and simple to administer.</para><sect2 id="gaypk"><title>ZFS Pooled Storage</title><para>ZFS uses the concept of <emphasis>storage pools</emphasis> to manage
+ZFS has been designed to be robust, scalable, and simple to administer.</para><sect2 xml:id="gaypk"><title>ZFS Pooled Storage</title><para>ZFS uses the concept of <emphasis>storage pools</emphasis> to manage
 physical storage. Historically, file systems were constructed on top of a
 single physical device. To address multiple devices and provide for data redundancy,
 the concept of a <emphasis>volume manager</emphasis> was introduced to provide
@@ -686,7 +686,7 @@ pool acts as a virtual memory system. When a memory DIMM is added to a system,
 the operating system doesn't force you to invoke some commands to configure
 the memory and assign it to individual processes. All processes on the system
 automatically use the additional memory.</para>
-</sect2><sect2 id="gaypi"><title>Transactional Semantics</title><para>ZFS is a transactional file system, which means that the file system
+</sect2><sect2 xml:id="gaypi"><title>Transactional Semantics</title><para>ZFS is a transactional file system, which means that the file system
 state is always consistent on disk. Traditional file systems overwrite data
 in place, which means that if the machine loses power, for example, between
 the time a data block is allocated and when it is linked into a directory,
@@ -708,7 +708,7 @@ exists. While the most recently written pieces of data might be lost, the
 file system itself will always be consistent. In addition, synchronous data
 (written using the <varname>O_DSYNC</varname> flag) is always guaranteed to
 be written before returning, so it is never lost.</para>
-</sect2><sect2 id="gaypb"><title>Checksums and Self-Healing Data</title><para>With ZFS, all data and metadata is checksummed using a user-selectable
+</sect2><sect2 xml:id="gaypb"><title>Checksums and Self-Healing Data</title><para>With ZFS, all data and metadata is checksummed using a user-selectable
 algorithm. Traditional file systems that do provide checksumming have performed
 it on a per-block basis, out of necessity due to the volume management layer
 and traditional file system design. The traditional design means that certain
@@ -721,7 +721,7 @@ pools with varying levels of data redundancy, including mirroring and a variatio
 on RAID-5. When a bad data block is detected, ZFS fetches the correct data
 from another redundant copy, and repairs the bad data, replacing it with the
 good copy.</para>
-</sect2><sect2 id="gayou"><title>Unparalleled Scalability</title><para>ZFS has been designed from the ground up to be the most scalable file
+</sect2><sect2 xml:id="gayou"><title>Unparalleled Scalability</title><para>ZFS has been designed from the ground up to be the most scalable file
 system, ever. The file system itself is 128-bit, allowing for 256 quadrillion
 zettabytes of storage. All metadata is allocated dynamically, so no need exists
 to pre-allocate inodes or otherwise limit the scalability of the file system
@@ -729,12 +729,12 @@ when it is first created. All the algorithms have been written with scalability
 in mind. Directories can have up to 2<superscript>48</superscript> (256 trillion)
 entries, and no limit exists on the number of file systems or number of files
 that can be contained within a file system.</para>
-</sect2><sect2 id="gbcbn"><title>ZFS Snapshots</title><para>A <emphasis>snapshot</emphasis> is a read-only copy of a file system
+</sect2><sect2 xml:id="gbcbn"><title>ZFS Snapshots</title><para>A <emphasis>snapshot</emphasis> is a read-only copy of a file system
 or volume. Snapshots can be created quickly and easily. Initially, snapshots
 consume no additional space within the pool.</para><para>As data within the active dataset changes, the snapshot consumes space
 by continuing to reference the old data. As a result, the snapshot prevents
 the data from being freed back to the pool.</para>
-</sect2><sect2 id="gayoc"><title>Simplified Administration</title><para>Most importantly, ZFS provides a greatly simplified administration model.
+</sect2><sect2 xml:id="gayoc"><title>Simplified Administration</title><para>Most importantly, ZFS provides a greatly simplified administration model.
 Through the use of hierarchical file system layout, property inheritance,
 and automanagement of mount points and NFS share semantics, ZFS makes it easy
 to create and manage file systems without needing multiple commands or editing
@@ -750,7 +750,7 @@ systems themselves are very cheap (equivalent to a new directory), so you
 are encouraged to create a file system for each user, project, workspace,
 and so on. This design allows you to define fine-grained management points.</para>
 </sect2>
-</sect1><sect1 id="ftyue"><title>ZFS Terminology</title><para>This section describes the basic terminology used throughout this book:</para><variablelist><varlistentry><term>checksum</term><listitem><para>A 256-bit hash of the data in a file system block. The checksum
+</sect1><sect1 xml:id="ftyue"><title>ZFS Terminology</title><para>This section describes the basic terminology used throughout this book:</para><variablelist><varlistentry><term>checksum</term><listitem><para>A 256-bit hash of the data in a file system block. The checksum
 capability can range from the simple and fast fletcher2 (the default) to cryptographically
 strong hashes such as SHA256.</para>
 </listitem>
@@ -809,7 +809,7 @@ Volumes</olink>.</para>
 </listitem>
 </varlistentry>
 </variablelist>
-</sect1><sect1 id="gbcpt"><title>ZFS Component Naming Requirements</title><para>Each ZFS component must be named according to the following rules:</para><itemizedlist><listitem><para>Empty components are not allowed.</para>
+</sect1><sect1 xml:id="gbcpt"><title>ZFS Component Naming Requirements</title><para>Each ZFS component must be named according to the following rules:</para><itemizedlist><listitem><para>Empty components are not allowed.</para>
 </listitem><listitem><para>Each component can only contain alphanumeric characters in
 addition to the following four special characters:</para><itemizedlist><listitem><para>Underscore (_)</para>
 </listitem><listitem><para>Hyphen (-)</para>

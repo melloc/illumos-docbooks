@@ -1,14 +1,14 @@
-<chapter id="gbchv"><title>ZFS
-Delegated Administration</title><highlights><para>This chapter describes how to use delegated administration to allow
-non-privileged users to perform ZFS administration tasks.</para><itemizedlist><listitem><para><olink targetptr="gdtfl" remap="internal">Overview of ZFS Delegated Administration</olink></para>
-</listitem><listitem><para><olink targetptr="gfkco" remap="internal">Delegating ZFS Permissions</olink></para>
-</listitem><listitem><para><olink targetptr="gebww" remap="internal">Displaying ZFS Delegated Permissions
-(Examples)</olink></para>
-</listitem><listitem><para><olink targetptr="gebxb" remap="internal">Delegating ZFS Permissions (Examples)</olink></para>
-</listitem><listitem><para><olink targetptr="gebxt" remap="internal">Removing ZFS Permission (Examples)</olink></para>
-</listitem>
+<chapter xml:id="gbchv">
+<title>ZFS Delegated Administration</title>
+<para>This chapter describes how to use delegated administration to allow non-privileged users to perform ZFS administration tasks.</para>
+<itemizedlist>
+    <listitem><para><xref linkend="gdtfl" /></para></listitem>
+    <listitem><para><xref linkend="gfkco" /></para></listitem>
+    <listitem><para><xref linkend="gebww" /></para></listitem>
+    <listitem><para><xref linkend="gebxb" /></para></listitem>
+    <listitem><para><xref linkend="gebxt" /></para></listitem>
 </itemizedlist>
-</highlights><sect1 id="gdtfl"><title>Overview of ZFS Delegated Administration</title><para>This feature enables you to distribute fine-grained permissions to specific
+<sect1 xml:id="gdtfl"><title>Overview of ZFS Delegated Administration</title><para>This feature enables you to distribute fine-grained permissions to specific
 users, groups, or everyone.  Two styles of delegated permissions are supported:</para><itemizedlist><listitem><para>Individual permissions can be explicitly specified such a
 create, destroy, mount and snapshot, and so on.</para>
 </listitem><listitem><para>Groups of permissions called <emphasis>permission sets</emphasis> can
@@ -30,7 +30,7 @@ explicit permissions could create a snapshot over  NFS in the appropriate <liter
 </listitem>
 </itemizedlist><para>Consider using delegated administration for distributing ZFS tasks.
 For information about using RBAC to manage general Solaris administration
-tasks, see <olink targetdoc="sysadv6" targetptr="prbactm-1" remap="external">Part&nbsp;III, <citetitle remap="chapter">Roles, Rights Profiles, and Privileges,</citetitle> in <citetitle remap="book">System Administration Guide: Security Services</citetitle></olink>.</para><sect2 id="gfkct"><title>Disabling ZFS Delegated Permissions</title><para>You can modify the ability to use delegated administration with the
+tasks, see <olink targetdoc="sysadv6" targetptr="prbactm-1" remap="external">Part&nbsp;III, <citetitle remap="chapter">Roles, Rights Profiles, and Privileges,</citetitle> in <citetitle remap="book">System Administration Guide: Security Services</citetitle></olink>.</para><sect2 xml:id="gfkct"><title>Disabling ZFS Delegated Permissions</title><para>You can modify the ability to use delegated administration with the
 pool's <literal>delegation</literal> property. For example:</para><screen># zpool get delegation users
 NAME  PROPERTY    VALUE       SOURCE
 users  delegation  on          default
@@ -39,7 +39,7 @@ users  delegation  on          default
 NAME  PROPERTY    VALUE       SOURCE
 users  delegation  off         local</screen><para>By default, the <literal>delegation</literal> property is enabled.</para>
 </sect2>
-</sect1><sect1 id="gfkco"><title>Delegating ZFS Permissions</title><para>You can use the <command>zfs allow</command> command to grant permissions
+</sect1><sect1 xml:id="gfkco"><title>Delegating ZFS Permissions</title><para>You can use the <command>zfs allow</command> command to grant permissions
 on ZFS datasets to non-root users in the following ways:</para><itemizedlist><listitem><para>Individual permissions can be granted to a user, group, or
 everyone.</para>
 </listitem><listitem><para>Groups of individual permissions can be granted as a <emphasis>permission
@@ -139,8 +139,12 @@ users:</para><itemizedlist><listitem><para><literal>aclinherit</literal></para>
 </listitem>
 </itemizedlist><para>Some of the properties
 listed above can only set at dataset creation time. For a
-description of these properties, see <olink targetptr="gazss" remap="internal">Introducing
-ZFS Properties</olink>.</para><sect2 id="gfkbi"><title>Syntax Descriptions for Delegating Permissions</title><para>The <command>zfs allow</command> syntax is as follows:</para><screen remap="wide"># zfs allow -[l d u g e c s] everyone|user|group[,,...] perm|@setname ,...] filesystem| volume</screen><para>The following <command>zfs allow</command> syntax (in bold) identifies
+description of these properties, see <xref linkend="gazss" />.</para>
+<sect2 xml:id="gfkbi">
+<title>Syntax Descriptions for Delegating Permissions</title>
+<para>The <command>zfs allow</command> syntax is as follows:</para>
+<screen remap="wide"># zfs allow -[l d u g e c s] everyone|user|group[,,...] perm|@setname ,...] filesystem| volume</screen>
+<para>The following <command>zfs allow</command> syntax (in bold) identifies
 to whom the permissions are delegated:</para><screen><emphasis role="strong">zfs allow [-uge] | user | group | everyone</emphasis> [,...] <replaceable>filesystem</replaceable> | <replaceable>volume</replaceable></screen><para>Multiple entities can be specified as a comma-separated list. If none
 of  the  <option>uge</option> options are specified,  then the argument is
 interpreted preferentially as the keyword <literal>everyone</literal>,  then
@@ -162,10 +166,12 @@ is also specified. The <option>d</option> option indicates that the permission
 is allowed for the descendent datasets and not for this dataset, unless the <option>l</option> option is also specified. If  neither  of  the <option>ld</option> options
 are specified, then the permissions are allowed for the file system or volume
 and all of its descendents.</para>
-</sect2><sect2 id="gfkcw"><title>Removing ZFS Delegated Permissions (<command>zfs
-unallow</command>)</title><para>You can remove previously granted permissions with the <command>zfs
-unallow</command> command.</para><para>For example, if you delegated create, destroy, mount, and snapshot permissions
-as follows:</para><screen># zfs allow cindys, create,destroy,mount,snapshot tank/cindys
+</sect2>
+<sect2 xml:id="gfkcw">
+<title>Removing ZFS Delegated Permissions (<command>zfs unallow</command>)</title>
+<para>You can remove previously granted permissions with the <command>zfs unallow</command> command.</para>
+<para>For example, if you delegated create, destroy, mount, and snapshot permissions as follows:</para>
+<screen># zfs allow cindys, create,destroy,mount,snapshot tank/cindys
 # zfs allow tank/cindys
 -------------------------------------------------------------
 Local+Descendent permissions on (tank/cindys)
@@ -174,20 +180,20 @@ Local+Descendent permissions on (tank/cindys)
 permissions:</para><screen># zfs unallow cindys tank/cindys
 # zfs allow tank/cindys</screen>
 </sect2>
-</sect1><sect1 id="gebwa"><title>Using ZFS Delegated Administration</title><para>This section provides examples of displaying and delegating permissions.</para><sect2 id="gebww"><title>Displaying ZFS Delegated Permissions (Examples)</title><para>You can use the following command to display permissions:</para><screen># zfs allow <replaceable>dataset</replaceable></screen><para>The above command prints permissions that are set or allowed on this
+</sect1><sect1 xml:id="gebwa"><title>Using ZFS Delegated Administration</title><para>This section provides examples of displaying and delegating permissions.</para><sect2 xml:id="gebww"><title>Displaying ZFS Delegated Permissions (Examples)</title><para>You can use the following command to display permissions:</para><screen># zfs allow <replaceable>dataset</replaceable></screen><para>The above command prints permissions that are set or allowed on this
 dataset.  The output contains the following components:</para><itemizedlist><listitem><para>Permissions sets</para>
 </listitem><listitem><para>Specific permissions or create time permissions</para>
 </listitem><listitem><para>Local</para>
 </listitem><listitem><para>Local and descendent</para>
 </listitem><listitem><para>Descendent only</para>
 </listitem>
-</itemizedlist><example id="gfthg"><title>Displaying Simple Delegated Administration Permissions</title><para>The following example output indicates that user <literal>cindys</literal> has
+</itemizedlist><example xml:id="gfthg"><title>Displaying Simple Delegated Administration Permissions</title><para>The following example output indicates that user <literal>cindys</literal> has
 permission to create, destroy, mount, snapshot in the <filename>tank/cindys</filename> file
 system.</para><screen># zfs allow tank/cindys
        -------------------------------------------------------------
        Local+Descendent permissions on (tank/cindys)
                user cindys create,destroy,mount,snapshot</screen>
-</example><example id="gftex"><title>Displaying Complex Delegated Administration Permissions</title><para>The following example output indicates the following permissions on
+</example><example xml:id="gftex"><title>Displaying Complex Delegated Administration Permissions</title><para>The following example output indicates the following permissions on
 the <filename>pool</filename> and <filename>pool/fred</filename> file systems.</para><para>For the <filename>pool/fred</filename> file system:</para><itemizedlist><listitem><para>Two permission sets are defined:</para><itemizedlist><listitem><para><literal>@eng</literal> (create, destroy, snapshot, mount,
 clone, promote, rename)</para>
 </listitem><listitem><para><literal>@simple</literal> (create, mount)</para>
@@ -231,7 +237,7 @@ Local permissions on (pool)
         group staff @simple
 ------------------------------------------------------------------------------</screen>
 </example>
-</sect2><sect2 id="gebxb"><title>Delegating ZFS Permissions (Examples)</title><example id="gftfg"><title>Delegating Permissions to an Individual User</title><para>When you provide create and mount permissions, you need to make sure
+</sect2><sect2 xml:id="gebxb"><title>Delegating ZFS Permissions (Examples)</title><example xml:id="gftfg"><title>Delegating Permissions to an Individual User</title><para>When you provide create and mount permissions, you need to make sure
 that the user has permissions on the underlying mount point.</para><para>For example, to give <literal>marks</literal> create and mount permissions
 on <filename>tank</filename>, set the permissions first:</para><screen># chmod A+user:marks:add_subdirectory:fd:allow /tank</screen><para>Then, use the <command>zfs allow</command> to grant create, destroy,
 and mount permissions. For example:</para><screen># zfs allow marks create,destroy,mount tank</screen><para>This means that <literal>marks</literal> can create his own file systems
@@ -241,7 +247,7 @@ marks$ ^D
 # su lp
 $ zfs create tank/lp
 cannot create 'tank/lp': permission denied</screen>
-</example><example id="gftft"><title>Delegating Create and Destroy Permissions to a
+</example><example xml:id="gftft"><title>Delegating Create and Destroy Permissions to a
 Group</title><para>The following example shows how to set up a file system so that anyone
 in the <literal>staff</literal> group can create and mount file systems in
 the <filename>tank</filename> file system, and also allows them to destroy
@@ -263,7 +269,7 @@ marks% zfs create tank/marks/data
 marks% exit
 cindys% zfs destroy tank/marks/data
 cannot destroy 'tank/mark': permission denied</screen>
-</example><example id="gftfk"><title>Delegating Permissions at the Right File System
+</example><example xml:id="gftfk"><title>Delegating Permissions at the Right File System
 Level</title><para>Make sure to grant users permission at the right file system level.
 User <literal>marks</literal> is granted create, destroy, and mount permissions
 for the local and descendent file systems. User <literal>marks</literal> is
@@ -293,7 +299,7 @@ Local+Descendent permissions on (tank)
 $ zfs snapshot tank@snap2
 cannot create snapshot 'sandbox@snap2': permission denied
 $ zfs snapshot tank/marks@snappy</screen><para>User <literal>marks</literal> can only create a snapshot below the <filename>tank</filename> level.</para>
-</example><example id="gfteu"><title>Defining and Using Complex Delegated Permissions</title><para>You can grant specific permissions to users or groups. For example,
+</example><example xml:id="gfteu"><title>Defining and Using Complex Delegated Permissions</title><para>You can grant specific permissions to users or groups. For example,
 the following <command>zfs allow</command> command grants specific permissions
 to the <literal>staff</literal> group. In addition, destroy and snapshot permissions
 are granted after tank file systems are created.</para><screen># zfs allow staff create,mount tank
@@ -346,7 +352,7 @@ snap1  snap2
 $ rmdir snap2
 $ ls
 snap1</screen>
-</example><example id="gfkcq"><title>Defining and Using a ZFS Delegated Permission Set</title><para>The following example creates a permission set <literal>@myset</literal> and
+</example><example xml:id="gfkcq"><title>Defining and Using a ZFS Delegated Permission Set</title><para>The following example creates a permission set <literal>@myset</literal> and
 grants the permission set and the rename permission to the group <literal>staff</literal> for
 the <filename>tank</filename> file system. User <literal>cindys</literal>,
 a group <literal>staff</literal> member, has the ability to create a file
@@ -382,7 +388,7 @@ cindys% exit
 $ zfs create tank/lp
 cannot create 'tank/lp': permission denied</screen>
 </example>
-</sect2><sect2 id="gebxt"><title>Removing ZFS Permission (Examples)</title><para>You can use the following command to remove granted permissions. For
+</sect2><sect2 xml:id="gebxt"><title>Removing ZFS Permission (Examples)</title><para>You can use the following command to remove granted permissions. For
 example, user <literal>cindys</literal> has permission to create, mount, destroy,
 and snapshot in the <filename>tank/cindys</filename> file system.</para><screen># zfs allow cindys create,destroy,mount,snapshot tank/cindys
        # zfs allow tank/cindys
