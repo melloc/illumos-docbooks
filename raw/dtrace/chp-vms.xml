@@ -1,12 +1,14 @@
-<chapter id="chp-vms"><title>Tracing Hardware Virtual
-Machines</title><highlights><para>Traditionally understanding what is
+<chapter xml:id="chp-vms">
+<title>Tracing Hardware Virtual Machines</title>
+<para>Traditionally understanding what is
 going on inside of a Hardware Virtual Machines has been a black box.
 With DTrace you can begin to open up that black box and understand what
 is going on. This chapter focuses on debugging virtual machines that
 utilize extensions to the x86 instruction set architecture and assumes
 some familiarity with hardware virtual machine architecture.
-</para></highlights>
-<sect1 id="chp-vms-defs"><title>Virtualization Background</title>
+</para>
+<sect1 xml:id="chp-vms-defs">
+<title>Virtualization Background</title>
 
 <para>In this chapter various terms have specific meanings that they
 don't in other contexts. These terms are:</para>
@@ -33,7 +35,8 @@ There is one VMCS per logical processor per guest.
 
 </sect1>
 
-<sect1 id="chp-vms-targs"><title><literal>vmregs[]</literal> Array</title>
+<sect1 xml:id="chp-vms-targs">
+<title><literal>vmregs[]</literal> Array</title>
 
 <para>The <literal>vmregs[]</literal> array enables you to access the
 registers of the currently active VMCS. These registers allow you to see
@@ -42,7 +45,9 @@ the indices into the <literal>vmregs[]</literal> array corresponding to
 each of the supported CPU architecture extensions. The full list is
 available in <filename>/usr/lib/dtrace/regs.d</filename>.</para>
 
-<table frame="topbot" id="chp-user-tbl-uregs-intel"><title>Intel VMX <literal>vmregs[]</literal> Constants</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth=""/><colspec colname="colspec1" colwidth=""/><thead><row rowsep="1"><entry><para>Constant</para>
+<table frame="topbot" xml:id="chp-user-tbl-uregs-intel">
+<title>Intel VMX <literal>vmregs[]</literal> Constants</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth=""/><colspec colname="colspec1" colwidth=""/><thead><row rowsep="1"><entry><para>Constant</para>
 </entry><entry><para>Register</para>
 </entry>
 </row>

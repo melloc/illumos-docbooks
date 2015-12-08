@@ -1,10 +1,18 @@
-<?Pub EntList bull rArr sect?><chapter id="chp-sched"><title><literal>sched</literal> Provider</title><highlights><para>The <literal>sched</literal> provider makes available probes related
+<?Pub EntList bull rArr sect?>
+<chapter xml:id="chp-sched">
+<title><literal>sched</literal> Provider</title>
+<para>The <literal>sched</literal> provider makes available probes related
 to CPU scheduling. Because CPUs are the one resource that all threads must
 consume, the <literal>sched</literal> provider is very useful for understanding
 systemic behavior. For example, using the <literal>sched</literal> provider,
 you can understand when and why threads sleep, run, change priority, or wake
 other threads.</para>
-</highlights><sect1 id="gelro"><title>Probes</title><para><indexterm><primary>probes</primary><secondary><literal>sched</literal></secondary></indexterm><indexterm><primary><literal>sched</literal> probe</primary></indexterm>The <literal>sched</literal> probes are described in <olink targetptr="tbl-sched" remap="internal">Table&nbsp;26&ndash;1</olink>.</para><table frame="topbot" id="tbl-sched"><title><literal>sched</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.33in"/><colspec colname="colspec1" colwidth="3.67in"/><thead><row><entry colname="colspec0" rowsep="1" valign="top"><para>Probe</para>
+<sect1 xml:id="gelro">
+<title>Probes</title>
+<para><indexterm><primary>probes</primary><secondary><literal>sched</literal></secondary></indexterm><indexterm><primary><literal>sched</literal> probe</primary></indexterm>The <literal>sched</literal> probes are described in <xref linkend="tbl-sched" />.</para>
+<table frame="topbot" xml:id="tbl-sched">
+<title><literal>sched</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.33in"/><colspec colname="colspec1" colwidth="3.67in"/><thead><row><entry colname="colspec0" rowsep="1" valign="top"><para>Probe</para>
 </entry><entry colname="colspec1" rowsep="1" valign="top"><para>Description</para>
 </entry>
 </row>
@@ -70,7 +78,7 @@ describes the process containing the current thread.</para>
 </row><row><entry colname="colspec0"><para><literal>schedctl-nopreempt</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires when a thread is preempted and then re-enqueued at
 the <emphasis>front</emphasis> of the run queue due to a preemption control
-request. See <olink targetdoc="refman3a" targetptr="schedctl-init-3c" remap="external"><citerefentry><refentrytitle>schedctl_init</refentrytitle><manvolnum>3C</manvolnum></citerefentry></olink> for details on preemption control. As with <literal>preempt</literal>, either <literal>off-cpu</literal> or <literal>remain-cpu</literal> will
+request. See <citerefentry><refentrytitle>schedctl_init</refentrytitle><manvolnum>3C</manvolnum></citerefentry> for details on preemption control. As with <literal>preempt</literal>, either <literal>off-cpu</literal> or <literal>remain-cpu</literal> will
 fire after <literal>schedctl-nopreempt</literal>. Because <literal>schedctl-nopreempt</literal> denotes a re-enqueuing of the current thread at the front of the
 run queue, <literal>remain-cpu</literal> is more likely to fire after <literal>schedctl-nopreempt</literal> than <literal>off-cpu</literal>. The <literal>lwpsinfo_t</literal> of
 the thread being preempted is pointed to by <literal>args[0]</literal>. The <literal>psinfo_t</literal> of the process containing the thread is pointed to by <literal>args[1]</literal>.</para>
@@ -78,7 +86,7 @@ the thread being preempted is pointed to by <literal>args[0]</literal>. The <lit
 </row><row><entry colname="colspec0"><para><literal>schedctl-preempt</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires when a thread that is using preemption control is nonetheless
 preempted and re-enqueued at the <emphasis>back</emphasis> of the run queue.
-See <olink targetdoc="refman3a" targetptr="schedctl-init-3c" remap="external"><citerefentry><refentrytitle>schedctl_init</refentrytitle><manvolnum>3C</manvolnum></citerefentry></olink> for details on preemption control. As with <literal>preempt</literal>, either <literal>off-cpu</literal> or <literal>remain-cpu</literal> will
+See <citerefentry><refentrytitle>schedctl_init</refentrytitle><manvolnum>3C</manvolnum></citerefentry> for details on preemption control. As with <literal>preempt</literal>, either <literal>off-cpu</literal> or <literal>remain-cpu</literal> will
 fire after <literal>schedctl-preempt</literal>. Like <literal>preempt</literal> (and
 unlike <literal>schedctl-nopreempt</literal>), <literal>schedctl-preempt</literal> denotes
 a re-enqueuing of the current thread at the back of the run queue. As a result, <literal>off-cpu</literal> is more likely to fire after <literal>schedctl-preempt</literal> than <literal>remain-cpu</literal>. The <literal>lwpsinfo_t</literal> of the thread being
@@ -124,10 +132,15 @@ object.</para>
 </tbody>
 </tgroup>
 </table>
-</sect1><sect1 id="chp-sched-1"><title>Arguments</title><para>The argument types for the <literal>sched</literal> probes are listed
-in <olink targetptr="tbl-sched-args" remap="internal">Table&nbsp;26&ndash;2</olink>; the arguments
-are described in <olink targetptr="tbl-sched" remap="internal">Table&nbsp;26&ndash;1</olink>.</para><table frame="topbot" id="tbl-sched-args"><title><literal>sched</literal> Probe
-Arguments</title><tgroup cols="5" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.33in"/><colspec colname="colspec2" colwidth="0.91in" align="center"/><colspec colname="colspec4" colwidth="0.91in" align="center"/><colspec colname="colspec3" colwidth="0.91in" align="center"/><colspec colname="colspec1" colwidth="0.92in" align="center"/><thead><row><entry colname="colspec0" colsep="1" rowsep="1" valign="top"><para>Probe</para>
+</sect1>
+<sect1 xml:id="chp-sched-1">
+<title>Arguments</title>
+<para>The argument types for the <literal>sched</literal> probes are listed
+in <xref linkend="tbl-sched-args" />; the arguments
+are described in <xref linkend="tbl-sched" />.</para>
+<table frame="topbot" xml:id="tbl-sched-args">
+<title><literal>sched</literal> Probe Arguments</title>
+<tgroup cols="5" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.33in"/><colspec colname="colspec2" colwidth="0.91in" align="center"/><colspec colname="colspec4" colwidth="0.91in" align="center"/><colspec colname="colspec3" colwidth="0.91in" align="center"/><colspec colname="colspec1" colwidth="0.92in" align="center"/><thead><row><entry colname="colspec0" colsep="1" rowsep="1" valign="top"><para>Probe</para>
 </entry><entry colname="colspec2" rowsep="1" valign="top"><para><literal>args[0]</literal></para>
 </entry><entry colname="colspec4" rowsep="1" valign="top"><para><literal>args[1]</literal></para>
 </entry><entry colname="colspec3" rowsep="1" valign="top"><para><literal>args[2]</literal></para>
@@ -221,11 +234,14 @@ Arguments</title><tgroup cols="5" colsep="0" rowsep="0"><colspec colname="colspe
 </row>
 </tbody>
 </tgroup>
-</table><para>As <olink targetptr="tbl-sched-args" remap="internal">Table&nbsp;26&ndash;2</olink> indicates,
+</table><para>As <xref linkend="tbl-sched-args" /> indicates,
 many <literal>sched</literal> probes have arguments consisting of a pointer
 to an <literal>lwpsinfo_t</literal> and a pointer to a <literal>psinfo_t</literal>,
 indicating a thread and the process containing the thread, respectively. These
-structures are described in detail in <olink targetptr="chp-proc-lwpsinfo" remap="internal">lwpsinfo_t</olink> and <olink targetptr="chp-proc-psinfo" remap="internal">psinfo_t</olink>, respectively.</para><sect2 id="chp-sched-cpuinfo"><title><literal>cpuinfo_t</literal></title><para>The <literal>cpuinfo_t</literal> structure defines a CPU. As <olink targetptr="tbl-sched-args" remap="internal">Table&nbsp;26&ndash;2</olink> indicates, arguments
+structures are described in detail in <xref linkend="chp-proc-lwpsinfo" /> and <xref linkend="chp-proc-psinfo" />, respectively.</para>
+<sect2 xml:id="chp-sched-cpuinfo">
+<title><literal>cpuinfo_t</literal></title>
+<para>The <literal>cpuinfo_t</literal> structure defines a CPU. As <xref linkend="tbl-sched-args" /> indicates, arguments
 to both the <literal>enqueue</literal> and <literal>dequeue</literal> probes
 include a pointer to a <literal>cpuinfo_t</literal>. Additionally, the <literal>cpuinfo_t</literal> corresponding to the current CPU is pointed to by the <literal>curcpu</literal> variable.
 The definition of the <literal>cpuinfo_t</literal> structure is as follows:</para><programlisting>typedef struct cpuinfo {
@@ -234,16 +250,24 @@ The definition of the <literal>cpuinfo_t</literal> structure is as follows:</par
 	chipid_t cpu_chip;              /* chip identifier */
 	lgrp_id_t cpu_lgrp;             /* locality group identifer */
 	processor_info_t cpu_info;      /* CPU information */
-} cpuinfo_t;</programlisting><para>The <literal>cpu_id</literal> member is the processor identifier, as
-returned by <olink targetdoc="refman1m" targetptr="psrinfo-1m" remap="external"><citerefentry><refentrytitle>psrinfo</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> and <olink targetdoc="refman2" targetptr="p-online-2" remap="external"><citerefentry><refentrytitle>p_online</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink>.</para><para>The <literal>cpu_pset</literal> member is the processor set that contains
-the CPU, if any. See <olink targetdoc="refman1m" targetptr="psrset-1m" remap="external"><citerefentry><refentrytitle>psrset</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> for
+} cpuinfo_t;</programlisting>
+<para>The <literal>cpu_id</literal> member is the processor identifier, as
+returned by <citerefentry><refentrytitle>psrinfo</refentrytitle><manvolnum>1M</manvolnum></citerefentry> and <citerefentry><refentrytitle>p_online</refentrytitle><manvolnum>2</manvolnum></citerefentry>.</para>
+<para>The <literal>cpu_pset</literal> member is the processor set that contains
+the CPU, if any. See <citerefentry><refentrytitle>psrset</refentrytitle><manvolnum>1M</manvolnum></citerefentry> for
 more details on processor sets.</para><para>The <literal>cpu_chip</literal> member is the identifier of the physical
-chip. Physical chips may contain several CPUs. See <olink targetdoc="refman1m" targetptr="psrinfo-1m" remap="external"><citerefentry><refentrytitle>psrinfo</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> for more information.</para><para>The <literal>cpu_lgrp</literal> member is the identifier of the latency
-group associated with the CPU. See <olink targetdoc="refman3f" targetptr="liblgrp-3lib" remap="external"><citerefentry><refentrytitle>liblgrp</refentrytitle><manvolnum>3LIB</manvolnum></citerefentry></olink> for details on latency
+chip. Physical chips may contain several CPUs. See <citerefentry><refentrytitle>psrinfo</refentrytitle><manvolnum>1M</manvolnum></citerefentry> for more information.</para>
+<para>The <literal>cpu_lgrp</literal> member is the identifier of the latency
+group associated with the CPU. See <citerefentry><refentrytitle>liblgrp</refentrytitle><manvolnum>3LIB</manvolnum></citerefentry> for details on latency
 groups.</para><para>The <literal>cpu_info</literal> member is the <literal>processor_info_t</literal> structure
-associated with the CPU, as returned by <olink targetdoc="refman2" targetptr="processor-info-2" remap="external"><citerefentry><refentrytitle>processor_info</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink>.</para>
+associated with the CPU, as returned by <citerefentry><refentrytitle>processor_info</refentrytitle><manvolnum>2</manvolnum></citerefentry>.</para>
 </sect2>
-</sect1><sect1 id="chp-sched-2"><title>Examples</title><sect2 id="chp-sched-5"><title><literal>on-cpu</literal> and <literal>off-cpu</literal></title><para>One common question you might want answered is which CPUs are running
+</sect1>
+<sect1 xml:id="chp-sched-2">
+<title>Examples</title>
+<sect2 xml:id="chp-sched-5">
+<title><literal>on-cpu</literal> and <literal>off-cpu</literal></title>
+<para>One common question you might want answered is which CPUs are running
 threads and for how long. You can use the <literal>on-cpu</literal> and <literal>off-cpu</literal> probes to easily answer this question on a system-wide basis
 as shown in the following example:</para><programlisting>sched:::on-cpu
 {
@@ -567,7 +591,10 @@ dtrace: script './whatfor.d' matched 12 probes
      17179869184 |                                         6        
      34359738368 |                                         4        
      68719476736 |                                         0</screen>
-</sect2><sect2 id="chp-sched-10"><title><literal>enqueue</literal> and <literal>dequeue</literal></title><para>When a CPU becomes idle, the dispatcher looks for work enqueued on other
+</sect2>
+<sect2 xml:id="chp-sched-10">
+<title><literal>enqueue</literal> and <literal>dequeue</literal></title>
+<para>When a CPU becomes idle, the dispatcher looks for work enqueued on other
 (non-idle) CPUs. The following example uses the <literal>dequeue</literal> probe
 to understand how often applications are transferred and by which CPU:</para><programlisting>#pragma D option quiet
 
@@ -852,11 +879,15 @@ Run queue of length 16:
 <userinput>^C</userinput></screen><para>The output reveals that the long run queues are due to many runnable <literal>xterm</literal> processes. This experiment coincided with a change in virtual
 desktop, and therefore the results are probably due to some sort of X event
 processing.</para>
-</sect2><sect2 id="chp-sched-11"><title><literal>sleep</literal> and <literal>wakeup</literal></title><para>In <olink targetptr="chp-sched-10" remap="internal">enqueue and dequeue</olink>, the
+</sect2>
+<sect2 xml:id="chp-sched-11">
+<title><literal>sleep</literal> and <literal>wakeup</literal></title>
+<para>In <xref linkend="chp-sched-10" />, the
 final example demonstrated that a burst in run queue length was due to runnable <literal>xterm</literal> processes. One hypothesis is that the observations resulted
 from a change in virtual desktop. You can use the <literal>wakeup</literal> probe
 to explore this hypothesis by determining who is waking the <literal>xterm</literal> processes,
-and when, as shown in the following example:</para><programlisting>#pragma D option quiet
+and when, as shown in the following example:</para>
+<programlisting>#pragma D option quiet
 
 dtrace:::BEGIN
 {
@@ -917,7 +948,7 @@ dtrace: script './xwork.d' matched 14 probes
   acroread                                                  345901577</screen><para>This output reveals that much <literal>Xsun</literal> work is being
 done on behalf of the processes <literal>acroread</literal>, <literal>MozillaFirebird</literal> and, to a lesser degree, <literal>fvwm2</literal>. Notice that
 the script only examined wakeups from condition variable synchronization objects
-(<literal>SOBJ_CV</literal>). As described in <olink targetptr="tbl-sched-sobj" remap="internal">Table&nbsp;25&ndash;4</olink>, condition variables are the type of synchronization object typically
+(<literal>SOBJ_CV</literal>). As described in <xref linkend="tbl-sched-sobj" />, condition variables are the type of synchronization object typically
 used to synchronize for reasons other than access to a shared data region.
 In the case of the X server, a client will wait for data in a pipe by sleeping
 on a condition variable.</para><para>You can additionally use the <literal>sleep</literal> probe along with
@@ -1226,7 +1257,10 @@ server resembles the following example:</para><screen>imapd
 the persistent data point at over one millisecond for <literal>sendmail</literal>.
 You can add additional predicates to the above script to hone in on the causes
 of any exceptional or anomalous results.</para>
-</sect2><sect2 id="chp-sched-12"><title><literal>preempt</literal>, <literal>remain-cpu</literal></title><para>Because illumos is a preemptive system, higher priority threads preempt
+</sect2>
+<sect2 xml:id="chp-sched-12">
+<title><literal>preempt</literal>, <literal>remain-cpu</literal></title>
+<para>Because illumos is a preemptive system, higher priority threads preempt
 lower priority ones. Preemption can induce a significant latency bubble in
 the lower priority thread, so you might want to know which threads are being
 preempted by which other threads. The following example shows how to use the <literal>preempt</literal> and <literal>remain-cpu</literal> probes to display this
@@ -1287,9 +1321,13 @@ in output similar to the following example:</para><screen><userinput># dtrace -s
                          sched  60                MozillaFirebird  57    14
                MozillaFirebird  57                           Xsun  44    16
                MozillaFirebird  57                           Xsun  54    18</screen>
-</sect2><sect2 id="chp-sched-13"><title><literal>change-pri</literal></title><para>Preemption is based on priorities, so you might want to observe changes
+</sect2>
+<sect2 xml:id="chp-sched-13">
+<title><literal>change-pri</literal></title>
+<para>Preemption is based on priorities, so you might want to observe changes
 in priority over time. The following example uses the <literal>change-pri</literal> probe
-to display this information:</para><programlisting>sched:::change-pri
+to display this information:</para>
+<programlisting>sched:::change-pri
 {
 	@[stringof(args[0]-&gt;pr_clname)] =
 	    lquantize(args[2] - args[0]-&gt;pr_pri, -50, 50, 5);
@@ -1360,7 +1398,10 @@ in one window:</para><screen><userinput>$ echo $$</userinput>
 above as input to plotting software to graphically display priority over time. <literal>gnuplot</literal> is a freely available plotting package that is included
 in the Solaris Freeware Companion CD. By default, <literal>gnuplot</literal> is
 installed in <literal>/opt/sfw/bin</literal>.</para>
-</sect2><sect2 id="chp-sched-15"><title><literal>tick</literal></title><para>illumos uses <emphasis>tick-based CPU accounting</emphasis>, in which
+</sect2>
+<sect2 xml:id="chp-sched-15">
+<title><literal>tick</literal></title>
+<para>illumos uses <emphasis>tick-based CPU accounting</emphasis>, in which
 a system clock interrupt fires at a fixed interval and attributes CPU utilization
 to the threads and processes running at the time of the tick. The following
 example shows how to use the <literal>tick</literal> probe to observe this
@@ -1453,9 +1494,13 @@ spread across the ten millisecond interval. However, the output shows a spike
 at the same 8 millisecond offset, indicating that at least some threads in
 the system <emphasis>are</emphasis> being scheduled on a time basis.</para>
 </sect2>
-</sect1><sect1 id="chp-sched-stability"><title>Stability</title><para><indexterm><primary>stability</primary><secondary><literal>sched</literal></secondary></indexterm><indexterm><primary><literal>sched</literal> probe</primary><secondary>stability</secondary></indexterm>The <literal>sched</literal> provider
+</sect1>
+<sect1 xml:id="chp-sched-stability">
+<title>Stability</title>
+<para><indexterm><primary>stability</primary><secondary><literal>sched</literal></secondary></indexterm><indexterm><primary><literal>sched</literal> probe</primary><secondary>stability</secondary></indexterm>The <literal>sched</literal> provider
 uses DTrace's stability mechanism to describe its stabilities, as shown in
-the following table. For more information about the stability mechanism, see <olink targetptr="chp-stab" remap="internal">Chapter&nbsp;39, Stability</olink>.</para><informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="0"><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><thead><row rowsep="1"><entry colsep="1"><para>Element</para>
+the following table. For more information about the stability mechanism, see <xref linkend="chp-stab" />.</para>
+<informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="0"><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><thead><row rowsep="1"><entry colsep="1"><para>Element</para>
 </entry><entry><para>Name stability</para>
 </entry><entry><para>Data stability</para>
 </entry><entry><para>Dependency class</para>

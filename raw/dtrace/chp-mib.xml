@@ -1,49 +1,73 @@
-<chapter id="chp-mib"><title><literal>mib</literal> Provider</title><highlights><para>The <literal>mib</literal> provider makes available probes that correspond to counters in the illumos management information bases (MIBs). MIB counters are used by the simple network management protocol (SNMP) that allow remote monitoring of heterogeneous networking entities. You can also view the counters with the <olink targetdoc="refman1m" targetptr="kstat-1m" remap="external"><citerefentry><refentrytitle>kstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> and <olink targetdoc="refman1m" targetptr="netstat-1m" remap="external"><citerefentry><refentrytitle>netstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> commands. The <literal>mib</literal> provider facilitates quick exploration of aberrant networking behavior that is observed using either remote or local networking monitors.</para>
-</highlights><sect1 id="chp-mib-probes"><title>Probes</title><para><indexterm><primary>probes</primary><secondary><literal>mib</literal></secondary></indexterm><indexterm><primary><literal>mib</literal> probe</primary></indexterm>The <literal>mib</literal> provider makes available probes for counters from several MIBs. The protocols that export MIBs instrumented by the <literal>mib</literal> provider are listed in <olink targetptr="tbl-mib-mibs" remap="internal">Table&nbsp;28&ndash;1</olink>. The table includes a reference to documentation that specifies some or all of the MIB, the name of the kernel statistic that may be used to access the running counts (using the <olink targetdoc="refman1m" targetptr="kstat-1m" remap="external"><citerefentry><refentrytitle>kstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> <literal>-n</literal> <replaceable>statistic</replaceable><literal></literal> option), and a reference to the table that has a complete definition of the probes. All MIB counters are also available through the <literal>-s</literal> option to <olink targetdoc="refman1m" targetptr="netstat-1m" remap="external"><citerefentry><refentrytitle>netstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>.</para><table frame="topbot" id="tbl-mib-mibs"><title><literal>mib</literal> probes</title><tgroup cols="4" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="25*"/><colspec colname="colspec1" colwidth="25*"/><colspec colname="colspec2" colwidth="25*"/><colspec colname="colspec3" colwidth="25*"/><thead><row rowsep="1"><entry><para>Protocol</para>
-</entry><entry><para>MIB Description</para>
-</entry><entry><para>Kernel Statistic</para>
-</entry><entry><para><literal>mib</literal> Probes Table</para>
-</entry>
-</row>
-</thead><tbody><row><entry><para>ICMP</para>
-</entry><entry><para>RFC 1213</para>
-</entry><entry><para><literal>icmp</literal></para>
-</entry><entry><para><olink targetptr="tbl-mib-icmp" remap="internal">Table&nbsp;28&ndash;2</olink></para>
-</entry>
-</row><row><entry colname="colspec0"><para>IP</para>
-</entry><entry colname="colspec1"><para>RFC 1213</para>
-</entry><entry colname="colspec2"><para><literal>ip</literal></para>
-</entry><entry colname="colspec3"><para><olink targetptr="tbl-mib-ip" remap="internal">Table&nbsp;28&ndash;3</olink></para>
-</entry>
-</row><row><entry colname="colspec0"><para>IPsec</para>
-</entry><entry colname="colspec1"><para>&mdash;</para>
-</entry><entry colname="colspec2"><para><literal>ip</literal></para>
-</entry><entry colname="colspec3"><para><olink targetptr="tbl-mib-ipsec" remap="internal">Table&nbsp;28&ndash;4</olink></para>
-</entry>
-</row><row><entry colname="colspec0"><para>IPv6</para>
-</entry><entry colname="colspec1"><para>RFC 2465</para>
-</entry><entry colname="colspec2"><para>&mdash;</para>
-</entry><entry colname="colspec3"><para><olink targetptr="tbl-mib-ipv6" remap="internal">Table&nbsp;28&ndash;5</olink></para>
-</entry>
-</row><row><entry colname="colspec0"><para>SCTP</para>
-</entry><entry colname="colspec1"><para>&ldquo;SCTP MIB&rdquo; (Internet draft)</para>
-</entry><entry colname="colspec2"><para><literal>sctp</literal></para>
-</entry><entry colname="colspec3"><para><olink targetptr="tbl-mib-sctp" remap="internal">Table&nbsp;28&ndash;7</olink></para>
-</entry>
-</row><row><entry colname="colspec0"><para>TCP</para>
-</entry><entry colname="colspec1"><para>RFC 1213</para>
-</entry><entry colname="colspec2"><para><literal>tcp</literal></para>
-</entry><entry colname="colspec3"><para><olink targetptr="tbl-mib-tcp" remap="internal">Table&nbsp;28&ndash;8</olink></para>
-</entry>
-</row><row><entry colname="colspec0"><para>UDP</para>
-</entry><entry colname="colspec1"><para>RFC 1213</para>
-</entry><entry colname="colspec2"><para><literal>udp</literal></para>
-</entry><entry colname="colspec3"><para><olink targetptr="tbl-mib-udp" remap="internal">Table&nbsp;28&ndash;9</olink></para>
-</entry>
-</row>
-</tbody>
+<chapter xml:id="chp-mib">
+<title><literal>mib</literal> Provider</title>
+<para>The <literal>mib</literal> provider makes available probes that correspond to counters in the illumos management information bases (MIBs). MIB counters are used by the simple network management protocol (SNMP) that allow remote monitoring of heterogeneous networking entities. You can also view the counters with the <citerefentry><refentrytitle>kstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry> and <citerefentry><refentrytitle>netstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry> commands. The <literal>mib</literal> provider facilitates quick exploration of aberrant networking behavior that is observed using either remote or local networking monitors.</para>
+<sect1 xml:id="chp-mib-probes">
+<title>Probes</title>
+<para><indexterm><primary>probes</primary><secondary><literal>mib</literal></secondary></indexterm><indexterm><primary><literal>mib</literal> probe</primary></indexterm>The <literal>mib</literal> provider makes available probes for counters from several MIBs. The protocols that export MIBs instrumented by the <literal>mib</literal> provider are listed in <xref linkend="tbl-mib-mibs" />. The table includes a reference to documentation that specifies some or all of the MIB, the name of the kernel statistic that may be used to access the running counts (using the <citerefentry><refentrytitle>kstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry> <literal>-n</literal> <replaceable>statistic</replaceable><literal></literal> option), and a reference to the table that has a complete definition of the probes. All MIB counters are also available through the <literal>-s</literal> option to <citerefentry><refentrytitle>netstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry>.</para>
+<table frame="topbot" xml:id="tbl-mib-mibs">
+<title><literal>mib</literal> probes</title>
+<tgroup cols="4" colsep="0" rowsep="0">
+	<colspec colname="colspec0" colwidth="25*"/>
+	<colspec colname="colspec1" colwidth="25*"/>
+	<colspec colname="colspec2" colwidth="25*"/>
+	<colspec colname="colspec3" colwidth="25*"/>
+	<thead>
+		<row rowsep="1">
+			<entry><para>Protocol</para></entry>
+			<entry><para>MIB Description</para></entry>
+			<entry><para>Kernel Statistic</para></entry>
+			<entry><para><literal>mib</literal> Probes Table</para></entry>
+		</row>
+	</thead>
+	<tbody>
+		<row>
+			<entry><para>ICMP</para></entry>
+			<entry><para>RFC 1213</para></entry>
+			<entry><para><literal>icmp</literal></para></entry>
+			<entry><para><xref linkend="tbl-mib-icmp" /></para></entry>
+		</row>
+		<row>
+			<entry colname="colspec0"><para>IP</para></entry>
+			<entry colname="colspec1"><para>RFC 1213</para></entry>
+			<entry colname="colspec2"><para><literal>ip</literal></para></entry>
+			<entry colname="colspec3"><para><xref linkend="tbl-mib-ip" /></para></entry>
+		</row>
+		<row>
+			<entry colname="colspec0"><para>IPsec</para></entry>
+			<entry colname="colspec1"><para>&mdash;</para></entry>
+			<entry colname="colspec2"><para><literal>ip</literal></para></entry>
+			<entry colname="colspec3"><para><xref linkend="tbl-mib-ipsec" /></para></entry>
+		</row>
+		<row>
+			<entry colname="colspec0"><para>IPv6</para></entry>
+			<entry colname="colspec1"><para>RFC 2465</para></entry>
+			<entry colname="colspec2"><para>&mdash;</para></entry>
+			<entry colname="colspec3"><para><xref linkend="tbl-mib-ipv6" /></para></entry>
+		</row>
+		<row>
+			<entry colname="colspec0"><para>SCTP</para></entry>
+			<entry colname="colspec1"><para>&ldquo;SCTP MIB&rdquo; (Internet draft)</para></entry>
+			<entry colname="colspec2"><para><literal>sctp</literal></para></entry>
+			<entry colname="colspec3"><para><xref linkend="tbl-mib-sctp" /></para></entry>
+		</row>
+		<row>
+			<entry colname="colspec0"><para>TCP</para></entry>
+			<entry colname="colspec1"><para>RFC 1213</para></entry>
+			<entry colname="colspec2"><para><literal>tcp</literal></para></entry>
+			<entry colname="colspec3"><para><xref linkend="tbl-mib-tcp" /></para></entry>
+		</row>
+		<row>
+			<entry colname="colspec0"><para>UDP</para></entry>
+			<entry colname="colspec1"><para>RFC 1213</para></entry>
+			<entry colname="colspec2"><para><literal>udp</literal></para></entry>
+			<entry colname="colspec3"><para><xref linkend="tbl-mib-udp" /></para></entry>
+		</row>
+	</tbody>
 </tgroup>
-</table><table frame="topbot" id="tbl-mib-icmp"><title>ICMP <literal>mib</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>icmpInAddrMaskReps</literal></para>
+</table>
+<table frame="topbot" xml:id="tbl-mib-icmp">
+<title>ICMP <literal>mib</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>icmpInAddrMaskReps</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever an ICMP Address Mask Reply message is received.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>icmpInAddrMasks</literal></para>
@@ -133,7 +157,10 @@
 </row>
 </tbody>
 </tgroup>
-</table><table frame="topbot" id="tbl-mib-ip"><title>IP <literal>mib</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>ipForwDatagrams</literal></para>
+</table>
+<table frame="topbot" xml:id="tbl-mib-ip">
+<title>IP <literal>mib</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>ipForwDatagrams</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever a datagram is received that does not have this machine as its final IP destination, and an attempt is made to find a route to forward the datagram to that final destination. On machines that do not act as IP gateways, this probe will only fire for those packets that are source-routed through this machine, and for which the source-route option processing was successful.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>ipForwProhibits</literal></para>
@@ -202,7 +229,10 @@
 </row>
 </tbody>
 </tgroup>
-</table><table frame="topbot" id="tbl-mib-ipsec"><title>IPsec <literal>mib</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>ipsecInFailed</literal></para>
+</table>
+<table frame="topbot" xml:id="tbl-mib-ipsec">
+<title>IPsec <literal>mib</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>ipsecInFailed</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever a received packet is dropped because it fails to match the specified IPsec policy.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>ipsecInSucceeded</literal></para>
@@ -211,7 +241,10 @@
 </row>
 </tbody>
 </tgroup>
-</table><table frame="topbot" id="tbl-mib-ipv6"><title>IPv6 <literal>mib</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="2.55in"/><colspec colname="colspec1" colwidth="2.6in"/><tbody><row><entry colname="colspec0"><para><literal>ipv6ForwProhibits</literal></para>
+</table>
+<table frame="topbot" xml:id="tbl-mib-ipv6">
+<title>IPv6 <literal>mib</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="2.55in"/><colspec colname="colspec1" colwidth="2.6in"/><tbody><row><entry colname="colspec0"><para><literal>ipv6ForwProhibits</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever an IPv6 datagram is received that does not have this machine as its final IPv6 destination, but because the machine is not permitted to act as a router, no attempt is made to find a route to forward the datagram to that final destination.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>ipv6IfIcmpBadHoplimit</literal></para>
@@ -421,7 +454,10 @@
 </row>
 </tbody>
 </tgroup>
-</table><table frame="topbot" id="tbl-mib-rawip"><title>Raw IP <literal>mib</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>rawipInCksumErrs</literal></para>
+</table>
+<table frame="topbot" xml:id="tbl-mib-rawip">
+<title>Raw IP <literal>mib</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>rawipInCksumErrs</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever a raw IP packet is received that has a bad IP checksum.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>rawipInDatagrams</literal></para>
@@ -442,7 +478,10 @@
 </row>
 </tbody>
 </tgroup>
-</table><table frame="topbot" id="tbl-mib-sctp"><title>SCTP <literal>mib</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>sctpAborted</literal></para>
+</table>
+<table frame="topbot" xml:id="tbl-mib-sctp">
+<title>SCTP <literal>mib</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>sctpAborted</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever an SCTP association has made a direct transition to the CLOSED state from any state using the ABORT primitive, denoting ungraceful termination of the association.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>sctpActiveEstab</literal></para>
@@ -535,7 +574,10 @@
 </row>
 </tbody>
 </tgroup>
-</table><table frame="topbot" id="tbl-mib-tcp"><title>TCP <literal>mib</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>tcpActiveOpens</literal></para>
+</table>
+<table frame="topbot" xml:id="tbl-mib-tcp">
+<title>TCP <literal>mib</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>tcpActiveOpens</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever a TCP connection makes a direct transition from the CLOSED state to the SYN_SENT state.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>tcpAttemptFails</literal></para>
@@ -682,7 +724,10 @@
 </row>
 </tbody>
 </tgroup>
-</table><table frame="topbot" id="tbl-mib-udp"><title>UDP <literal>mib</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>udpInCksumErrs</literal></para>
+</table>
+<table frame="topbot" xml:id="tbl-mib-udp">
+<title>UDP <literal>mib</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.5in"/><colspec colname="colspec1" colwidth="3.65in"/><tbody><row><entry colname="colspec0"><para><literal>udpInCksumErrs</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever a datagram is discarded due to a bad UDP checksum.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>udpInDatagrams</literal></para>
@@ -707,8 +752,15 @@
 </tbody>
 </tgroup>
 </table>
-</sect1><sect1 id="chp-mib-1"><title>Arguments</title><para><indexterm><primary><literal>mib</literal> probe</primary><secondary>arguments</secondary></indexterm>The sole argument for each <literal>mib</literal> probe has the same semantics: <literal>args[0]</literal> contains the value with which the counter is to be incremented. For most <literal>mib</literal> probes, <literal>args[0]</literal> always contains the value <literal>1</literal>, but for some probes <literal>args[0]</literal> may take arbitrary positive values. For these probes, the meaning of <literal>args[0]</literal> is noted in the probe description.</para>
-</sect1><sect1 id="chp-mib-stability"><title>Stability</title><para><indexterm><primary>stability</primary><secondary><literal>mib</literal></secondary></indexterm><indexterm><primary><literal>mib</literal> probe</primary><secondary>stability</secondary></indexterm>The <literal>mib</literal> provider uses DTrace's stability mechanism to describe its stabilities, as shown in the following table. For more information about the stability mechanism, see <olink targetptr="chp-stab" remap="internal">Chapter&nbsp;39, Stability</olink>.</para><informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="0"><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><thead><row rowsep="1"><entry colsep="1"><para>Element</para>
+</sect1>
+<sect1 xml:id="chp-mib-1">
+<title>Arguments</title>
+<para><indexterm><primary><literal>mib</literal> probe</primary><secondary>arguments</secondary></indexterm>The sole argument for each <literal>mib</literal> probe has the same semantics: <literal>args[0]</literal> contains the value with which the counter is to be incremented. For most <literal>mib</literal> probes, <literal>args[0]</literal> always contains the value <literal>1</literal>, but for some probes <literal>args[0]</literal> may take arbitrary positive values. For these probes, the meaning of <literal>args[0]</literal> is noted in the probe description.</para>
+</sect1>
+<sect1 xml:id="chp-mib-stability">
+<title>Stability</title>
+<para><indexterm><primary>stability</primary><secondary><literal>mib</literal></secondary></indexterm><indexterm><primary><literal>mib</literal> probe</primary><secondary>stability</secondary></indexterm>The <literal>mib</literal> provider uses DTrace's stability mechanism to describe its stabilities, as shown in the following table. For more information about the stability mechanism, see <xref linkend="chp-stab" />.</para>
+<informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="0"><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><thead><row rowsep="1"><entry colsep="1"><para>Element</para>
 </entry><entry><para>Name stability</para>
 </entry><entry><para>Data stability</para>
 </entry><entry><para>Dependency class</para>

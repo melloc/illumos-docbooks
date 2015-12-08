@@ -1,5 +1,10 @@
-<chapter id="chp-vminfo"><title><literal>vminfo</literal> Provider</title><highlights><para>The <literal>vminfo</literal> provider makes available probes that correspond to the <literal>vm</literal> kernel statistics. Because these statistics provide the input for system monitoring utilities like <olink targetdoc="refman1m" targetptr="vmstat-1m" remap="external"><citerefentry><refentrytitle>vmstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>, the <literal>vminfo</literal> provider enables quick exploration of observed aberrant behavior.</para>
-</highlights><sect1 id="chp-vminfo-1"><title>Probes</title><para><indexterm><primary>probes</primary><secondary><literal>vminfo</literal></secondary></indexterm><indexterm><primary><literal>vminfo</literal> probe</primary></indexterm>The <literal>vminfo</literal> provider makes available probes that correspond to the fields in the <literal>vm</literal> named kernel statistic: a probe provided by <literal>vminfo</literal> fires immediately before the corresponding <literal>vm</literal> value is incremented. To display both the names and the current values of the <literal>vm</literal> named kernel statistic, use the <olink targetdoc="refman1m" targetptr="kstat-1m" remap="external"><citerefentry><refentrytitle>kstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> command, as shown in the following example:</para><screen><userinput>$ kstat -n vm</userinput>
+<chapter xml:id="chp-vminfo">
+<title><literal>vminfo</literal> Provider</title>
+<para>The <literal>vminfo</literal> provider makes available probes that correspond to the <literal>vm</literal> kernel statistics. Because these statistics provide the input for system monitoring utilities like <citerefentry><refentrytitle>vmstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry>, the <literal>vminfo</literal> provider enables quick exploration of observed aberrant behavior.</para>
+<sect1 xml:id="chp-vminfo-1">
+<title>Probes</title>
+<para><indexterm><primary>probes</primary><secondary><literal>vminfo</literal></secondary></indexterm><indexterm><primary><literal>vminfo</literal> probe</primary></indexterm>The <literal>vminfo</literal> provider makes available probes that correspond to the fields in the <literal>vm</literal> named kernel statistic: a probe provided by <literal>vminfo</literal> fires immediately before the corresponding <literal>vm</literal> value is incremented. To display both the names and the current values of the <literal>vm</literal> named kernel statistic, use the <citerefentry><refentrytitle>kstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry> command, as shown in the following example:</para>
+<screen><userinput>$ kstat -n vm</userinput>
 module: cpu                             instance: 0
 name:   vm                              class:    misc
         anonfree                        13
@@ -11,8 +16,12 @@ name:   vm                              class:    misc
         dfree                           1328740
         execfree                        0
         execpgin                        5541
-        ...</screen><para>The <literal>vminfo</literal> probes are described in <olink targetptr="tbl-vminfo" remap="internal">Table&nbsp;24&ndash;1</olink>.</para><table frame="topbot" id="tbl-vminfo"><title><literal>vminfo</literal> Probes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.00in"/><colspec colname="colspec1" colwidth="4.00in"/><tbody><row><entry colname="colspec0"><para><literal>anonfree</literal></para>
-</entry><entry colname="colspec1"><para>Probe that fires whenever an unmodified anonymous page is freed as part of paging activity. Anonymous pages are those that are not associated with a file. Memory containing such pages includes heap memory, stack memory, or memory obtained by explicitly mapping <olink targetdoc="refman7" targetptr="zero-7d" remap="external"><citerefentry><refentrytitle>zero</refentrytitle><manvolnum>7D</manvolnum></citerefentry></olink>.</para>
+        ...</screen>
+<para>The <literal>vminfo</literal> probes are described in <xref linkend="tbl-vminfo" />.</para>
+<table frame="topbot" xml:id="tbl-vminfo">
+<title><literal>vminfo</literal> Probes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="1.00in"/><colspec colname="colspec1" colwidth="4.00in"/><tbody><row><entry colname="colspec0"><para><literal>anonfree</literal></para>
+</entry><entry colname="colspec1"><para>Probe that fires whenever an unmodified anonymous page is freed as part of paging activity. Anonymous pages are those that are not associated with a file. Memory containing such pages includes heap memory, stack memory, or memory obtained by explicitly mapping <citerefentry><refentrytitle>zero</refentrytitle><manvolnum>7D</manvolnum></citerefentry>.</para>
 </entry>
 </row><row><entry colname="colspec0"><para><literal>anonpgin</literal></para>
 </entry><entry colname="colspec1"><para>Probe that fires whenever an anonymous page is paged in from a swap device.</para>
@@ -105,10 +114,13 @@ name:   vm                              class:    misc
 </tbody>
 </tgroup>
 </table>
-</sect1><sect1 id="chp-vminfo-2"><title>Arguments</title><indexterm><primary>probes</primary><secondary><literal>vminfo</literal></secondary><tertiary>arguments</tertiary>
+</sect1>
+<sect1 xml:id="chp-vminfo-2">
+<title>Arguments</title>
+<indexterm><primary>probes</primary><secondary><literal>vminfo</literal></secondary><tertiary>arguments</tertiary>
 </indexterm><indexterm><primary><literal>vminfo</literal> probe</primary><secondary>arguments</secondary>
 </indexterm><informaltable frame="topbot"><tgroup cols="2" colsep="0" rowsep="0"><?PubTbl tgroup dispwid="6.02in"?><colspec colname="colspec0" colwidth="1.00in"/><colspec colname="colspec1" colwidth="4.00in"/><tbody><row><entry><para><literal>arg0</literal></para>
-</entry><entry><para>The value by which the statistic is to be incremented. For most probes, this argument is always 1, but for some it may take other values; these probes are noted in <olink targetptr="tbl-vminfo" remap="internal">Table&nbsp;24&ndash;1</olink>.</para>
+</entry><entry><para>The value by which the statistic is to be incremented. For most probes, this argument is always 1, but for some it may take other values; these probes are noted in <xref linkend="tbl-vminfo" />.</para>
 </entry>
 </row><row><entry><para><literal>arg1</literal></para>
 </entry><entry><para>A pointer to the current value of the statistic to be incremented. This value is a 64&ndash;bit quantity that will be incremented by the value in <literal>arg0</literal>. Dereferencing this pointer allows consumers to determine the current count of the statistic corresponding to the probe.</para>
@@ -117,13 +129,19 @@ name:   vm                              class:    misc
 </tbody>
 </tgroup>
 </informaltable>
-</sect1><sect1 id="chp-vminfo-3"><title>Example</title><para><indexterm><primary>probes</primary><secondary><literal>vminfo</literal></secondary><tertiary>example of use</tertiary></indexterm><indexterm><primary><literal>vminfo</literal> probe</primary><secondary>example</secondary></indexterm>Examine the following output from <olink targetdoc="refman1m" targetptr="vmstat-1m" remap="external"><citerefentry><refentrytitle>vmstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink>:</para><screen>kthr      memory            page            disk          faults      cpu
+</sect1>
+<sect1 xml:id="chp-vminfo-3">
+<title>Example</title>
+<para><indexterm><primary>probes</primary><secondary><literal>vminfo</literal></secondary><tertiary>example of use</tertiary></indexterm><indexterm><primary><literal>vminfo</literal> probe</primary><secondary>example</secondary></indexterm>Examine the following output from <citerefentry><refentrytitle>vmstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry>:</para>
+<screen>kthr      memory            page            disk          faults      cpu
  r b w   swap  free  re  mf pi po fr de sr cd s0 &mdash; &mdash;   in   sy   cs us sy id
  0 1 0 1341844 836720 26 311 1644 0 0 0  0 216 0  0  0  797  817  697  9 10 81
  0 1 0 1341344 835300 238 934 1576 0 0 0 0 194 0  0  0  750 2795  791  7 14 79
  0 1 0 1340764 833668 24 165 1149 0 0 0  0 133 0  0  0  637  813  547  5  4 91
  0 1 0 1340420 833024 24 394 1002 0 0 0  0 130 0  0  0  621 2284  653 14  7 79
- 0 1 0 1340068 831520 14 202 380 0 0  0  0 59  0  0  0  482 5688 1434 25  7 68</screen><para>The <literal>pi</literal> column in the above output denotes the number of pages paged in. The <literal>vminfo</literal> provider enables you to learn more about the source of these page-ins, as shown in the following example:</para><screen><userinput>dtrace -n pgin'{@[execname] = count()}'</userinput>
+ 0 1 0 1340068 831520 14 202 380 0 0  0  0 59  0  0  0  482 5688 1434 25  7 68</screen>
+<para>The <literal>pi</literal> column in the above output denotes the number of pages paged in. The <literal>vminfo</literal> provider enables you to learn more about the source of these page-ins, as shown in the following example:</para>
+<screen><userinput>dtrace -n pgin'{@[execname] = count()}'</userinput>
 dtrace: description 'pgin' matched 1 probe
 <userinput>^C</userinput>
   xterm                                                             1
@@ -133,7 +151,7 @@ dtrace: description 'pgin' matched 1 probe
   sh                                                               17
   soffice                                                          39
   javaldx                                                         103
-  soffice.bin                                                    3065</screen><para>The output shows that a process associated with the <trademark>StarOffice</trademark> software, <literal>soffice.bin</literal>, is responsible for most of the page-ins. To get a better picture of <literal>soffice.bin</literal> in terms of virtual memory behavior, you could enable all <literal>vminfo</literal> probes. The following example runs <olink targetdoc="refman1m" targetptr="dtrace-1m" remap="external"><citerefentry><refentrytitle>dtrace</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> while launching the StarOffice software:</para><screen><userinput>dtrace -P vminfo'/execname == "soffice.bin"/{@[probename] = count()}'</userinput>
+  soffice.bin                                                    3065</screen><para>The output shows that a process associated with the <trademark>StarOffice</trademark> software, <literal>soffice.bin</literal>, is responsible for most of the page-ins. To get a better picture of <literal>soffice.bin</literal> in terms of virtual memory behavior, you could enable all <literal>vminfo</literal> probes. The following example runs <citerefentry><refentrytitle>dtrace</refentrytitle><manvolnum>1M</manvolnum></citerefentry> while launching the StarOffice software:</para><screen><userinput>dtrace -P vminfo'/execname == "soffice.bin"/{@[probename] = count()}'</userinput>
 dtrace: description 'vminfo' matched 42 probes
 <userinput>^C</userinput>
 
@@ -257,40 +275,57 @@ dtrace: script './soffice.d' matched 10 probes
               20 |                                         1        
               21 |                                         0        
               22 |                                         92       
-              23 |                                         0</screen><para>The output shows some StarOffice behavior with respect to the virtual memory system. For example, the <literal>maj_fault</literal> probe didn't fire until a new instance of the application was started. As you would hope, a &ldquo;warm start&rdquo; of StarOffice did not result in new major faults. The <literal>as_fault</literal> output shows an initial burst of activity, latency while the user located the menu to create a new drawing, another period of idleness, and a final burst of activity when the user clicked on a new presentation. The <literal>zfod</literal> output shows that creating the new presentation induced significant pressure for zero-filled pages, but only for a short period of time.</para><para>The next iteration of DTrace investigation in this example would depend on the direction you want to explore. If you want to understand the source of the demand for zero-filled pages, you could aggregate on <function>ustack</function> in a <literal>zfod</literal> enabling. You might want to establish a threshold for zero-filled pages and use the <function>stop</function> destructive action to stop the offending process when the threshold is exceeded. This approach would enable you to use more traditional debugging tools like <olink targetdoc="refman1" targetptr="truss-1" remap="external"><citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink> or <olink targetdoc="refman1" targetptr="mdb-1" remap="external"><citerefentry><refentrytitle>mdb</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink>. The <literal>vminfo</literal> provider enables you to associate statistics seen in the output of conventional tools like <olink targetdoc="refman1m" targetptr="vmstat-1m" remap="external"><citerefentry><refentrytitle>vmstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> with the applications that are inducing the systemic behavior.</para>
-</sect1><sect1 id="chp-vminfo-stability"><title>Stability</title><para><indexterm><primary>stability</primary><secondary><literal>vminfo</literal></secondary></indexterm><indexterm><primary><literal>vminfo</literal> probe</primary><secondary>stability</secondary></indexterm>The <literal>vminfo</literal> provider uses DTrace's stability mechanism to describe its stabilities, as shown in the following table. For more information about the stability mechanism, see <olink targetptr="chp-stab" remap="internal">Chapter&nbsp;39, Stability</olink>.</para><informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="0"><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><thead><row rowsep="1"><entry colsep="1"><para>Element</para>
-</entry><entry><para>Name stability</para>
-</entry><entry><para>Data stability</para>
-</entry><entry><para>Dependency class</para>
-</entry>
-</row>
-</thead><tbody><row><entry colsep="1"><para>Provider</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para><acronym>ISA</acronym></para>
-</entry>
-</row><row><entry colsep="1"><para>Module</para>
-</entry><entry><para>Private</para>
-</entry><entry><para>Private</para>
-</entry><entry><para>Unknown</para>
-</entry>
-</row><row><entry colsep="1"><para>Function</para>
-</entry><entry><para>Private</para>
-</entry><entry><para>Private</para>
-</entry><entry><para>Unknown</para>
-</entry>
-</row><row><entry colsep="1"><para>Name</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para><acronym>ISA</acronym></para>
-</entry>
-</row><row><entry colsep="1"><para>Arguments</para>
-</entry><entry><para>Private</para>
-</entry><entry><para>Private</para>
-</entry><entry><para><acronym>ISA</acronym></para>
-</entry>
-</row>
-</tbody>
+              23 |                                         0</screen><para>The output shows some StarOffice behavior with respect to the virtual memory system. For example, the <literal>maj_fault</literal> probe didn't fire until a new instance of the application was started. As you would hope, a &ldquo;warm start&rdquo; of StarOffice did not result in new major faults. The <literal>as_fault</literal> output shows an initial burst of activity, latency while the user located the menu to create a new drawing, another period of idleness, and a final burst of activity when the user clicked on a new presentation. The <literal>zfod</literal> output shows that creating the new presentation induced significant pressure for zero-filled pages, but only for a short period of time.</para><para>The next iteration of DTrace investigation in this example would depend on the direction you want to explore. If you want to understand the source of the demand for zero-filled pages, you could aggregate on <function>ustack</function> in a <literal>zfod</literal> enabling. You might want to establish a threshold for zero-filled pages and use the <function>stop</function> destructive action to stop the offending process when the threshold is exceeded. This approach would enable you to use more traditional debugging tools like <citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry> or <citerefentry><refentrytitle>mdb</refentrytitle><manvolnum>1</manvolnum></citerefentry>. The <literal>vminfo</literal> provider enables you to associate statistics seen in the output of conventional tools like <citerefentry><refentrytitle>vmstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry> with the applications that are inducing the systemic behavior.</para>
+</sect1>
+<sect1 xml:id="chp-vminfo-stability">
+<title>Stability</title>
+<para><indexterm><primary>stability</primary><secondary><literal>vminfo</literal></secondary></indexterm><indexterm><primary><literal>vminfo</literal> probe</primary><secondary>stability</secondary></indexterm>The <literal>vminfo</literal> provider uses DTrace's stability mechanism to describe its stabilities, as shown in the following table. For more information about the stability mechanism, see <xref linkend="chp-stab" />.</para>
+<informaltable frame="topbot">
+<tgroup cols="4" colsep="0" rowsep="0">
+	<colspec colwidth="25*"/>
+	<colspec colwidth="25*"/>
+	<colspec colwidth="25*"/>
+	<colspec colwidth="25*"/>
+	<thead>
+		<row rowsep="1">
+			<entry colsep="1"><para>Element</para></entry>
+			<entry><para>Name stability</para></entry>
+			<entry><para>Data stability</para></entry>
+			<entry><para>Dependency class</para></entry>
+		</row>
+	</thead>
+	<tbody>
+		<row>
+			<entry colsep="1"><para>Provider</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para><acronym>ISA</acronym></para></entry>
+		</row>
+		<row>
+			<entry colsep="1"><para>Module</para></entry>
+			<entry><para>Private</para></entry>
+			<entry><para>Private</para></entry>
+			<entry><para>Unknown</para></entry>
+		</row>
+		<row>
+			<entry colsep="1"><para>Function</para></entry>
+			<entry><para>Private</para></entry>
+			<entry><para>Private</para></entry>
+			<entry><para>Unknown</para></entry>
+		</row>
+		<row>
+			<entry colsep="1"><para>Name</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para><acronym>ISA</acronym></para></entry>
+		</row>
+		<row>
+			<entry colsep="1"><para>Arguments</para></entry>
+			<entry><para>Private</para></entry>
+			<entry><para>Private</para></entry>
+			<entry><para><acronym>ISA</acronym></para></entry>
+		</row>
+	</tbody>
 </tgroup>
 </informaltable>
 </sect1>

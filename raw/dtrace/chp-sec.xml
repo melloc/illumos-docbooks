@@ -1,4 +1,8 @@
-<?Pub UDT _bookmark _target?><?Pub EntList bull rArr sect?><chapter id="chp-sec"><title>Security</title><highlights><para>This chapter describes the privileges that system administrators can
+<?Pub UDT _bookmark _target?>
+<?Pub EntList bull rArr sect?>
+<chapter xml:id="chp-sec">
+<title>Security</title>
+<para>This chapter describes the privileges that system administrators can
 use to grant access to DTrace to particular users or processes. DTrace enables
 visibility into all aspects of the system including user-level functions,
 system calls, kernel functions, and more. It allows for powerful actions some
@@ -7,10 +11,16 @@ allow a user access to another user's private files, a system administrator
 should not grant every user full access to all the facilities that DTrace
 offers. By default, only the super-user can use DTrace. The Least Privilege
 facility can be used to allow other users controlled use of DTrace.</para>
-</highlights><sect1 id="chp-sec-1"><title>Privileges</title><para><indexterm><primary>security</primary></indexterm><indexterm><primary>privileges</primary></indexterm>The illumos Least Privilege facility enables administrators
+<sect1 xml:id="chp-sec-1">
+<title>Privileges</title>
+<para><indexterm><primary>security</primary></indexterm><indexterm><primary>privileges</primary></indexterm>The illumos Least Privilege facility enables administrators
 to grant specific privileges to specific illumos users. To give a user a privilege
 on login, insert a line into the <filename>/etc/user_attr</filename> file
-of the form:</para><programlisting><replaceable>user-name</replaceable>::::defaultpriv=basic,<replaceable>privilege</replaceable></programlisting><para>To give a running process an additional privilege, use the <olink targetdoc="refman1" targetptr="ppriv-1" remap="external"><citerefentry><refentrytitle>ppriv</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink> command:</para><screen><userinput># ppriv -s A+<replaceable>privilege</replaceable> <replaceable>process-ID</replaceable></userinput></screen><para>The three privileges that control a user's access to DTrace features
+of the form:</para>
+<programlisting><replaceable>user-name</replaceable>::::defaultpriv=basic,<replaceable>privilege</replaceable></programlisting>
+<para>To give a running process an additional privilege, use the <citerefentry><refentrytitle>ppriv</refentrytitle><manvolnum>1</manvolnum></citerefentry> command:</para>
+<screen><userinput># ppriv -s A+<replaceable>privilege</replaceable> <replaceable>process-ID</replaceable></userinput></screen>
+<para>The three privileges that control a user's access to DTrace features
 are <literal>dtrace_proc</literal>, <literal>dtrace_user</literal>, and <literal>dtrace_kernel</literal>. Each privilege permits the use of a certain set of
 DTrace providers, actions, and variables, and each corresponds to a particular
 type of use of DTrace. The privilege modes are described in detail in the
@@ -18,8 +28,11 @@ following sections. System administrators should carefully weigh each user's
 need against the visibility and performance impact of the different privilege
 modes. Users need at least one of the three DTrace privileges in order to
 use any of the DTrace functionality.</para>
-</sect1><sect1 id="chp-sec-2"><title>Privileged Use of DTrace</title><para><indexterm><primary>privileges</primary><secondary>and DTrace</secondary></indexterm>Users with any of the three DTrace privileges may enable probes
-provided by the <literal>dtrace</literal> provider (see <olink targetptr="chp-dtrace" remap="internal">Chapter&nbsp;17, dtrace Provider</olink>), and may
+</sect1>
+<sect1 xml:id="chp-sec-2">
+<title>Privileged Use of DTrace</title>
+<para><indexterm><primary>privileges</primary><secondary>and DTrace</secondary></indexterm>Users with any of the three DTrace privileges may enable probes
+	provided by the <literal>dtrace</literal> provider (see <xref linkend="chp-dtrace" />), and may
 use the following actions and variables:</para><informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="1"><?PubTbl tgroup dispwid="10.43in"?><colspec colname="colspec7" colwidth="0.82*"/><colspec colname="colspec8" colwidth="0.87*"/><colspec colname="colspec10" colwidth="1.06*"/><colspec colname="colspec9" colwidth="1.27*"/><tbody><row><entry colsep="1"><para>Providers</para>
 </entry><entry><para><literal>dtrace</literal></para>
 </entry><entry colname="colspec10">
@@ -64,7 +77,10 @@ use the following actions and variables:</para><informaltable frame="topbot"><tg
 </tbody>
 </tgroup>
 </informaltable>
-</sect1><sect1 id="chp-sec-proc"><title><literal>dtrace_proc</literal> Privilege</title><para><indexterm><primary><literal>dtrace_proc</literal> privilege</primary></indexterm><indexterm><primary>privileges</primary><secondary><literal>dtrace_proc</literal></secondary></indexterm>The <literal>dtrace_proc</literal> privilege
+</sect1>
+<sect1 xml:id="chp-sec-proc">
+<title><literal>dtrace_proc</literal> Privilege</title>
+<para><indexterm><primary><literal>dtrace_proc</literal> privilege</primary></indexterm><indexterm><primary>privileges</primary><secondary><literal>dtrace_proc</literal></secondary></indexterm>The <literal>dtrace_proc</literal> privilege
 permits use of the <literal>fasttrap</literal> provider for process-level
 tracing. It also allows the use of the following actions and variables:</para><informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="1"><?PubTbl tgroup dispwid="10.43in"?><colspec colname="colspec7" colwidth="0.82*"/><colspec colname="colspec8" colwidth="0.87*"/><colspec colname="colspec10" colwidth="1.06*"/><colspec colname="colspec9" colwidth="1.27*"/><tbody><row><entry colname="colspec7" morerows="1" colsep="1"><para>Actions</para>
 </entry><entry colname="colspec8" rowsep="0"><para><literal>copyin</literal></para>
@@ -109,9 +125,13 @@ any processes other than those being traced. As this privilege grants users
 no additional visibility into other processes or the kernel itself,
 it is recommended that this privilege be granted to all users that may need
 to better understand the inner-workings of their own processes.</para>
-</sect1><sect1 id="chp-sec-user"><title><literal>dtrace_user</literal> Privilege</title><para><indexterm><primary><literal>dtrace_user</literal>privilege</primary></indexterm><indexterm><primary>privileges</primary><secondary><literal>dtrace_user</literal></secondary></indexterm>The <literal>dtrace_user</literal> privilege
+</sect1>
+<sect1 xml:id="chp-sec-user">
+<title><literal>dtrace_user</literal> Privilege</title>
+<para><indexterm><primary><literal>dtrace_user</literal>privilege</primary></indexterm><indexterm><primary>privileges</primary><secondary><literal>dtrace_user</literal></secondary></indexterm>The <literal>dtrace_user</literal> privilege
 permits use of the <literal>profile</literal> and <literal>syscall</literal> providers
-with some caveats, and the use of the following actions and variables:</para><informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="1"><?PubTbl tgroup dispwid="10.43in"?><colspec colname="colspec7" colwidth="0.82*"/><colspec colname="colspec8" colwidth="0.87*"/><colspec colname="colspec10" colwidth="1.06*"/><colspec colname="colspec9" colwidth="1.27*"/><tbody><row><entry colsep="1"><para>Providers</para>
+with some caveats, and the use of the following actions and variables:</para>
+<informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="1"><?PubTbl tgroup dispwid="10.43in"?><colspec colname="colspec7" colwidth="0.82*"/><colspec colname="colspec8" colwidth="0.87*"/><colspec colname="colspec10" colwidth="1.06*"/><colspec colname="colspec9" colwidth="1.27*"/><tbody><row><entry colsep="1"><para>Providers</para>
 </entry><entry><para><literal>profile</literal></para>
 </entry><entry colname="colspec10"><para><literal>syscall</literal></para>
 </entry><entry colname="colspec9"><para><literal>fasttrap</literal></para>
@@ -151,9 +171,12 @@ on every system call for every process. The <literal>profile</literal> provider
 affects overall system performance by executing every time interval, similar
 to a real-time timer. Neither of these performance degradations is so great
 as to severely limit the system's progress, but system administrators should
-consider the implications of granting a user this privilege. Refer to <olink targetptr="chp-syscall" remap="internal">Chapter&nbsp;21, syscall Provider</olink> and <olink targetptr="chp-profile" remap="internal">Chapter&nbsp;19, profile Provider</olink> for a discussion
+consider the implications of granting a user this privilege. Refer to <xref linkend="chp-syscall" /> and <xref linkend="chp-profile" /> for a discussion
 of the performance impact of the <literal>syscall</literal> and <literal>profile</literal> providers.</para>
-</sect1><sect1 id="chp-sec-5"><title><literal>dtrace_kernel</literal> Privilege</title><para><indexterm><primary><literal>dtrace_kernel</literal> privilege</primary></indexterm><indexterm><primary>privileges</primary><secondary><literal>dtrace_kernel</literal></secondary></indexterm>The <literal>dtrace_kernel</literal> privilege
+</sect1>
+<sect1 xml:id="chp-sec-5">
+<title><literal>dtrace_kernel</literal> Privilege</title>
+<para><indexterm><primary><literal>dtrace_kernel</literal> privilege</primary></indexterm><indexterm><primary>privileges</primary><secondary><literal>dtrace_kernel</literal></secondary></indexterm>The <literal>dtrace_kernel</literal> privilege
 permits the use of every provider except for the use of the <literal>pid</literal> and <literal>fasttrap</literal> providers on processes not owned by the user. This privilege
 also permits the use of all actions and variables except for kernel destructive
 actions (<function>breakpoint</function>, <function>panic</function>, <function>chill</function>). This privilege permits complete visibility into kernel and user
@@ -178,7 +201,10 @@ are a strict subset of those enabled by <literal>dtrace_kernel</literal>.</para>
 </tbody>
 </tgroup>
 </informaltable>
-</sect1><sect1 id="chp-sec-6"><title>Super User Privileges</title><para><indexterm><primary>superuser privileges</primary></indexterm><indexterm><primary>privileges</primary><secondary>superuser</secondary></indexterm>A
+</sect1>
+<sect1 xml:id="chp-sec-6">
+<title>Super User Privileges</title>
+<para><indexterm><primary>superuser privileges</primary></indexterm><indexterm><primary>privileges</primary><secondary>superuser</secondary></indexterm>A
 user with all privileges may use every provider and every action including
 the kernel destructive actions unavailable to every other class of user.</para><informaltable frame="topbot"><tgroup cols="3" colsep="0" rowsep="1"><?PubTbl tgroup dispwid="10.43in"?><colspec colname="colspec7" colwidth="0.82*"/><colspec colname="colspec8" colwidth="1.06*"/><colspec colname="colspec10" colwidth="1.14*"/><tbody><row><entry colsep="1"><para>Providers</para>
 </entry><entry><para>All</para>

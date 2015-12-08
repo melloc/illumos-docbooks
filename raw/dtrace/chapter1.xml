@@ -1,4 +1,7 @@
-<?Pub UDT _bookmark _target?><?Pub EntList bull rArr sect?><chapter id="chp-intro"><title>Introduction</title><highlights><para>Welcome to Dynamic Tracing in the illumos Operating System! If you have
+<?Pub UDT _bookmark _target?><?Pub EntList bull rArr sect?>
+<chapter xml:id="chp-intro">
+<title>Introduction</title>
+<para>Welcome to Dynamic Tracing in the illumos Operating System! If you have
 ever wanted to understand the behavior of your system, DTrace is the tool
 for you. DTrace is a comprehensive dynamic tracing facility that is built
 into illumos that can be used by administrators and developers on live production
@@ -13,10 +16,11 @@ a quick introduction to DTrace and shows you how to write your very first
 D program. The rest of the chapter introduces the complete set of rules for
 programming in D as well as tips and techniques for performing in-depth analysis
 of your system. You can share your DTrace experiences and scripts with the
-rest of the DTrace community on the web at <ulink url="http://www.sun.com/bigadmin/content/dtrace/" type="text">http://www.sun.com/bigadmin/content/dtrace/</ulink>. All of the example scripts presented in this guide can be found
+rest of the DTrace community on the web at <link xl:href="http://www.sun.com/bigadmin/content/dtrace/">http://www.sun.com/bigadmin/content/dtrace/</link>. All of the example scripts presented in this guide can be found
 on your illumos system in the directory <filename>/usr/demo/dtrace</filename>.</para>
-</highlights>
-<sect1 id="chp-intro-1"><title>DTrace on other Operating Systems</title><para>
+<sect1 xml:id="chp-intro-1">
+<title>DTrace on other Operating Systems</title>
+<para>
 Since the source to DTrace was made available in 2005, it has been ported to several other operating
 systems including:</para><itemizedlist>
 <listitem><para>Mac OS X</para></listitem>
@@ -27,7 +31,9 @@ systems including:</para><itemizedlist>
 </itemizedlist>
 <para>This guide has a focus on the illumos Operating System, but much of the
 content is applicable to all Operating Systems with DTrace.</para></sect1>
-<sect1 id="chp-intro-2"><title>Getting Started</title><para>DTrace helps you understand a software system by enabling you to dynamically
+<sect1 xml:id="chp-intro-2">
+<title>Getting Started</title>
+<para>DTrace helps you understand a software system by enabling you to dynamically
 modify the operating system kernel and user processes to record additional
 data that you specify at locations of interest, called <firstterm>probes</firstterm>.
 A probe is a location or activity to which DTrace can bind a request to perform
@@ -40,7 +46,7 @@ back to you. If you don't specify any actions for a probe, DTrace will just
 take note of each time the probe fires.</para><para>Every probe in DTrace has two names: a unique integer ID and a human-readable
 string name. We're going to start learning DTrace by building some very simple
 requests using the probe named <literal>BEGIN</literal>, which fires once
-each time you start a new tracing request. You can use the <olink targetdoc="refman1m" targetptr="dtrace-1m" remap="external"><citerefentry><refentrytitle>dtrace</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> utility's <option>n</option> option
+each time you start a new tracing request. You can use the <citerefentry><refentrytitle>dtrace</refentrytitle><manvolnum>1M</manvolnum></citerefentry> utility's <option>n</option> option
 to enable a probe using its string name. Type the following command:</para><screen><userinput># dtrace -n BEGIN</userinput></screen><para>After a brief pause, you will see DTrace tell you that one probe was
 enabled and you will see a line of output indicating that the <literal>BEGIN</literal> probe
 fired. Once you see this output, <command>dtrace</command> remains paused
@@ -72,8 +78,10 @@ you're ready to write the DTrace version of everyone's first program, &ldquo;Hel
 World.&rdquo; In addition to constructing DTrace experiments on the command
 line, you can also write them in text files using the D programming language.
 In a text editor, create a new file called <filename>hello.d</filename> and
-type in your first D program:</para><example id="ex-hello.d"><title><filename>hello.d</filename>: Hello, World
-from the D Programming Language</title><programlisting>BEGIN
+type in your first D program:</para>
+<example xml:id="ex-hello.d">
+<title><filename>hello.d</filename>: Hello, World from the D Programming Language</title>
+<programlisting>BEGIN
 {
 	trace("hello, world");
 	exit(0);
@@ -100,8 +108,8 @@ second statement uses the function <function>exit</function> to indicate that
 DTrace should cease tracing and exit the <command>dtrace</command> command.
 DTrace provides a set of useful functions like <function>trace</function> and <function>exit</function> for you to call in your D programs. To call a function, you
 specify its name followed by a parenthesized list of arguments. The complete
-set of D functions is described in <olink targetptr="chp-actsub" remap="internal">Chapter&nbsp;10,
-Actions and Subroutines</olink>.</para><para>By now, if you're familiar with the C programming language, you've probably
+set of D functions is described in <xref linkend="chp-actsub" />.</para>
+<para>By now, if you're familiar with the C programming language, you've probably
 realized from the name and our examples that DTrace's D programming language
 is very similar to C. Indeed, D is derived from a large subset of C combined
 with a special set of functions and variables to help make tracing easy. You'll
@@ -112,7 +120,10 @@ before, learning D is still very easy. You will understand all of the syntax
 by the end of this chapter. But first, let's take a step back from language
 rules and learn more about how DTrace works, and then we'll return to learning
 how to build more interesting D programs.</para>
-</sect1><sect1 id="chp-intro-3"><title>Providers and Probes</title><para>In the preceding examples, you learned to use two simple probes named <literal>BEGIN</literal> and <literal>END</literal>. But where did these probes come
+</sect1>
+<sect1 xml:id="chp-intro-3">
+<title>Providers and Probes</title>
+<para>In the preceding examples, you learned to use two simple probes named <literal>BEGIN</literal> and <literal>END</literal>. But where did these probes come
 from? DTrace probes come from a set of kernel modules called <firstterm>providers</firstterm>, each of which performs a particular kind of instrumentation
 to create probes. When you use DTrace, each provider is given an opportunity
 to publish the probes it can provide to the DTrace framework. You can then
@@ -188,7 +199,10 @@ have been written as follows and would produce the same result:</para><programli
 named, we're going to learn a little more about what happens when you enable
 probes and ask DTrace to do something, and then we'll return to our whirlwind
 tour of D.</para>
-</sect1><sect1 id="chp-intro-4"><title>Compilation and Instrumentation</title><para>When you write traditional programs in illumos, you use a compiler to
+</sect1>
+<sect1 xml:id="chp-intro-4">
+<title>Compilation and Instrumentation</title>
+<para>When you write traditional programs in illumos, you use a compiler to
 convert your program from source code into object code that you can execute.
 When you use the <command>dtrace</command> command you are invoking the compiler
 for the D language used earlier to write the <filename>hello.d</filename> program.
@@ -233,8 +247,10 @@ crashing or corrupting your system. If you make a programming mistake, DTrace
 will report your error to you, disable your instrumentation, and you can correct
 your mistake and try again. The DTrace error reporting and debugging features
 are described later in this book.</para><para>The following diagram shows the different components of the DTrace architecture,
-including providers, probes, the DTrace kernel software, and the <command>dtrace</command> command.</para><figure id="chapter1-fig-1"><title>Overview of the DTrace Architecture and
-Components</title><mediaobject><imageobject><imagedata entityref="architecture"/>
+including providers, probes, the DTrace kernel software, and the <command>dtrace</command> command.</para>
+<figure xml:id="chapter1-fig-1">
+<title>Overview of the DTrace Architecture and Components</title>
+<mediaobject><imageobject><imagedata entityref="architecture"/>
 </imageobject><textobject><simpara>DTrace architecture: the kernel facility and providers,
 a driver interface from the kernel to a library, and the library supporting
 a set of commands.</simpara>
@@ -242,7 +258,10 @@ a set of commands.</simpara>
 </mediaobject>
 </figure><para>Now that you understand how DTrace works, let's return to the tour of
 the D programming language and start writing some more interesting programs.</para>
-</sect1><sect1 id="chp-intro-5"><title>Variables and Arithmetic Expressions</title><para>Our next example program makes use of the DTrace <literal>profile</literal> provider
+</sect1>
+<sect1 xml:id="chp-intro-5">
+<title>Variables and Arithmetic Expressions</title>
+<para>Our next example program makes use of the DTrace <literal>profile</literal> provider
 to implement a simple time-based counter. The profile provider is able to
 create new probes based on the descriptions found in your D program. If you
 create a probe named <literal>profile:::tick-</literal><replaceable>n</replaceable><literal>sec</literal> for some integer <replaceable>n</replaceable>, the profile provider
@@ -305,11 +324,12 @@ provides the same basic integer data types as C, including:</para><informaltable
 </tbody>
 </tgroup>
 </informaltable><para>The sizes of these types are dependent on the operating system kernel's
-data model, described in <olink targetptr="chp-typeopexpr" remap="internal">Chapter&nbsp;2,
-Types, Operators, and Expressions</olink>. D also provides built-in friendly
+data model, described in <xref linkend="chp-typeopexpr" />. D also provides built-in friendly
 names for signed and unsigned integer types of various fixed sizes, as well
-as thousands of other types that are defined by the operating system.</para><para>The central part of <filename>counter.d</filename> is the probe clause
-that increments the counter <literal>i</literal>:</para><programlisting>profile:::tick-1sec
+as thousands of other types that are defined by the operating system.</para>
+<para>The central part of <filename>counter.d</filename> is the probe clause
+that increments the counter <literal>i</literal>:</para>
+<programlisting>profile:::tick-1sec
 {
 	i = i + 1;
 	trace(i);
@@ -319,26 +339,32 @@ which fires once per second on an available processor. The clause contains
 two statements, the first assigning <literal>i</literal> to the previous value
 plus one, and the second tracing the new value of <literal>i</literal>. All
 the usual C arithmetic operators are available in D; the complete list is
-found in <olink targetptr="chp-typeopexpr" remap="internal">Chapter&nbsp;2, Types, Operators,
-and Expressions</olink>. Also as in C, the <literal>++</literal> operator
+found in <xref linkend="chp-typeopexpr" />. Also as in C, the <literal>++</literal> operator
 can be used as shorthand for incrementing the corresponding variable by one.
 The <function>trace</function> function takes any D expression as its argument,
-so you could write <filename>counter.d</filename> more concisely as follows:</para><programlisting>profile:::tick-1sec
+so you could write <filename>counter.d</filename> more concisely as follows:</para>
+<programlisting>profile:::tick-1sec
 {
 	trace(++i);
-}</programlisting><para>If you want to explicitly control the type of the variable <literal>i</literal>,
+}</programlisting>
+<para>If you want to explicitly control the type of the variable <literal>i</literal>,
 you can surround the desired type in parentheses when you assign it in order
 to <firstterm>cast</firstterm> the integer zero to a specific type. For example,
 if you wanted to determine the maximum size of a <literal>char</literal> in
-D, you could change the <literal>BEGIN</literal> clause as follows:</para><programlisting>dtrace:::BEGIN
+D, you could change the <literal>BEGIN</literal> clause as follows:</para>
+<programlisting>dtrace:::BEGIN
 {
 	i = (char)0;
-}</programlisting><para>After running <filename>counter.d</filename> for a while, you should
+}</programlisting>
+<para>After running <filename>counter.d</filename> for a while, you should
 see the traced value grow and then wrap around back to zero. If you grow impatient
 waiting for the value to wrap, try changing the <literal>profile</literal> probe
 name to <literal>profile:::tick-100msec</literal> to make a counter that increments
 once every 100 milliseconds, or 10 times per second.</para>
-</sect1><sect1 id="chp-intro-6"><title>Predicates</title><para>One major difference between D and other programming languages such
+</sect1>
+<sect1 xml:id="chp-intro-6">
+<title>Predicates</title>
+<para>One major difference between D and other programming languages such
 as C, C++, and the Java programming language is the absence of control-flow
 constructs such as if-statements and loops. D program clauses are written
 as single straight-line statement lists that trace an optional, fixed amount
@@ -397,9 +423,10 @@ zero, indicating that the timer is still running:</para><programlisting>profile:
 }</programlisting><para>The relational operator <literal>&gt;</literal> means <emphasis>greater
 than</emphasis> and returns the integer value zero for false and one for true.
 All of the C relational operators are supported in D; the complete list is
-found in <olink targetptr="chp-typeopexpr" remap="internal">Chapter&nbsp;2, Types, Operators,
-and Expressions</olink>. If <literal>i</literal> is not yet zero, the script
-traces <literal>i</literal> and then decrements it by one using the <literal>--</literal> operator.</para><para>The second predicate uses the <literal>==</literal> operator to return
+found in <xref linkend="chp-typeopexpr" />.
+If <literal>i</literal> is not yet zero, the script
+traces <literal>i</literal> and then decrements it by one using the <literal>--</literal> operator.</para>
+<para>The second predicate uses the <literal>==</literal> operator to return
 true when <literal>i</literal> is exactly equal to zero, indicating that the
 countdown is complete:</para><programlisting>profile:::tick-1sec
 /i == 0/
@@ -423,7 +450,7 @@ conditional constructs into a separate clause and predicate.</para><para>Now let
 and create our first real D tracing program. The <literal>syscall</literal> provider
 permits you to enable probes on entry to or return from any illumos system
 call. The next example uses DTrace to observe every time your shell performs
-a <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> or <olink targetdoc="refman2" targetptr="write-2" remap="external"><citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> system call. First, open two
+a <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> or <citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry> system call. First, open two
 terminal windows, one to use for DTrace and the other containing the shell
 process you're going to watch. In the second window, type the following command
 to obtain the process ID of this shell:</para><screen><userinput># echo $$</userinput>
@@ -451,10 +478,10 @@ CPU     ID                    FUNCTION:NAME
 	0     32                       read:entry 
 	0     34                      write:entry 
 	0     32                       read:entry 
-...</screen><para>You are now watching your shell perform <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> and <olink targetdoc="refman2" targetptr="write-2" remap="external"><citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> system
+...</screen><para>You are now watching your shell perform <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> and <citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry> system
 calls to read a character from your terminal window and echo back the result!
 This example includes many of the concepts described so far and a few new
-ones as well. First, to instrument <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> and <olink targetdoc="refman2" targetptr="write-2" remap="external"><citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> in the same manner, the script
+ones as well. First, to instrument <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> and <citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry> in the same manner, the script
 uses a single probe clause with multiple probe descriptions by separating
 the descriptions with commas like this:</para><programlisting>syscall::read:entry,
 syscall::write:entry</programlisting><para>For readability, each probe description appears on its own line. This
@@ -508,7 +535,7 @@ you can use to write your first D programs:</para><informaltable frame="topbot">
 with it on different processes running on your system by changing the process
 ID and the system call probes that are instrumented. Then, you can make one
 more simple change and turn <filename>rw.d</filename> into a very simple version
-of a system call tracing tool like <olink targetdoc="refman1" targetptr="truss-1" remap="external"><citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink>.
+of a system call tracing tool like <citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry>.
 An empty probe description field acts as a wildcard, matching any probe, so
 change your program to the following new source code to trace <emphasis>any</emphasis> system
 call executed by your shell:</para><programlisting>syscall:::entry
@@ -517,14 +544,19 @@ call executed by your shell:</para><programlisting>syscall:::entry
 
 }</programlisting><para>Try typing a few commands in the shell such as <command>cd</command>, <command>ls</command>, and <command>date</command> and see what your DTrace program
 reports.</para>
-</sect1><sect1 id="chp-intro-7"><title>Output Formatting</title><para>System call tracing is a powerful way to observe the behavior of most
-user processes. If you've used the illumos <olink targetdoc="refman1" targetptr="truss-1" remap="external"><citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink> utility before as an administrator
+</sect1>
+<sect1 xml:id="chp-intro-7">
+<title>Output Formatting</title>
+<para>System call tracing is a powerful way to observe the behavior of most
+user processes. If you've used the illumos <citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry> utility before as an administrator
 or developer, you've probably learned that it's a useful tool to keep around
 for whenever there is a problem. If you've never used <command>truss</command> before,
-give it a try right now by typing this command into one of your shells:</para><screen><userinput>$ truss date</userinput></screen><para>You will see a formatted trace of all the system calls executed by <olink targetdoc="refman1" targetptr="date-1" remap="external"><citerefentry><refentrytitle>date</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink> followed by its one line of
-output at the end. The following example improves upon the earlier <filename>rw.d</filename> program by formatting its output to look more like <olink targetdoc="refman1" targetptr="truss-1" remap="external"><citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink> so you can more easily understand
-the output. Type the following program and save it in a file called <filename>trussrw.d</filename>:</para><example id="ex-trussrw.d"><title><filename>trussrw.d</filename>: Trace System
-Calls with <citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry> Output Format</title><programlisting>syscall::read:entry,
+give it a try right now by typing this command into one of your shells:</para><screen><userinput>$ truss date</userinput></screen><para>You will see a formatted trace of all the system calls executed by <citerefentry><refentrytitle>date</refentrytitle><manvolnum>1</manvolnum></citerefentry> followed by its one line of
+output at the end. The following example improves upon the earlier <filename>rw.d</filename> program by formatting its output to look more like <citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry> so you can more easily understand
+the output. Type the following program and save it in a file called <filename>trussrw.d</filename>:</para>
+<example xml:id="ex-trussrw.d">
+<title><filename>trussrw.d</filename>: Trace System Calls with <citerefentry><refentrytitle>truss</refentrytitle><manvolnum>1</manvolnum></citerefentry> Output Format</title>
+<programlisting>syscall::read:entry,
 syscall::write:entry
 /pid == $1/
 {
@@ -568,7 +600,7 @@ write(2, 0x8089e48,   52)                = 52
 read(0, 0x8089878,    1)<userinput>^C</userinput>
 #</screen><para>Now let's examine your D program and its output in more detail. First,
 a clause similar to the earlier program instruments each of the shell's calls
-to <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> and <olink targetdoc="refman2" targetptr="write-2" remap="external"><citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink>. But for this example, a new
+to <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> and <citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry>. But for this example, a new
 function, <function>printf</function>, is used to trace data and print it
 out in a specific format:</para><programlisting>syscall::read:entry,
 syscall::write:entry
@@ -600,11 +632,11 @@ are the meanings of the three format conversions used in <filename>trussrw.d</fi
 </row>
 </tbody>
 </tgroup>
-</informaltable><para>DTrace <function>printf</function> works just like the C <olink targetdoc="refman3a" targetptr="printf-3c" remap="external"><citerefentry><refentrytitle>printf</refentrytitle><manvolnum>3C</manvolnum></citerefentry></olink> library routine or the shell <olink targetdoc="refman1" targetptr="printf-1" remap="external"><citerefentry><refentrytitle>printf</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink> utility. If you've never seen <function>printf</function> before, the formats and options are explained in detail
-in <olink targetptr="chp-fmt" remap="internal">Chapter&nbsp;12, Output Formatting</olink>.
-You should read this chapter carefully even if you're already familiar with <function>printf</function> from another language. In D, <function>printf</function> is
+</informaltable><para>DTrace <function>printf</function> works just like the C <citerefentry><refentrytitle>printf</refentrytitle><manvolnum>3C</manvolnum></citerefentry> library routine or the shell <citerefentry><refentrytitle>printf</refentrytitle><manvolnum>1</manvolnum></citerefentry> utility. If you've never seen <function>printf</function> before, the formats and options are explained in detail
+in <xref linkend="chp-fmt" />. You should read this chapter carefully even if you're already familiar with <function>printf</function> from another language. In D, <function>printf</function> is
 provided as a built-in and some new format conversions are available to you
-designed specifically for DTrace.</para><para>To help you write correct programs, the D compiler validates each <function>printf</function> format string against its argument list. Try changing <literal>probefunc</literal> in the clause above to the integer <literal>123</literal>.
+designed specifically for DTrace.</para>
+<para>To help you write correct programs, the D compiler validates each <function>printf</function> format string against its argument list. Try changing <literal>probefunc</literal> in the clause above to the integer <literal>123</literal>.
 If you run the modified program, you will see an error message telling you
 that the string format conversion <literal>%s</literal> is not appropriate
 for use with an integer argument:</para><screen><userinput># dtrace -q -s trussrw.d</userinput>
@@ -616,8 +648,8 @@ dtrace: failed to compile script trussrw.d: line 4: printf( )
 #</screen><para>To print the name of the read or write system call and its arguments,
 use the <function>printf</function> statement:</para><programlisting>printf("%s(%d, 0x%x, %4d)", probefunc, arg0, arg1, arg2);</programlisting><para>to trace the name of the current probe function and the first three
 integer arguments to the system call, available in the DTrace variables <literal>arg0</literal>, <literal>arg1</literal>, and <literal>arg2</literal>. For
-more information about probe arguments, see <olink targetptr="chp-variables" remap="internal">Chapter&nbsp;3,
-Variables</olink>. The first argument to <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> and <olink targetdoc="refman2" targetptr="write-2" remap="external"><citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> is
+more information about probe arguments, see <xref linkend="chp-variables" />.
+The first argument to <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> and <citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry> is
 a file descriptor, printed in decimal. The second argument is a buffer address,
 formatted as a hexadecimal value. The final argument is the buffer size, formatted
 as a decimal value. The format specifier <literal>%4d</literal> is used for
@@ -636,11 +668,14 @@ with backwards slashes in the format string expand to tab (<literal>\t</literal>
 and newline (<literal>\n</literal>) respectively. These <firstterm>escape
 sequences</firstterm> help you print or record characters that are difficult
 to type. D supports the same set of escape sequences as C, C++, and the Java
-programming language. The complete list of escape sequences is found in <olink targetptr="chp-typeopexpr" remap="internal">Chapter&nbsp;2, Types, Operators, and Expressions</olink>.</para>
-</sect1><sect1 id="chp-intro-8"><title>Arrays</title><para>D permits you to define variables that are integers, as well as other
+programming language. The complete list of escape sequences is found in <xref linkend="chp-typeopexpr" />.</para>
+</sect1>
+<sect1 xml:id="chp-intro-8">
+<title>Arrays</title>
+<para>D permits you to define variables that are integers, as well as other
 types to represent strings and composite types called <firstterm>structs</firstterm> and <firstterm>unions</firstterm>. If you are familiar with C programming, you'll be happy
 to know you can use any type in D that you can in C. If you're not a C expert,
-don't worry: the different kinds of data types are all described in <olink targetptr="chp-typeopexpr" remap="internal">Chapter&nbsp;2, Types, Operators, and Expressions</olink>.
+don't worry: the different kinds of data types are all described in <xref linkend="chp-typeopexpr" />.
 D also supports a special kind of variable called an <firstterm>associative
 array</firstterm>. An associative array is similar to a normal array in that
 it associates a set of keys with a set of values, but in an associative array
@@ -659,7 +694,10 @@ D variable. For example, the following D statement modifies the array element
 previously stored in <literal>a</literal> by incrementing the value from 456
 to 457:</para><programlisting>a["hello", 123]++;</programlisting><para>The values of any array elements you have not yet assigned are set to
 zero. Now let's use an associative array in a D program. Type the following
-program and save it in a file named <filename>rwtime.d</filename>:</para><example id="ex-rwtime.d"><title><filename>rwtime.d</filename>: Time <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> and <citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry> Calls</title><programlisting>syscall::read:entry,
+program and save it in a file named <filename>rwtime.d</filename>:</para>
+<example xml:id="ex-rwtime.d">
+<title><filename>rwtime.d</filename>: Time <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> and <citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry> Calls</title>
+<programlisting>syscall::read:entry,
 syscall::write:entry
 /pid == $1/
 {
@@ -689,7 +727,7 @@ CPU     ID                    FUNCTION:NAME
 ...
 <userinput>^C</userinput>
 #</screen><para>To trace the elapsed time for each system call, you must instrument
-both the entry to and return from <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> and <olink targetdoc="refman2" targetptr="write-2" remap="external"><citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> and sample the time at each
+both the entry to and return from <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> and <citerefentry><refentrytitle>write</refentrytitle><manvolnum>2</manvolnum></citerefentry> and sample the time at each
 point. Then, on return from a given system call, you must compute the difference
 between our first and second timestamp. You could use separate variables for
 each system call, but this would make the program annoying to extend to additional
@@ -702,7 +740,7 @@ syscall::write:entry
 }</programlisting><para>This clause defines an array named <literal>ts</literal> and assigns
 the appropriate member the value of the DTrace variable <literal>timestamp</literal>.
 This variable returns the value of an always-incrementing nanosecond counter,
-similar to the illumos library routine <olink targetdoc="refman3a" targetptr="gethrtime-3c" remap="external"><citerefentry><refentrytitle>gethrtime</refentrytitle><manvolnum>3C</manvolnum></citerefentry></olink>. Once the entry timestamp
+similar to the illumos library routine <citerefentry><refentrytitle>gethrtime</refentrytitle><manvolnum>3C</manvolnum></citerefentry>. Once the entry timestamp
 is saved, the corresponding return probe samples <literal>timestamp</literal> again
 and reports the difference between the current time and the saved value:</para><programlisting>syscall::read:return,
 syscall::write:return
@@ -713,11 +751,14 @@ syscall::write:return
 appropriate process and that the corresponding <literal>entry</literal> probe
 has already fired and assigned <literal>ts[probefunc]</literal> a non-zero
 value. This trick eliminates invalid output when DTrace first starts. If your
-shell is already waiting in a <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> system
+shell is already waiting in a <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> system
 call for input when you execute <command>dtrace</command>, the <literal>read:return</literal> probe will fire without a preceding <literal>read:entry</literal> for
-this first <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> and <literal>ts[probefunc]</literal> will evaluate to zero because it has not yet been
+this first <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> and <literal>ts[probefunc]</literal> will evaluate to zero because it has not yet been
 assigned.</para>
-</sect1><sect1 id="chp-intro-9"><title>External Symbols and Types</title><para>DTrace instrumentation executes inside the illumos operating system
+</sect1>
+<sect1 xml:id="chp-intro-9">
+<title>External Symbols and Types</title>
+<para>DTrace instrumentation executes inside the illumos operating system
 kernel, so in addition to accessing special DTrace variables and probe arguments,
 you can also access kernel data structures, symbols, and types. These capabilities
 enable advanced DTrace users, administrators, service personnel, and driver
@@ -730,16 +771,20 @@ of a system tunable named <literal>kmem_flags</literal> for enabling memory
 allocator debugging features. See the <olink targetdoc="soltuneparamref" remap="external"><citetitle remap="book">illumos Tunable Parameters Reference Manual</citetitle></olink>for
 more information about <literal>kmem_flags</literal>. This tunable is declared
 in C in the kernel source code as follows:</para><programlisting>int kmem_flags;</programlisting><para>To trace the value of this variable in a D program, you can write the
-D statement:</para><programlisting>trace(`kmem_flags);</programlisting><para>DTrace associates each kernel symbol with the type used for it in the
+D statement:</para>
+<programlisting>trace(`kmem_flags);</programlisting>
+<para>DTrace associates each kernel symbol with the type used for it in the
 corresponding operating system C code, providing easy source-based access
 to the native operating system data structures. Kernel symbol names are kept
 in a separate namespace from D variable and function identifiers, so you never
-need to worry about these names conflicting with your D variables.</para><para>You have now completed a whirlwind tour of DTrace and you've learned
+need to worry about these names conflicting with your D variables.</para>
+<para>You have now completed a whirlwind tour of DTrace and you've learned
 many of the basic DTrace building blocks necessary to build larger and more
 complex D programs. The following chapters describe the complete set of rules
 for D and demonstrate how DTrace can make complex performance measurements
 and functional analysis of the system easy. Later, you'll see how to use DTrace
 to connect user application behavior to system behavior, giving you the capability
-to analyze your entire software stack.</para><para>You've only just begun!</para>
+to analyze your entire software stack.</para>
+<para>You've only just begun!</para>
 </sect1>
 </chapter><?Pub *0000056213 0?>

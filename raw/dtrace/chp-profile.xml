@@ -1,5 +1,8 @@
-<?Pub UDT _bookmark _target?><chapter id="chp-profile"><?Pub Tag atict:info tracking="off" ref="0"?><?Pub Tag
-atict:user user="palecur" fullname="Paul Echeverri"?><title><literal>profile</literal> Provider</title><highlights><para>The <literal>profile</literal> provider provides probes associated with
+<?Pub UDT _bookmark _target?>
+<chapter xml:id="chp-profile">
+<?Pub Tag atict:info tracking="off" ref="0"?><?Pub Tag atict:user user="palecur" fullname="Paul Echeverri"?>
+<title><literal>profile</literal> Provider</title>
+<para>The <literal>profile</literal> provider provides probes associated with
 a time-based interrupt firing every fixed, specified time interval. These <emphasis>unanchored</emphasis> probes that are not associated with any particular point
 of execution, but rather with the asynchronous interrupt event. These probes
 can be used to sample some aspect of system state every unit time and the
@@ -7,15 +10,20 @@ samples can then be used to infer system behavior. If the sampling rate is
 high, or the sampling time is long, an accurate inference is possible. Using
 DTrace actions, the <literal>profile</literal> provider can be used to sample
 practically anything in the system. For example, you could sample the state
-of the current thread, the state of the CPU, or the current machine instruction.</para><note><para>Thread-local variables are inaccessible to probes from the <literal>profile</literal> provider. Using the special identifier <literal>self</literal> to
-reference a thread-local variable with such a probe will produce no output.</para>
-</note>
-</highlights><sect1 id="chp-profile-1"><title><literal>profile-</literal><replaceable>n</replaceable> probes</title><para><indexterm><primary>probes</primary><secondary>profile</secondary></indexterm><indexterm><primary>profile probes</primary></indexterm>A <literal>profile-</literal><replaceable>n</replaceable> probe fires every fixed interval on
+of the current thread, the state of the CPU, or the current machine instruction.</para>
+<note><para>Thread-local variables are inaccessible to probes from the <literal>profile</literal> provider. Using the special identifier <literal>self</literal> to
+reference a thread-local variable with such a probe will produce no output.</para></note>
+<sect1 xml:id="chp-profile-1">
+<title><literal>profile-</literal><replaceable>n</replaceable> probes</title>
+<para><indexterm><primary>probes</primary><secondary>profile</secondary></indexterm><indexterm><primary>profile probes</primary></indexterm>A <literal>profile-</literal><replaceable>n</replaceable> probe fires every fixed interval on
 every CPU at high interrupt level. The probe's firing interval is denoted
 by the value of <replaceable>n</replaceable>: the interrupt source will fire <replaceable>n</replaceable> times per second. <replaceable>n</replaceable> may also have
 an optional time suffix, in which case <replaceable>n</replaceable> is interpreted
 to be in the units denoted by the suffix. Valid suffixes and the units they
-denote are listed in <olink targetptr="tbl-timeunits" remap="internal">Table&nbsp;19&ndash;1</olink>.</para><table frame="topbot" id="tbl-timeunits"><title>Valid time suffixes</title><tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="50*"/><colspec colname="colspec1" colwidth="50*"/><thead><row rowsep="1"><entry><para>Suffix</para>
+denote are listed in <xref linkend="tbl-timeunits" />.</para>
+<table frame="topbot" xml:id="tbl-timeunits">
+<title>Valid time suffixes</title>
+<tgroup cols="2" colsep="0" rowsep="0"><colspec colname="colspec0" colwidth="50*"/><colspec colname="colspec1" colwidth="50*"/><thead><row rowsep="1"><entry><para>Suffix</para>
 </entry><entry><para>Time Units</para>
 </entry>
 </row>
@@ -112,13 +120,21 @@ script, output like the following example will appear:</para><screen>ksh
               60 |                                         0</screen><para>Because the shell process was sleeping awaiting user input instead of
 spinning on the CPU, when it <emphasis>did</emphasis> run it was run at a
 much higher priority.</para>
-</sect1><sect1 id="chp-profile-3"><title><literal>tick-</literal><replaceable>n</replaceable> probes</title><para><indexterm><primary>probes</primary><secondary>tick</secondary></indexterm><indexterm><primary>tick probes</primary></indexterm>Like <literal>profile-</literal><replaceable>n</replaceable> probes, <literal>tick-</literal><replaceable>n</replaceable> probes fire every fixed interval at high interrupt level.
+</sect1>
+<sect1 xml:id="chp-profile-3">
+<title><literal>tick-</literal><replaceable>n</replaceable> probes</title>
+<para><indexterm><primary>probes</primary><secondary>tick</secondary></indexterm><indexterm><primary>tick probes</primary></indexterm>Like <literal>profile-</literal><replaceable>n</replaceable> probes, <literal>tick-</literal><replaceable>n</replaceable> probes fire every fixed interval at high interrupt level.
 However, unlike <literal>profile-</literal><replaceable>n</replaceable> probes,
 which fire on <emphasis>every</emphasis> CPU, <literal>tick-</literal><replaceable>n</replaceable> probes fire on only <emphasis>one</emphasis> CPU per interval.
 The actual CPU may change over time. As with <literal>profile-</literal><replaceable>n</replaceable> probes, <replaceable>n</replaceable> defaults to rate-per-second
 but may also have an optional time suffix. <literal>tick-</literal><replaceable>n</replaceable> probes have several uses, such as providing some periodic output
 or taking a periodic action.</para>
-</sect1><sect1 id="chp-profile-4"><title>Arguments</title><para><indexterm><primary>profile probes</primary><secondary>arguments</secondary></indexterm>The arguments to <literal>profile</literal> probes are as follows:</para><informaltable frame="topbot"><tgroup cols="2" colsep="0" rowsep="0"><?PubTbl tgroup dispwid="6.02in"?><colspec colwidth="1.00in"/><colspec colwidth="4.00in"/><tbody><row><entry><para><literal>arg0</literal></para>
+</sect1>
+<sect1 xml:id="chp-profile-4">
+<title>Arguments</title>
+<para><indexterm><primary>profile probes</primary><secondary>arguments</secondary></indexterm>The arguments to <literal>profile</literal> probes are as follows:</para>
+<informaltable frame="topbot">
+<tgroup cols="2" colsep="0" rowsep="0"><?PubTbl tgroup dispwid="6.02in"?><colspec colwidth="1.00in"/><colspec colwidth="4.00in"/><tbody><row><entry><para><literal>arg0</literal></para>
 </entry><entry><para>The program counter (PC) in the kernel at the time that the probe fired,
 or 0 if the current process was not executing in the kernel at the time that
 the probe fired</para>
@@ -137,7 +153,10 @@ differentiate user-level from kernel level, as in this simple example:</para><pr
 {
 	@ticks[arg0 ? "kernel" : "user"] = count();
 }</programlisting>
-</sect1><sect1 id="chp-profile-5"><title>Timer Resolution</title><para><indexterm><primary>profile probes</primary><secondary>timer resolution</secondary></indexterm>The <literal>profile</literal> provider uses arbitrary resolution
+</sect1>
+<sect1 xml:id="chp-profile-5">
+<title>Timer Resolution</title>
+<para><indexterm><primary>profile probes</primary><secondary>timer resolution</secondary></indexterm>The <literal>profile</literal> provider uses arbitrary resolution
 interval timers in the operating system. On architectures that do not support
 truly arbitrary resolution time-based interrupts, the frequency is limited
 by the system clock frequency, which is specified by the <literal>hz</literal> kernel
@@ -198,7 +217,10 @@ CPU     ID                    FUNCTION:NAME
 in <literal>/etc/system</literal> to improve the effective profile resolution.</para><para>Currently, all variants of UltraSPARC (<literal>sun4u</literal>) support
 arbitrary resolution <literal>profile</literal> probes. Many variants of the
 x86 architecture (<literal>i86pc</literal>) also support arbitrary resolution <literal>profile</literal> probes, although some older variants do not.</para>
-</sect1><sect1 id="chp-profile-6"><title>Probe Creation</title><para><indexterm><primary>profile probes</primary><secondary>creation</secondary></indexterm>Unlike other providers, the <literal>profile</literal> provider
+</sect1>
+<sect1 xml:id="chp-profile-6">
+<title>Probe Creation</title>
+<para><indexterm><primary>profile probes</primary><secondary>creation</secondary></indexterm>Unlike other providers, the <literal>profile</literal> provider
 creates probes dynamically on an as-needed basis. Thus, the desired profile
 probe might not appear in a listing of all probes (for example, by using <literal>dtrace -l -P profile</literal>) but the probe will be created when it is explicitly
 enabled.</para><para>On architectures that support arbitrary resolution <literal>profile</literal> probes,
@@ -207,42 +229,58 @@ field time-based interrupts, thereby denying service on the machine. To prevent
 this situation, the <literal>profile</literal> provider will silently refuse
 to create any probe that would result in an interval of less than two hundred
 microseconds.</para>
-</sect1><sect1 id="chp-profile-stability"><title>Stability</title><para><indexterm><primary>profile probes</primary><secondary>stability</secondary></indexterm>The <literal>profile</literal> provider uses DTrace's stability
+</sect1>
+<sect1 xml:id="chp-profile-stability">
+<title>Stability</title>
+<para><indexterm><primary>profile probes</primary><secondary>stability</secondary></indexterm>The <literal>profile</literal> provider uses DTrace's stability
 mechanism to describe its stabilities as shown in the following table. For
-more information about the stability mechanism, see <olink targetptr="chp-stab" remap="internal">Chapter&nbsp;39,
-Stability</olink>.</para><informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="0"><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><thead><row rowsep="1"><entry colsep="1"><para>Element</para>
-</entry><entry><para>Name stability</para>
-</entry><entry><para>Data stability</para>
-</entry><entry><para>Dependency class</para>
-</entry>
-</row>
-</thead><tbody><row><entry colsep="1"><para>Provider</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para><acronym>Common</acronym></para>
-</entry>
-</row><row><entry colsep="1"><para>Module</para>
-</entry><entry><para>Unstable</para>
-</entry><entry><para>Unstable</para>
-</entry><entry><para>Unknown</para>
-</entry>
-</row><row><entry colsep="1"><para>Function</para>
-</entry><entry><para>Private</para>
-</entry><entry><para>Private</para>
-</entry><entry><para>Unknown</para>
-</entry>
-</row><row><entry colsep="1"><para>Name</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para><acronym>Common</acronym></para>
-</entry>
-</row><row><entry colsep="1"><para>Arguments</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para>Evolving</para>
-</entry><entry><para><acronym>Common</acronym></para>
-</entry>
-</row>
-</tbody>
+more information about the stability mechanism, see <xref linkend="chp-stab" />.</para>
+<informaltable frame="topbot">
+<tgroup cols="4" colsep="0" rowsep="0">
+	<colspec colwidth="25*"/>
+	<colspec colwidth="25*"/>
+	<colspec colwidth="25*"/>
+	<colspec colwidth="25*"/>
+	<thead>
+		<row rowsep="1">
+			<entry colsep="1"><para>Element</para></entry>
+			<entry><para>Name stability</para></entry>
+			<entry><para>Data stability</para></entry>
+			<entry><para>Dependency class</para></entry>
+		</row>
+	</thead>
+	<tbody>
+		<row>
+			<entry colsep="1"><para>Provider</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para><acronym>Common</acronym></para></entry>
+		</row>
+		<row>
+			<entry colsep="1"><para>Module</para></entry>
+			<entry><para>Unstable</para></entry>
+			<entry><para>Unstable</para></entry>
+			<entry><para>Unknown</para></entry>
+		</row>
+		<row>
+			<entry colsep="1"><para>Function</para></entry>
+			<entry><para>Private</para></entry>
+			<entry><para>Private</para></entry>
+			<entry><para>Unknown</para></entry>
+		</row>
+		<row>
+			<entry colsep="1"><para>Name</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para><acronym>Common</acronym></para></entry>
+		</row>
+		<row>
+			<entry colsep="1"><para>Arguments</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para>Evolving</para></entry>
+			<entry><para><acronym>Common</acronym></para></entry>
+		</row>
+	</tbody>
 </tgroup>
 </informaltable>
 </sect1>

@@ -1,10 +1,12 @@
-<glossary id="gloss01"><title>Glossary</title><glossentry><glossterm>action</glossterm><glossdef><para>A behavior implemented by the DTrace framework that can be performed at probe firing time that either traces data or modifies system state external to DTrace. Actions include tracing data, stopping processes, and capturing stack traces, among others.</para>
+<glossary xml:id="gloss01">
+<title>Glossary</title>
+<glossentry><glossterm>action</glossterm><glossdef><para>A behavior implemented by the DTrace framework that can be performed at probe firing time that either traces data or modifies system state external to DTrace. Actions include tracing data, stopping processes, and capturing stack traces, among others.</para>
 </glossdef>
-</glossentry><glossentry><glossterm>aggregation</glossterm><glossdef><para>An object that stores the result of an <firstterm>aggregating function</firstterm> as defined formally in <olink targetptr="chp-aggs" remap="internal">Chapter&nbsp;9, Aggregations</olink>, indexed by a tuple of expressions that can be used to organize the results.</para>
+</glossentry><glossentry><glossterm>aggregation</glossterm><glossdef><para>An object that stores the result of an <firstterm>aggregating function</firstterm> as defined formally in <xref linkend="chp-aggs" />, indexed by a tuple of expressions that can be used to organize the results.</para>
 </glossdef>
 </glossentry><glossentry><glossterm>clause</glossterm><glossdef><para>A D program declaration consisting of a probe specifier list, an optional predicate, and an optional list of action statements surrounded by braces <literal>{ }</literal>.</para>
 </glossdef>
-</glossentry><glossentry><glossterm>consumer</glossterm><glossdef><para>A program that uses DTrace to enable instrumentation and reads out the resulting stream of trace data. The <command>dtrace</command> command is the canonical DTrace consumer; the <olink targetdoc="refman1m" targetptr="lockstat-1m" remap="external"><citerefentry><refentrytitle>lockstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry></olink> utility is another specialized DTrace consumer.</para>
+</glossentry><glossentry><glossterm>consumer</glossterm><glossdef><para>A program that uses DTrace to enable instrumentation and reads out the resulting stream of trace data. The <command>dtrace</command> command is the canonical DTrace consumer; the <citerefentry><refentrytitle>lockstat</refentrytitle><manvolnum>1M</manvolnum></citerefentry> utility is another specialized DTrace consumer.</para>
 </glossdef>
 </glossentry><glossentry><glossterm>DTrace</glossterm><glossdef><para>A dynamic tracing facility that provides concise answers to arbitrary questions.</para>
 </glossdef>

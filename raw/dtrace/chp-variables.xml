@@ -1,27 +1,36 @@
-<?Pub UDT _bookmark _target?><chapter id="chp-variables"><title>Variables</title><highlights><para>D provides two basic types of variables for use in your tracing programs:
+<?Pub UDT _bookmark _target?>
+<chapter xml:id="chp-variables">
+<title>Variables</title>
+<para>D provides two basic types of variables for use in your tracing programs:
 scalar variables and associative arrays. We briefly illustrated the use of
 these variables in our examples in Chapter 1. This chapter explores the rules
 for D variables in more detail and how variables can be associated with different
 scopes. A special kind of array variable, called an <firstterm>aggregation</firstterm>,
-is discussed in <olink targetptr="chp-aggs" remap="internal">Chapter&nbsp;9, Aggregations</olink>.</para>
-</highlights><sect1 id="chp-variables-1"><title>Scalar Variables</title><para><indexterm><primary>scalar variables</primary></indexterm>Scalar variables
+is discussed in <xref linkend="chp-aggs" />.</para>
+<sect1 xml:id="chp-variables-1">
+<title>Scalar Variables</title>
+<para><indexterm><primary>scalar variables</primary></indexterm>Scalar variables
 are used to represent individual fixed-size data objects, such as integers
 and pointers. Scalar variables can also be used for fixed-size objects that
 are composed of one or more primitive or composite types. D provides the ability
 to create both arrays of objects as well as composite structures. DTrace also
 represents strings as fixed-size scalars by permitting them to grow up to
 a predefined maximum length. Control over string length in your D program
-is discussed further in <olink targetptr="chp-strings" remap="internal">Chapter&nbsp;6, Strings</olink>.</para><para>Scalar variables are created automatically the first time you assign
+is discussed further in <xref linkend="chp-strings" />.</para>
+<para>Scalar variables are created automatically the first time you assign
 a value to a previously undefined identifier in your D program. For example,
 to create a scalar variable named <literal>x</literal> of type <literal>int</literal>,
 you can simply assign it a value of type <literal>int</literal> in any probe
-clause:</para><programlisting>BEGIN
+clause:</para>
+<programlisting>BEGIN
 {
 	x = 123;
-}</programlisting><para><indexterm><primary>scalar variables</primary><secondary>creation</secondary></indexterm>Scalar variables created in this manner are <firstterm>global</firstterm> variables:
+}</programlisting>
+<para><indexterm><primary>scalar variables</primary><secondary>creation</secondary></indexterm>Scalar variables created in this manner are <firstterm>global</firstterm> variables:
 their name and data storage location is defined once and is visible in every
 clause of your D program. Any time you reference the identifier <literal>x</literal>,
-you are referring to a single storage location associated with this variable.</para><para><indexterm><primary>explicit variable declaration</primary><secondary>for scalar variables</secondary></indexterm><indexterm><primary>scalar variables</primary><secondary>explicit variable declaration</secondary></indexterm><indexterm><primary>D programming language</primary><secondary>differences from ANSI-C</secondary></indexterm>Unlike ANSI-C, D does not require explicit variable declarations.
+you are referring to a single storage location associated with this variable.</para>
+<para><indexterm><primary>explicit variable declaration</primary><secondary>for scalar variables</secondary></indexterm><indexterm><primary>scalar variables</primary><secondary>explicit variable declaration</secondary></indexterm><indexterm><primary>D programming language</primary><secondary>differences from ANSI-C</secondary></indexterm>Unlike ANSI-C, D does not require explicit variable declarations.
 If you do want to declare a global variable to assign its name and type explicitly
 before using it, you can place a declaration outside of the probe clauses
 in your program as shown in the following example. Explicit variable declarations
@@ -41,8 +50,11 @@ with zeroes by DTrace before you first reference the variable.</para><para>The D
 D variables, but limits are defined by the DTrace implementation and by the
 memory available on your system. The D compiler will enforce any of the limitations
 that can be applied at the time you compile your program. You can learn more
-about how to tune options related to program limits in <olink targetptr="chp-opt" remap="internal">Chapter&nbsp;16, Options and Tunables</olink>.</para>
-</sect1><sect1 id="chp-variables-2"><title>Associative Arrays</title><para><indexterm><primary>associative arrays</primary></indexterm><indexterm><primary>associative arrays</primary><secondary>and keys</secondary></indexterm><indexterm><primary>associative arrays</primary><secondary>and tuples</secondary></indexterm>Associative arrays are used to represent collections of data elements
+about how to tune options related to program limits in <xref linkend="chp-opt" />.</para>
+</sect1>
+<sect1 xml:id="chp-variables-2">
+<title>Associative Arrays</title>
+<para><indexterm><primary>associative arrays</primary></indexterm><indexterm><primary>associative arrays</primary><secondary>and keys</secondary></indexterm><indexterm><primary>associative arrays</primary><secondary>and tuples</secondary></indexterm>Associative arrays are used to represent collections of data elements
 that can be retrieved by specifying a name called a <firstterm>key</firstterm>.
 D associative array keys are formed by a list of scalar expression values
 called a <firstterm>tuple</firstterm>. You can think of the array tuple itself
@@ -82,7 +94,8 @@ the values are of type <literal>int</literal>. This array can also be referenced
 using the expression <literal>x['a']</literal> because the tuple consisting
 of the character constant <literal>'a'</literal> of type <literal>int</literal> and
 length one is compatible with the key signature <literal>unsigned long long</literal> according
-to the arithmetic conversion rules described in <olink targetptr="chp-typeopexpr-11" remap="internal">Type Conversions</olink>.</para><para><indexterm><primary>explicit variable declaration</primary><secondary>for associative arrays</secondary></indexterm><indexterm><primary>associative arrays</primary><secondary>and explicit variable declarations</secondary></indexterm>If you need to explicitly declare a D associative array before
+to the arithmetic conversion rules described in <xref linkend="chp-typeopexpr-11" />.</para>
+<para><indexterm><primary>explicit variable declaration</primary><secondary>for associative arrays</secondary></indexterm><indexterm><primary>associative arrays</primary><secondary>and explicit variable declarations</secondary></indexterm>If you need to explicitly declare a D associative array before
 using it, you can create a declaration of the array name and key signature
 outside of the probe clauses in your program source code:</para><programlisting>int x[unsigned long long, char];
 
@@ -101,10 +114,12 @@ because the dynamic variable space out of which associative array elements
 are allocated is finite; if it is exhausted when an allocation is attempted,
 the allocation will fail and an error message will be generated indicating
 a dynamic variable drop. Always assign zero to associative array elements
-that are no longer in use. See <olink targetptr="chp-opt" remap="internal">Chapter&nbsp;16,
-Options and Tunables</olink> for other techniques to eliminate dynamic variable
+that are no longer in use. See <xref linkend="chp-opt" /> for other techniques to eliminate dynamic variable
 drops. </para>
-</sect1><sect1 id="chp-variables-3"><title>Thread-Local Variables</title><para><indexterm><primary>thread-local variables</primary></indexterm><indexterm><primary>thread-local variables</primary><secondary>referencing</secondary></indexterm>DTrace provides the ability to declare variable storage that is
+</sect1>
+<sect1 xml:id="chp-variables-3">
+<title>Thread-Local Variables</title>
+<para><indexterm><primary>thread-local variables</primary></indexterm><indexterm><primary>thread-local variables</primary><secondary>referencing</secondary></indexterm>DTrace provides the ability to declare variable storage that is
 local to each operating system thread, as opposed to the global variables
 demonstrated earlier in this chapter. Thread-local variables are useful in
 situations where you want to enable a probe and mark every thread that fires
@@ -115,7 +130,7 @@ variables are referenced by applying the <literal>-&gt;</literal> operator to
 the special identifier <literal>self</literal>:</para><programlisting>syscall::read:entry
 {
 	self-&gt;read = 1;
-}</programlisting><para><indexterm><primary>thread-local variables</primary><secondary>types</secondary></indexterm>This D fragment example enables the probe on the <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> system call and associates
+}</programlisting><para><indexterm><primary>thread-local variables</primary><secondary>types</secondary></indexterm>This D fragment example enables the probe on the <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> system call and associates
 a thread-local variable named <literal>read</literal> with each thread that
 fires the probe. Similar to global variables, thread-local variables are created
 automatically on their first assignment and assume the type used on the right-hand
@@ -136,7 +151,7 @@ underlying storage is not allocated for a thread-local variable until a non-zero
 value is assigned to it. Also as with associative array elements, assigning
 zero to a thread-local variable causes DTrace to deallocate the underlying
 storage. Always assign zero to thread-local variables that are no longer in
-use. See <olink targetptr="chp-opt" remap="internal">Chapter&nbsp;16, Options and Tunables</olink> for
+use. See <xref linkend="chp-opt" /> for
 other techniques to fine-tune the dynamic variable space from which thread-local
 variables are allocated.</para><para>Thread-local variables of any type can be defined in your D program,
 including associative arrays. Some example thread-local variable definitions
@@ -154,8 +169,10 @@ in a separate namespace from global variables so you can reuse names. Remember
 that <literal>x</literal> and <literal>self-&gt;x</literal> are not the same
 variable if you overload names in your program! The following example shows
 how to use thread-local variables. In a text editor, type in the following
-program and save it in a file named <filename>rtime.d</filename>:</para><example id="ex-rtime.d"><title><filename>rtime.d</filename>: Compute Time
-Spent in <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></title><programlisting>syscall::read:entry
+program and save it in a file named <filename>rtime.d</filename>:</para>
+<example xml:id="ex-rtime.d">
+<title><filename>rtime.d</filename>: Compute Time Spent in <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></title>
+<programlisting>syscall::read:entry
 {
 	self-&gt;t = timestamp;
 }
@@ -187,27 +204,33 @@ a few commands.</para><screen><userinput># dtrace -q -s rtime.d</userinput>
 ...
 <userinput>^C</userinput>
 #</screen><para><filename>rtime.d</filename> uses a thread-local variable named <literal>t</literal> to
-capture a timestamp on entry to <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> by
+capture a timestamp on entry to <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> by
 any thread. Then, in the return clause, the program prints out the amount
-of time spent in <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> by
+of time spent in <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> by
 subtracting <literal>self-&gt;t</literal> from the current timestamp. The built-in
 D variables <literal>pid</literal> and <literal>tid</literal> report the process
-ID and thread ID of the thread performing the <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink>. Because <literal>self-&gt;t</literal> is no longer needed
+ID and thread ID of the thread performing the <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry>. Because <literal>self-&gt;t</literal> is no longer needed
 once this information is reported, it is then assigned 0 to allow DTrace to
 reuse the underlying storage associated with <literal>t</literal> for the
 current thread.</para><para>Typically you will see many lines of output without even doing anything
-because, behind the scenes, server processes and daemons are executing <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> all the time even when you
+because, behind the scenes, server processes and daemons are executing <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> all the time even when you
 aren't doing anything. Try changing the second clause of <filename>rtime.d</filename> to
 use the <literal>execname</literal> variable to print out the name of the
-process performing a <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> to
-learn more:</para><programlisting>printf("%s/%d spent %d nsecs in read(2)\n",
-    execname, tid, timestamp - self-&gt;t);</programlisting><para>If you find a process that's of particular interest, add a predicate
-to learn more about its <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> behavior:</para><programlisting>syscall::read:entry
+process performing a <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> to
+learn more:</para>
+<programlisting>printf("%s/%d spent %d nsecs in read(2)\n",
+    execname, tid, timestamp - self-&gt;t);</programlisting>
+<para>If you find a process that's of particular interest, add a predicate
+to learn more about its <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> behavior:</para>
+<programlisting>syscall::read:entry
 /execname == "Xsun"/
 {
 	self-&gt;t = timestamp;
 }</programlisting>
-</sect1><sect1 id="chp-variables-4"><title>Clause-Local Variables</title><para><indexterm><primary>clause-local variables</primary></indexterm>You
+</sect1>
+<sect1 xml:id="chp-variables-4">
+<title>Clause-Local Variables</title>
+<para><indexterm><primary>clause-local variables</primary></indexterm>You
 can also define D variables whose storage is reused for each D program clause.
 Clause-local variables are similar to automatic variables in a C, C++, or
 Java language program that are active during each invocation of a function.
@@ -232,8 +255,10 @@ is reclaimed and reused for the next clause. For this reason, clause-local
 variables are the only D variables that are not initially filled with zeroes.
 Note that if your program contains multiple clauses for a single probe, any
 clause-local variables will remain intact as the clauses are executed, as
-shown in the following example:</para><example id="chp-variables-ex-10"><title><filename>clause.d</filename>: Clause-local
-Variables</title><programlisting>int me;			/* an integer global variable */
+shown in the following example:</para>
+<example xml:id="chp-variables-ex-10">
+<title><filename>clause.d</filename>: Clause-local Variables</title>
+<programlisting>int me;			/* an integer global variable */
 this int foo;		/* an integer clause-local variable */
 
 tick-1sec
@@ -294,10 +319,16 @@ Access to a clause-local variable is much faster than access to an associative
 array. Therefore, if you need to reference an associative array value multiple
 times in the same D program clause, it is more efficient to copy it into a
 clause-local variable first and then reference the local variable repeatedly.</para>
-</sect1><sect1 id="chp-variables-5"><title>Built-in Variables</title><para><indexterm><primary><literal>walltimestamp</literal></primary></indexterm><indexterm><primary><literal>uregs[]</literal></primary></indexterm><indexterm><primary><literal>vtimestamp</literal></primary></indexterm><indexterm><primary><literal>args[]</literal></primary></indexterm><indexterm><primary><literal>caller</literal></primary></indexterm><indexterm><primary><literal>*curlwpsinfo</literal></primary></indexterm><indexterm><primary><literal>*curpsinfo</literal></primary></indexterm><indexterm><primary><literal>*curthread</literal></primary></indexterm><indexterm><primary><literal>cwd</literal></primary></indexterm><indexterm><primary><literal>epid</literal></primary></indexterm><indexterm><primary><literal>errno</literal></primary></indexterm><indexterm><primary><literal>execname</literal></primary></indexterm><indexterm><primary><literal>id</literal></primary></indexterm><indexterm><primary><literal>ipl</literal></primary></indexterm><indexterm><primary><literal>pid</literal></primary></indexterm><indexterm><primary><literal>probefunc</literal></primary></indexterm><indexterm><primary><literal>probemod</literal></primary></indexterm><indexterm><primary><literal>probename</literal></primary></indexterm><indexterm><primary><literal>probeprov</literal></primary></indexterm><indexterm><primary><literal>root</literal></primary></indexterm><indexterm><primary><literal>stackdepth</literal></primary></indexterm><indexterm><primary><literal>tid</literal></primary></indexterm><indexterm><primary><literal>timestamp</literal></primary></indexterm><indexterm><primary><literal>arg0</literal></primary></indexterm><indexterm><primary><literal>arg1</literal></primary></indexterm><indexterm><primary><literal>arg2</literal></primary></indexterm><indexterm><primary><literal>arg3</literal></primary></indexterm><indexterm><primary><literal>arg4</literal></primary></indexterm><indexterm><primary><literal>arg5</literal></primary></indexterm><indexterm><primary><literal>arg6</literal></primary></indexterm><indexterm><primary><literal>arg7</literal></primary></indexterm><indexterm><primary><literal>arg8</literal></primary></indexterm><indexterm><primary><literal>arg9</literal></primary></indexterm><indexterm><primary>built-in variables</primary></indexterm>The following table provides a complete list
+</sect1>
+<sect1 xml:id="chp-variables-5">
+<title>Built-in Variables</title>
+<para><indexterm><primary><literal>walltimestamp</literal></primary></indexterm><indexterm><primary><literal>uregs[]</literal></primary></indexterm><indexterm><primary><literal>vtimestamp</literal></primary></indexterm><indexterm><primary><literal>args[]</literal></primary></indexterm><indexterm><primary><literal>caller</literal></primary></indexterm><indexterm><primary><literal>*curlwpsinfo</literal></primary></indexterm><indexterm><primary><literal>*curpsinfo</literal></primary></indexterm><indexterm><primary><literal>*curthread</literal></primary></indexterm><indexterm><primary><literal>cwd</literal></primary></indexterm><indexterm><primary><literal>epid</literal></primary></indexterm><indexterm><primary><literal>errno</literal></primary></indexterm><indexterm><primary><literal>execname</literal></primary></indexterm><indexterm><primary><literal>id</literal></primary></indexterm><indexterm><primary><literal>ipl</literal></primary></indexterm><indexterm><primary><literal>pid</literal></primary></indexterm><indexterm><primary><literal>probefunc</literal></primary></indexterm><indexterm><primary><literal>probemod</literal></primary></indexterm><indexterm><primary><literal>probename</literal></primary></indexterm><indexterm><primary><literal>probeprov</literal></primary></indexterm><indexterm><primary><literal>root</literal></primary></indexterm><indexterm><primary><literal>stackdepth</literal></primary></indexterm><indexterm><primary><literal>tid</literal></primary></indexterm><indexterm><primary><literal>timestamp</literal></primary></indexterm><indexterm><primary><literal>arg0</literal></primary></indexterm><indexterm><primary><literal>arg1</literal></primary></indexterm><indexterm><primary><literal>arg2</literal></primary></indexterm><indexterm><primary><literal>arg3</literal></primary></indexterm><indexterm><primary><literal>arg4</literal></primary></indexterm><indexterm><primary><literal>arg5</literal></primary></indexterm><indexterm><primary><literal>arg6</literal></primary></indexterm><indexterm><primary><literal>arg7</literal></primary></indexterm><indexterm><primary><literal>arg8</literal></primary></indexterm><indexterm><primary><literal>arg9</literal></primary></indexterm><indexterm><primary>built-in variables</primary></indexterm>The following table provides a complete list
 of D built-in variables. All of these variables are scalar global variables;
 no thread-local or clause-local variables or built-in associative arrays are
-currently defined by D.</para><table frame="topbot" id="tbl-vars"><title>DTrace Built-in Variables</title><tgroup cols="2" colsep="0" rowsep="0"><?PubTbl tgroup dispwid="8.77in"?><colspec colname="colspec3" colwidth="0.63*"/><colspec colname="colspec4" colwidth="1.37*"/><thead><row rowsep="1"><entry><para>Type and Name</para>
+currently defined by D.</para>
+<table frame="topbot" xml:id="tbl-vars">
+<title>DTrace Built-in Variables</title>
+<tgroup cols="2" colsep="0" rowsep="0"><?PubTbl tgroup dispwid="8.77in"?><colspec colname="colspec3" colwidth="0.63*"/><colspec colname="colspec4" colwidth="1.37*"/><thead><row rowsep="1"><entry><para>Type and Name</para>
 </entry><entry><para>Description</para>
 </entry>
 </row>
@@ -310,7 +341,7 @@ variables return zero.</para>
 </entry><entry colname="colspec4"><para>The typed arguments to the current probe, if any. The <literal>args[]</literal> array
 is accessed using an integer index, but each element is defined to be the
 type corresponding to the given probe argument. For example, if <literal>args[]</literal> is
-referenced by a <olink targetdoc="refman2" targetptr="read-2" remap="external"><citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> system
+referenced by a <citerefentry><refentrytitle>read</refentrytitle><manvolnum>2</manvolnum></citerefentry> system
 call probe, <literal>args[0]</literal> is of type <literal>int</literal>, <literal>args[1]</literal> is of type <literal>void *</literal>, and <literal>args[2]</literal> is
 of type <literal>size_t</literal>.</para>
 </entry>
@@ -319,23 +350,21 @@ of type <literal>size_t</literal>.</para>
 the current probe.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>chipid_t chip</literal></para>
-</entry><entry colname="colspec4"><para>The CPU chip identifier for the current physical chip. See <olink targetptr="chp-sched" remap="internal">Chapter&nbsp;26, sched Provider</olink> for more information.</para>
+</entry><entry colname="colspec4"><para>The CPU chip identifier for the current physical chip. See <xref linkend="chp-sched" /> for more information.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>processorid_t cpu</literal></para>
-</entry><entry colname="colspec4"><para>The CPU identifier for the current CPU. See <olink targetptr="chp-sched" remap="internal">Chapter&nbsp;26,
-sched Provider</olink> for more information.</para>
+</entry><entry colname="colspec4"><para>The CPU identifier for the current CPU. See <xref linkend="chp-sched" /> for more information.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>cpuinfo_t *curcpu</literal></para>
-</entry><entry colname="colspec4"><para>The CPU information for the current CPU. See <olink targetptr="chp-sched" remap="internal">Chapter&nbsp;26,
-sched Provider</olink> for more information.</para>
+</entry><entry colname="colspec4"><para>The CPU information for the current CPU. See <xref linkend="chp-sched" /> for more information.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>lwpsinfo_t *curlwpsinfo</literal></para>
 </entry><entry colname="colspec4"><para>The lightweight process (LWP) state of the LWP associated with the current
-thread. This structure is described in further detail in the <olink targetdoc="refman4" targetptr="proc-4" remap="external"><citerefentry><refentrytitle>proc</refentrytitle><manvolnum>4</manvolnum></citerefentry></olink> man page.</para>
+thread. This structure is described in further detail in the <citerefentry><refentrytitle>proc</refentrytitle><manvolnum>4</manvolnum></citerefentry> man page.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>psinfo_t *curpsinfo</literal></para>
 </entry><entry colname="colspec4"><para>The process state of the process associated with the current thread.
-This structure is described in further detail in the <olink targetdoc="refman4" targetptr="proc-4" remap="external"><citerefentry><refentrytitle>proc</refentrytitle><manvolnum>4</manvolnum></citerefentry></olink> man page.</para>
+This structure is described in further detail in the <citerefentry><refentrytitle>proc</refentrytitle><manvolnum>4</manvolnum></citerefentry> man page.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>kthread_t *curthread</literal></para>
 </entry><entry colname="colspec4"><para>The address of the operating system kernel's internal data structure
@@ -357,7 +386,7 @@ set of actions.</para>
 </entry><entry colname="colspec4"><para>The error value returned by the last system call executed by this thread.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>string execname</literal></para>
-</entry><entry colname="colspec4"><para>The name that was passed to <olink targetdoc="refman2" targetptr="exec-2" remap="external"><citerefentry><refentrytitle>exec</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> to
+</entry><entry colname="colspec4"><para>The name that was passed to <citerefentry><refentrytitle>exec</refentrytitle><manvolnum>2</manvolnum></citerefentry> to
 execute the current process.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>gid_t gid</literal></para>
@@ -375,7 +404,7 @@ kernel.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>lgrp_id_t lgrp</literal></para>
 </entry><entry colname="colspec4"><para>The latency group ID for the latency group of which the current CPU
-is a member. See <olink targetptr="chp-sched" remap="internal">Chapter&nbsp;26, sched Provider</olink> for
+is a member. See <xref linkend="chp-sched" /> for
 more information.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>pid_t pid</literal></para>
@@ -398,7 +427,7 @@ more information.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>psetid_t pset</literal></para>
 </entry><entry colname="colspec4"><para>The processor set ID for the processor set containing the current CPU.
-See <olink targetptr="chp-sched" remap="internal">Chapter&nbsp;26, sched Provider</olink> for
+See <xref linkend="chp-sched" /> for
 more information.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>string root</literal></para>
@@ -410,7 +439,7 @@ thread.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>id_t tid</literal></para>
 </entry><entry colname="colspec4"><para>The thread ID of the current thread. For threads associated with user
-processes, this value is equal to the result of a call to <olink targetdoc="refman3a" targetptr="pthread-self-3c" remap="external"><citerefentry><refentrytitle>pthread_self</refentrytitle><manvolnum>3C</manvolnum></citerefentry></olink>.</para>
+processes, this value is equal to the result of a call to <citerefentry><refentrytitle>pthread_self</refentrytitle><manvolnum>3C</manvolnum></citerefentry>.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>uint64_t timestamp</literal></para>
 </entry><entry colname="colspec4"><para>The current value of a nanosecond timestamp counter. This counter increments
@@ -421,12 +450,12 @@ from an arbitrary point in the past and should only be used for relative computa
 </entry>
 </row><row><entry colname="colspec3"><para><literal>uint64_t uregs[]</literal></para>
 </entry><entry colname="colspec4"><para>The current thread's saved user-mode register values at probe firing
-time. Use of the <literal>uregs[]</literal> array is discussed in <olink targetptr="chp-user" remap="internal">Chapter&nbsp;33, User Process Tracing</olink>.</para>
+time. Use of the <literal>uregs[]</literal> array is discussed in <xref linkend="chp-user" />.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>uint64_t vmregs[]</literal></para>
 </entry><entry colname="colspec4"><para>The current thread's active
 virtual machine register values at probe firing time. Use of the
-<literal>vmregs[]</literal> array is discussed in <olink targetptr="chp-vms" remap="internal">Chapter&nbsp;42, Hardare Virtual Machine Tracing</olink>.</para>
+<literal>vmregs[]</literal> array is discussed in <xref linkend="chp-vms" />.</para>
 </entry>
 </row><row><entry colname="colspec3"><para><literal>uint64_t vtimestamp</literal></para>
 </entry><entry colname="colspec4"><para>The current value of a nanosecond timestamp counter that is virtualized
@@ -442,8 +471,11 @@ Time, January 1, 1970.</para>
 </tbody>
 </tgroup>
 </table><para>Functions built into the D language such as <function>trace</function> are
-discussed in <olink targetptr="chp-actsub" remap="internal">Chapter&nbsp;10, Actions and Subroutines</olink>.</para>
-</sect1><sect1 id="chp-variables-6"><title>External Variables</title><para><indexterm><primary>backquote character (<literal>`</literal>)</primary></indexterm><indexterm><primary>external variables</primary></indexterm>D
+discussed in <xref linkend="chp-actsub" />.</para>
+</sect1>
+<sect1 xml:id="chp-variables-6">
+<title>External Variables</title>
+<para><indexterm><primary>backquote character (<literal>`</literal>)</primary></indexterm><indexterm><primary>external variables</primary></indexterm>D
 uses the backquote character (<literal>`</literal>) as a special scoping operator
 for accessing variables that are defined in the operating system and not in
 your D program. For example, the illumos kernel contains a C declaration of
@@ -454,7 +486,8 @@ as a C variable in the kernel source code as follows:</para><programlisting>int 
 symbol in the corresponding operating system C code, providing easy source-based
 access to the native operating system data structures. In order to use external
 operating system variables, you will need access to the corresponding operating
-system source code.</para><para><indexterm><primary>external variables</primary><secondary>and interface stability</secondary></indexterm>When you access external variables from a
+system source code.</para>
+<para><indexterm><primary>external variables</primary><secondary>and interface stability</secondary></indexterm>When you access external variables from a
 D program, you are accessing the internal implementation details of another
 program such as the operating system kernel or its device drivers. These implementation
 details do not form a stable interface upon which you can rely! Any D programs
@@ -462,7 +495,8 @@ you write that depend on these details might cease to work when you next upgrade
 the corresponding piece of software. For this reason, external variables are
 typically used by kernel and device driver developers and service personnel
 in order to debug performance or functionality problems using DTrace. To learn
-more about the stability of your D programs, refer to <olink targetptr="chp-stab" remap="internal">Chapter&nbsp;39, Stability</olink>.</para><para><indexterm><primary>kernel module, specifying</primary></indexterm><indexterm><primary>kernel symbol</primary><secondary>name conflict resolution</secondary></indexterm><indexterm><primary>kernel symbol</primary><secondary>namespace</secondary></indexterm>Kernel symbol names are kept in a separate namespace from D variable
+more about the stability of your D programs, refer to <xref linkend="chp-stab" />.</para>
+<para><indexterm><primary>kernel module, specifying</primary></indexterm><indexterm><primary>kernel symbol</primary><secondary>name conflict resolution</secondary></indexterm><indexterm><primary>kernel symbol</primary><secondary>namespace</secondary></indexterm>Kernel symbol names are kept in a separate namespace from D variable
 and function identifiers, so you never need to worry about these names conflicting
 with your D variables. When you prefix a variable with a backquote, the D
 compiler searches the known kernel symbols in order using the list of loaded
@@ -472,7 +506,7 @@ the same variable name might be used more than once in the active operating
 system kernel. You can resolve these name conflicts by specifying the name
 of the kernel module whose variable should be accessed prior to the backquote
 in the symbol name. For example, each loadable kernel module typically provides
-a <olink targetdoc="refman9e" targetptr="u-fini-9e" remap="external"><citerefentry><refentrytitle>_fini</refentrytitle><manvolnum>9E</manvolnum></citerefentry></olink> function,
+a <citerefentry><refentrytitle>_fini</refentrytitle><manvolnum>9E</manvolnum></citerefentry> function,
 so to refer to the address of the <literal>_fini</literal> function provided
 by a kernel module named <literal>foo</literal>, you would write:</para><programlisting>foo`_fini</programlisting><para><indexterm><primary>external variables</primary><secondary>and D operators</secondary></indexterm>You can apply any of the D operators to external variables, except
 those that modify values, subject to the usual rules for operand types. When

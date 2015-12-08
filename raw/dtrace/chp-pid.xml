@@ -1,22 +1,27 @@
-<?Pub UDT _bookmark _target?><chapter id="chp-pid"><?Pub Tag atict:info tracking="off" ref="0"?><?Pub Tag atict:user
-user="palecur" fullname="Paul Echeverri"?><title><literal>pid</literal> Provider</title><highlights><para>The <literal>pid</literal> provider allows for tracing of the entry
+<?Pub UDT _bookmark _target?>
+<chapter xml:id="chp-pid">
+<?Pub Tag atict:info tracking="off" ref="0"?><?Pub Tag atict:user user="palecur" fullname="Paul Echeverri"?>
+<title><literal>pid</literal> Provider</title>
+<para>The <literal>pid</literal> provider allows for tracing of the entry
 and return of a function in a user process as well as any instruction as specified
 by an absolute address or function offset. The <literal>pid</literal> provider
 has no probe effect when probes are not enabled. When probes are enabled,
-the probes only induce probe effect on those processes that are traced.</para><note><para>When the compiler inlines a function, the <literal>pid</literal> provider's
+the probes only induce probe effect on those processes that are traced.</para>
+<note><para>When the compiler inlines a function, the <literal>pid</literal> provider's
 probe does not fire. To avoid inlining a function at compile time, consult
-the documentation for your compiler.</para>
-</note><note><para>The <literal>pid</literal> provider behaves unpredictably when
+the documentation for your compiler.</para></note>
+<note><para>The <literal>pid</literal> provider behaves unpredictably when
 it probes a function that uses function pointers to call a sub-function. You
 can explicitly place probes at the addresses of the function's entry and return
-to analyze such functions.</para>
-</note>
-</highlights><sect1 id="chp-pid-names"><title>Naming <literal>pid</literal> Probes</title><indexterm><primary><literal>pid</literal>probes</primary>
+to analyze such functions.</para></note>
+<sect1 xml:id="chp-pid-names">
+<title>Naming <literal>pid</literal> Probes</title>
+<indexterm><primary><literal>pid</literal>probes</primary>
 </indexterm><para><indexterm><primary>probes</primary><secondary><literal>pid</literal></secondary></indexterm>The <literal>pid</literal> provider actually defines a <emphasis>class</emphasis> of providers. Each process can potentially have its own associated <literal>pid</literal> provider. A process with ID 123, for example, would be traced
 by using the <literal>pid123</literal> provider. For probes from one of these
 providers, the module portion of the probe description refers to an object
 loaded in the corresponding process's address space. The following example
-uses <olink targetdoc="refman1" targetptr="mdb-1" remap="external"><citerefentry><refentrytitle>mdb</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink> to display
+uses <citerefentry><refentrytitle>mdb</refentrytitle><manvolnum>1</manvolnum></citerefentry> to display
 a list of objects:</para><screen><userinput>$ mdb -p 1234</userinput>
 Loading modules: [ ld.so.1 libc.so.1 ]
 <userinput>&gt; ::objects</userinput>
@@ -43,15 +48,24 @@ pid101267:libc.so.1:pthread_mutex_lock:entry
 <userinput>^C</userinput></screen><para>This automatic renaming means that the names of the probes you enable
 may be slightly different than those actually enabled. The canonical name
 will always be consistent between runs of DTrace on systems running the same
-illumos release.</para><para>See <olink targetptr="chp-user" remap="internal">Chapter&nbsp;33, User Process Tracing</olink> for
+illumos release.</para><para>See <xref linkend="chp-user" /> for
 examples of how to use the <literal>pid</literal> provider effectively.</para>
-</sect1><sect1 id="chp-pid-fb"><title>Function Boundary Probes</title><para><indexterm><primary>probes</primary><secondary>function boundary</secondary></indexterm><indexterm><primary><literal>pid</literal> probes</primary><secondary>and function boundaries</secondary></indexterm>The <literal>pid</literal> provider
+</sect1>
+<sect1 xml:id="chp-pid-fb">
+<title>Function Boundary Probes</title>
+<para><indexterm><primary>probes</primary><secondary>function boundary</secondary></indexterm><indexterm><primary><literal>pid</literal> probes</primary><secondary>and function boundaries</secondary></indexterm>The <literal>pid</literal> provider
 enables you to trace function entry and return in user programs just as the <acronym>FBT</acronym> provider provides that capability for the kernel. Most of the
 examples in this manual that use the <acronym>FBT</acronym> provider to trace
-kernel function calls can be modified slightly to apply to user processes.</para><sect2 id="chp-pid-entry"><title><literal>entry</literal> Probes</title><para><indexterm><primary>probes</primary><secondary><literal>entry</literal></secondary></indexterm><indexterm><primary><literal>entry</literal> probes</primary></indexterm>An <literal>entry</literal> probe fires when the traced function
+kernel function calls can be modified slightly to apply to user processes.</para>
+<sect2 xml:id="chp-pid-entry">
+<title><literal>entry</literal> Probes</title>
+<para><indexterm><primary>probes</primary><secondary><literal>entry</literal></secondary></indexterm><indexterm><primary><literal>entry</literal> probes</primary></indexterm>An <literal>entry</literal> probe fires when the traced function
 is invoked. The arguments to entry probes are the values of the arguments
 to the traced function.</para>
-</sect2><sect2 id="chp-pid-return"><title><literal>return</literal> Probes</title><para><indexterm><primary>probes</primary><secondary><literal>return</literal></secondary></indexterm><indexterm><primary><literal>return</literal> probes</primary></indexterm>A <literal>return</literal> probes fires when the traced function
+</sect2>
+<sect2 xml:id="chp-pid-return">
+<title><literal>return</literal> Probes</title>
+<para><indexterm><primary>probes</primary><secondary><literal>return</literal></secondary></indexterm><indexterm><primary><literal>return</literal> probes</primary></indexterm>A <literal>return</literal> probes fires when the traced function
 returns or makes a tail call to another function. The value for <literal>arg0</literal> is
 the offset in the function of the return instruction; <literal>arg1</literal> holds
 the return value.</para><note><para>Using <literal>arg</literal><replaceable>N</replaceable> returns
@@ -59,17 +73,24 @@ the raw unfiltered values as type <literal>int64_t</literal>. The <literal>pid</
 does not support the <literal>args[</literal><replaceable>N</replaceable><literal>]</literal> format.</para>
 </note>
 </sect2>
-</sect1><sect1 id="chp-pid-offsets"><title>Function Offset Probes</title><para><indexterm><primary>probes</primary><secondary>function offset</secondary></indexterm><indexterm><primary>function offset probes</primary></indexterm>The <literal>pid</literal> provider lets you trace any instruction in a function. For example
+</sect1>
+<sect1 xml:id="chp-pid-offsets">
+<title>Function Offset Probes</title>
+<para><indexterm><primary>probes</primary><secondary>function offset</secondary></indexterm><indexterm><primary>function offset probes</primary></indexterm>The <literal>pid</literal> provider lets you trace any instruction in a function. For example
 to trace the instruction 4 bytes into a function <function>main</function>,
-you could use a command similar to the following example:</para><programlisting>pid123:a.out:main:4</programlisting><para>Every time the program executes the instruction at address <literal>main+4</literal>,
+you could use a command similar to the following example:</para>
+<programlisting>pid123:a.out:main:4</programlisting><para>Every time the program executes the instruction at address <literal>main+4</literal>,
 this probe will be activated. The arguments for offset probes are undefined.
 The <literal>uregs[]</literal> array will help you examine process state at
-these probe sites. See <olink targetptr="chp-user-uregs" remap="internal">uregs[] Array</olink> for
+these probe sites. See <xref linkend="chp-user-uregs" /> for
 more information.</para>
-</sect1><sect1 id="chp-pid-stability"><title>Stability</title><para><indexterm><primary>probes</primary><secondary><literal>pid</literal></secondary></indexterm><indexterm><primary><literal>entry</literal> probes</primary></indexterm>The <literal>pid</literal> provider uses DTrace's stability mechanism
+</sect1>
+<sect1 xml:id="chp-pid-stability">
+<title>Stability</title>
+<para><indexterm><primary>probes</primary><secondary><literal>pid</literal></secondary></indexterm><indexterm><primary><literal>entry</literal> probes</primary></indexterm>The <literal>pid</literal> provider uses DTrace's stability mechanism
 to describe its stabilities, as shown in the following table. For more information
-about the stability mechanism, see <olink targetptr="chp-stab" remap="internal">Chapter&nbsp;39,
-Stability</olink>.</para><informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="0"><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><thead><row rowsep="1"><entry colsep="1"><para>Element</para>
+about the stability mechanism, see <xref linkend="chp-stab" />.</para>
+<informaltable frame="topbot"><tgroup cols="4" colsep="0" rowsep="0"><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><colspec colwidth="25*"/><thead><row rowsep="1"><entry colsep="1"><para>Element</para>
 </entry><entry><para>Name stability</para>
 </entry><entry><para>Data stability</para>
 </entry><entry><para>Dependency class</para>

@@ -1,7 +1,13 @@
-<?Pub UDT _bookmark _target?><?Pub EntList bull rArr sect?><chapter id="chp-types"><title>Type and Constant Definitions</title><highlights><para>This chapter describes how to declare type aliases and named constants
+<?Pub UDT _bookmark _target?>
+<?Pub EntList bull rArr sect?>
+<chapter xml:id="chp-types">
+<title>Type and Constant Definitions</title>
+<para>This chapter describes how to declare type aliases and named constants
 in D. This chapter also discusses D type and namespace management for program
 and operating system types and identifiers.</para>
-</highlights><sect1 id="chp-types-1"><title>Typedef</title><para><indexterm><primary>constant definitions</primary></indexterm><indexterm><primary>type definitions</primary></indexterm><indexterm><primary><literal>typedef</literal></primary></indexterm>The <literal>typedef</literal> keyword is
+<sect1 xml:id="chp-types-1">
+<title>Typedef</title>
+<para><indexterm><primary>constant definitions</primary></indexterm><indexterm><primary>type definitions</primary></indexterm><indexterm><primary><literal>typedef</literal></primary></indexterm>The <literal>typedef</literal> keyword is
 used to declare an identifier as an alias for an existing type. Like all D
 type declarations, the <literal>typedef</literal> keyword is used outside
 probe clauses in a declaration of the form:</para><programlisting>typedef <replaceable>existing-type</replaceable> <replaceable>new-type</replaceable> ;</programlisting><para>where <replaceable>existing-type</replaceable> is any type declaration
@@ -16,7 +22,10 @@ such as the definition of a new <literal>struct</literal>:</para><programlisting
 } foo_t;</programlisting><para>In this example, <literal>struct foo</literal> is defined as the same
 type as its alias, <literal>foo_t</literal>. illumos C system headers often
 use the suffix <literal>_t</literal> to denote a <literal>typedef</literal> alias.</para>
-</sect1><sect1 id="chp-types-2"><title>Enumerations</title><para><indexterm><primary>enumeration</primary></indexterm><indexterm><primary>enumeration of symbolic names</primary></indexterm>Defining symbolic names for constants
+</sect1>
+<sect1 xml:id="chp-types-2">
+<title>Enumerations</title>
+<para><indexterm><primary>enumeration</primary></indexterm><indexterm><primary>enumeration of symbolic names</primary></indexterm>Defining symbolic names for constants
 in a program eases readability and simplifies the process of maintaining the
 program in the future. One method is to define an <firstterm>enumeration</firstterm>,
 which associates a set of integers with a set of identifiers called enumerators
@@ -50,19 +59,22 @@ in ANSI-C. D also provides access to enumerations defined in the operating
 system kernel and its loadable modules, but these enumerators are not globally
 visible in your D program. Kernel enumerators are only visible when used as
 an argument to one of the binary comparison operators when compared to an
-object of the corresponding enumeration type. For example, the function <olink targetdoc="refman9f" targetptr="uiomove-9f" remap="external"><citerefentry><refentrytitle>uiomove</refentrytitle><manvolnum>9F</manvolnum></citerefentry></olink> has a parameter of type <literal>enum uio_rw</literal> defined as follows:</para><programlisting>enum uio_rw { UIO_READ, UIO_WRITE };</programlisting><para><indexterm><primary>enumeration</primary><secondary>UIO_WRITE visibility</secondary></indexterm><indexterm><primary>enumeration</primary><secondary>UIO_READ visibility</secondary></indexterm> <indexterm><primary>examples</primary><secondary>enumeration</secondary></indexterm>The enumerators <literal>UIO_READ</literal> and <literal>UIO_WRITE</literal> are not normally visible in your D program, but you can
+object of the corresponding enumeration type. For example, the function <citerefentry><refentrytitle>uiomove</refentrytitle><manvolnum>9F</manvolnum></citerefentry> has a parameter of type <literal>enum uio_rw</literal> defined as follows:</para><programlisting>enum uio_rw { UIO_READ, UIO_WRITE };</programlisting><para><indexterm><primary>enumeration</primary><secondary>UIO_WRITE visibility</secondary></indexterm><indexterm><primary>enumeration</primary><secondary>UIO_READ visibility</secondary></indexterm> <indexterm><primary>examples</primary><secondary>enumeration</secondary></indexterm>The enumerators <literal>UIO_READ</literal> and <literal>UIO_WRITE</literal> are not normally visible in your D program, but you can
 promote them to global visibility by comparing a value of type <literal>enum uio_rw</literal>, as shown in the following example clause:</para><programlisting>fbt::uiomove:entry
 /args[2] == UIO_WRITE/
 {
 	...
-}</programlisting><para>This example traces calls to the <olink targetdoc="refman9f" targetptr="uiomove-9f" remap="external"><citerefentry><refentrytitle>uiomove</refentrytitle><manvolnum>9F</manvolnum></citerefentry></olink> function for write requests
+}</programlisting><para>This example traces calls to the <citerefentry><refentrytitle>uiomove</refentrytitle><manvolnum>9F</manvolnum></citerefentry> function for write requests
 by comparing <literal>args[2]</literal>, a variable of type <literal>enum
 uio_rw</literal>, to the enumerator <literal>UIO_WRITE</literal>. Because
 the left-hand argument is an enumeration type, the D compiler searches the
 enumeration when attempting to resolve the right-hand identifier. This feature
 protects your D programs against inadvertent identifier name conflicts with
 the large collection of enumerations defined in the operating system kernel.</para>
-</sect1><sect1 id="chp-types-3"><title>Inlines</title><para><indexterm><primary>inline directives</primary></indexterm>D named constants
+</sect1>
+<sect1 xml:id="chp-types-3">
+<title>Inlines</title>
+<para><indexterm><primary>inline directives</primary></indexterm>D named constants
 can also be defined using <literal>inline</literal> directives, which provide
 a more general means of creating identifiers that are replaced by predefined
 values or expressions during compilation. Inline directives are a more powerful
@@ -97,11 +109,15 @@ includes directives of the form:</para><programlisting>inline int SIGHUP = 1;
 inline int SIGINT = 2;
 inline int SIGQUIT = 3;
 ...</programlisting><para>These inline definitions provide you access to the current set of illumos
-signal names described in <olink targetdoc="refman3f" targetptr="signal-3head" remap="external"><citerefentry><refentrytitle>signal</refentrytitle><manvolnum>3HEAD</manvolnum></citerefentry></olink>.
+signal names described in <citerefentry><refentrytitle>signal</refentrytitle><manvolnum>3HEAD</manvolnum></citerefentry>.
 Similarly, the <filename>errno.d</filename> library contains inline directives
-for the C <literal>errno</literal> constants described in <olink targetdoc="refman2" targetptr="intro-2" remap="external"><citerefentry><refentrytitle>Intro</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink>.</para><para>By default, the D compiler includes all of the provided D library files
+for the C <literal>errno</literal> constants described in <citerefentry><refentrytitle>Intro</refentrytitle><manvolnum>2</manvolnum></citerefentry>.</para>
+<para>By default, the D compiler includes all of the provided D library files
 automatically so you can use these definitions in any D program.</para>
-</sect1><sect1 id="chp-types-4"><title>Type Namespaces</title><para><indexterm><primary>type namespaces</primary></indexterm>This section
+</sect1>
+<sect1 xml:id="chp-types-4">
+<title>Type Namespaces</title>
+<para><indexterm><primary>type namespaces</primary></indexterm>This section
 discusses D namespaces and namespace issues related to types. In traditional
 languages such as ANSI-C, type visibility is determined by whether a type
 is nested inside of a function or other declaration. Types declared at the
@@ -128,7 +144,7 @@ or cast expressions in D probe clauses.</para><para><indexterm><primary>type nam
 that use the names <literal>C</literal> and <literal>D</literal> respectively.
 The C type namespace is initially populated with the standard ANSI-C intrinsic
 types such as <literal>int</literal>. In addition, type definitions acquired
-using the C preprocessor <olink targetdoc="refman1" targetptr="cpp-1" remap="external"><citerefentry><refentrytitle>cpp</refentrytitle><manvolnum>1</manvolnum></citerefentry></olink> using
+using the C preprocessor <citerefentry><refentrytitle>cpp</refentrytitle><manvolnum>1</manvolnum></citerefentry> using
 the <command>dtrace</command> <option>C</option> option will be processed
 by and added to the C scope. As a result, you can include C header files containing
 type declarations which are already visible in another type namespace without

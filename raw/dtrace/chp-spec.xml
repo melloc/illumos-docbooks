@@ -1,9 +1,13 @@
-<?Pub UDT _bookmark _target?><?Pub EntList bull rArr sect?><chapter id="chp-spec"><title>Speculative Tracing</title><highlights><para>This chapter discusses the DTrace facility for <firstterm>speculative
+<?Pub UDT _bookmark _target?>
+<?Pub EntList bull rArr sect?>
+<chapter xml:id="chp-spec">
+<title>Speculative Tracing</title>
+<para>This chapter discusses the DTrace facility for <firstterm>speculative
 tracing</firstterm>, the ability to tentatively trace data and then later
 decide whether to <firstterm>commit</firstterm> the data to a tracing buffer
 or <firstterm>discard</firstterm> it. In DTrace, the primary mechanism for
 filtering out uninteresting events is the <firstterm>predicate</firstterm> mechanism,
-discussed in <olink targetptr="chp-prog" remap="internal">Chapter&nbsp;4, D Program Structure</olink>.
+discussed in <xref linkend="chp-prog" />.
 Predicates are useful when you know at the time that a probe fires whether
 or not the probe event is of interest. For example, if you are only interested
 in activity associated with a certain process or a certain file descriptor,
@@ -20,13 +24,19 @@ be forced to trace all events that <emphasis>might</emphasis> be interesting,
 and later postprocess the data to filter out the ones that were not associated
 with the failing code path. In this case, even though the number of interesting
 events may be reasonably small, the number of events that must be traced is
-very large, making postprocessing difficult.</para><para>You can use the speculative tracing facility in these situations to
+very large, making postprocessing difficult.</para>
+<para>You can use the speculative tracing facility in these situations to
 tentatively trace data at one or more probe locations, and then decide to
 commit the data to the principal buffer at another probe location. As a result,
 your trace data contains only the output of interest, no postprocessing is
 required, and the DTrace overhead is minimized.</para>
-</highlights><sect1 id="chp-spec-1"><title>Speculation Interfaces</title><para><indexterm><primary>speculation</primary></indexterm>The following table
-describes the DTrace speculation functions:</para><table frame="topbot" id="tbl-specfuncs"><title>DTrace Speculation Functions</title><tgroup cols="3" colsep="0" rowsep="0"><colspec colwidth="1.00in"/><colspec colwidth="0.50in"/><colspec colwidth="3.50in"/><thead><row rowsep="1"><entry><para>Function Name</para>
+<sect1 xml:id="chp-spec-1">
+<title>Speculation Interfaces</title>
+<para><indexterm><primary>speculation</primary></indexterm>The following table
+describes the DTrace speculation functions:</para>
+<table frame="topbot" xml:id="tbl-specfuncs">
+<title>DTrace Speculation Functions</title>
+<tgroup cols="3" colsep="0" rowsep="0"><colspec colwidth="1.00in"/><colspec colwidth="0.50in"/><colspec colwidth="3.50in"/><thead><row rowsep="1"><entry><para>Function Name</para>
 </entry><entry><para>Args</para>
 </entry><entry><para>Description</para>
 </entry>
@@ -52,7 +62,10 @@ buffer specified by ID</para>
 </tbody>
 </tgroup>
 </table>
-</sect1><sect1 id="chp-spec-2"><title>Creating a Speculation</title><para><indexterm><primary>speculation</primary><secondary>creating</secondary></indexterm><indexterm><primary><function>speculation</function> function</primary></indexterm>The <function>speculation</function> function allocates a speculative
+</sect1>
+<sect1 xml:id="chp-spec-2">
+<title>Creating a Speculation</title>
+<para><indexterm><primary>speculation</primary><secondary>creating</secondary></indexterm><indexterm><primary><function>speculation</function> function</primary></indexterm>The <function>speculation</function> function allocates a speculative
 buffer, and returns a speculation identifier. The speculation identifier should
 be used in subsequent calls to the <function>speculate</function> function.
 Speculative buffers are a finite resource: if no speculative buffer is available
@@ -60,9 +73,12 @@ when <function>speculation</function> is called, an ID of zero is returned
 and a corresponding DTrace error counter is incremented. An ID of zero is
 always invalid, but may be passed to <function>speculate</function>, <function>commit</function> or <function>discard</function>. If a call to <function>speculation</function> fails,
 a <command>dtrace</command> message similar to the following example is generated:</para><screen>dtrace: 2 failed speculations (no speculative buffer space available)</screen><para>The number of speculative buffers defaults to one, but may be optionally
-tuned higher. See <olink targetptr="chp-spec-7" remap="internal">Speculation Options and Tuning</olink> for
+tuned higher. See <xref linkend="chp-spec-7" /> for
 more information.</para>
-</sect1><sect1 id="chp-spec-3"><title>Using a Speculation</title><para><indexterm><primary>speculation</primary><secondary>use</secondary></indexterm>To use a speculation, an identifier returned from <function>speculation</function> must be passed to the <function>speculate</function> function
+</sect1>
+<sect1 xml:id="chp-spec-3">
+<title>Using a Speculation</title>
+<para><indexterm><primary>speculation</primary><secondary>use</secondary></indexterm>To use a speculation, an identifier returned from <function>speculation</function> must be passed to the <function>speculate</function> function
 in a clause <emphasis>before</emphasis> any data-recording actions. All subsequent
 data-recording actions in a clause containing a <function>speculate</function> will
 be speculatively traced. The D compiler will generate a compile-time error
@@ -73,7 +89,7 @@ may never be speculative. Any attempt to take one of these actions in a clause
 containing a <function>speculate</function> results in a compile-time error.
 A <function>speculate</function> may not follow a <function>speculate</function>:
 only one speculation is permitted per clause. A clause that contains <emphasis>only</emphasis> a <function>speculate</function> will speculatively trace the
-default action, which is defined to trace only the enabled probe ID. See <olink targetptr="chp-actsub" remap="internal">Chapter&nbsp;10, Actions and Subroutines</olink> for
+default action, which is defined to trace only the enabled probe ID. See <xref linkend="chp-actsub" /> for
 a description of the default action.</para><para>Typically, you assign the result of <function>speculation</function> to
 a thread-local variable and then use that variable as a subsequent predicate
 to other probes as well as an argument to <function>speculate</function>.
@@ -88,7 +104,10 @@ syscall:::
 	speculate(self-&gt;spec);
 	printf("this is speculative");
 }</programlisting>
-</sect1><sect1 id="chp-spec-4"><title>Committing a Speculation</title><para><indexterm><primary>speculation</primary><secondary>committing</secondary></indexterm>You commit speculations using the <function>commit</function> function.
+</sect1>
+<sect1 xml:id="chp-spec-4">
+<title>Committing a Speculation</title>
+<para><indexterm><primary>speculation</primary><secondary>committing</secondary></indexterm>You commit speculations using the <function>commit</function> function.
 When a speculative buffer is committed, its data is copied into the principal
 buffer. If there is more data in the specified speculative buffer than there
 is available space in the principal buffer, no data is copied and the drop
@@ -98,12 +117,16 @@ is copied immediately, while speculative data on other CPUs is copied some
 time after the <function>commit</function>. Thus, some time might elapse between
 a <function>commit</function> beginning on one CPU and the data being copied
 from speculative buffers to principal buffers on all CPUs. This time is guaranteed
-to be no longer than the time dictated by the cleaning rate. See <olink targetptr="chp-spec-7" remap="internal">Speculation Options and Tuning</olink> for more details.</para><para>A committing speculative buffer will not be made available to subsequent <function>speculation</function> calls until each per-CPU speculative buffer has been
+to be no longer than the time dictated by the cleaning rate. See <xref linkend="chp-spec-7" /> for more details.</para>
+<para>A committing speculative buffer will not be made available to subsequent <function>speculation</function> calls until each per-CPU speculative buffer has been
 completely copied into its corresponding per-CPU principal buffer. Similarly,
 subsequent calls to <function>speculate</function> to the committing buffer
 will be silently discarded, and subsequent calls to <function>commit</function> or <function>discard</function> will silently fail. Finally, a clause containing a <function>commit</function> cannot contain a data recording action, but a clause may contain
 multiple <function>commit</function> calls to commit disjoint buffers.</para>
-</sect1><sect1 id="chp-spec-5"><title>Discarding a Speculation</title><para><indexterm><primary>speculation</primary><secondary>discarding</secondary></indexterm>You discard speculations using the <function>discard</function> function.
+</sect1>
+<sect1 xml:id="chp-spec-5">
+<title>Discarding a Speculation</title>
+<para><indexterm><primary>speculation</primary><secondary>discarding</secondary></indexterm>You discard speculations using the <function>discard</function> function.
 When a speculative buffer is discarded, its contents are thrown away. If the
 speculation has only been active on the CPU calling <function>discard</function>,
 the buffer is immediately available for subsequent calls to <function>speculation</function>. If the speculation has been active on more than one CPU, the
@@ -114,10 +137,15 @@ rate. If, at the time <function>speculation</function> is called, no buffer
 is available because <emphasis>all</emphasis> speculative buffers are currently
 being discarded or committed, a<command>dtrace</command> message similar to
 the following example is generated:</para><screen>dtrace: 905 failed speculations (available buffer(s) still busy)</screen><para>The likelihood of all buffers being unavailable can be reduced by tuning
-the number of speculation buffers or the cleaning rate. See <olink targetptr="chp-spec-7" remap="internal">Speculation Options and Tuning</olink>, for details.</para>
-</sect1><sect1 id="chp-spec-6"><title>Speculation Example</title><para><indexterm><primary>speculation</primary><secondary>example of use</secondary></indexterm><indexterm><primary>examples</primary><secondary>speculation</secondary></indexterm>One potential use for speculations is to highlight a particular
-code path. The following example shows the entire code path under the <olink targetdoc="refman2" targetptr="open-2" remap="external"><citerefentry><refentrytitle>open</refentrytitle><manvolnum>2</manvolnum></citerefentry></olink> system call only when the <function>open</function> fails:</para><example id="ex-specopen.d"><title><filename>specopen.d</filename>: Code Flow
-for Failed <citerefentry><refentrytitle>open</refentrytitle><manvolnum>2</manvolnum></citerefentry></title><programlisting>#!/usr/sbin/dtrace -Fs
+the number of speculation buffers or the cleaning rate. See <xref linkend="chp-spec-7" />, for details.</para>
+</sect1>
+<sect1 xml:id="chp-spec-6">
+<title>Speculation Example</title>
+<para><indexterm><primary>speculation</primary><secondary>example of use</secondary></indexterm><indexterm><primary>examples</primary><secondary>speculation</secondary></indexterm>One potential use for speculations is to highlight a particular
+code path. The following example shows the entire code path under the <citerefentry><refentrytitle>open</refentrytitle><manvolnum>2</manvolnum></citerefentry> system call only when the <function>open</function> fails:</para>
+<example xml:id="ex-specopen.d">
+<title><filename>specopen.d</filename>: Code Flow for Failed <citerefentry><refentrytitle>open</refentrytitle><manvolnum>2</manvolnum></citerefentry></title>
+<programlisting>#!/usr/sbin/dtrace -Fs
 
 syscall::open:entry,
 syscall::open64:entry
@@ -321,7 +349,10 @@ CPU FUNCTION
   1      &lt;- copen                             
   1    &lt;- open                                
   1  &lt;= open                                          2</screen>
-</sect1><sect1 id="chp-spec-7"><title>Speculation Options and Tuning</title><para><indexterm><primary>speculative drops</primary></indexterm><indexterm><primary>speculation</primary><secondary>options</secondary></indexterm><indexterm><primary>speculation</primary><secondary>tuning</secondary></indexterm>If
+</sect1>
+<sect1 xml:id="chp-spec-7">
+<title>Speculation Options and Tuning</title>
+<para><indexterm><primary>speculative drops</primary></indexterm><indexterm><primary>speculation</primary><secondary>options</secondary></indexterm><indexterm><primary>speculation</primary><secondary>tuning</secondary></indexterm>If
 a speculative buffer is full when a speculative tracing action is attempted,
 no data is stored in the buffer and a drop count is incremented. If this situation,
 a <command>dtrace</command> message similar to the following example is generated:</para><screen>dtrace: 38 speculative drops</screen><para>Speculative drops will <emphasis>not</emphasis> prevent the full speculative
