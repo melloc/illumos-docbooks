@@ -52,6 +52,23 @@ Once it is there, you must do the following things:
 
   o  Before you are done, add it as a check target in the Makefile.
 
+Converting from SolBook to Docbook 5:
+
+  o  Remove <highlights> tags, but leave their inner content
+  o  Convert all id's to xml:id's
+  o  Convert <olink> tags where remap="internal" to <xref> tags
+  o  Remove the <olink> tags around <citerefentry> tags
+  o  Convert <ulink> tags to <link> tags
+  o  Convert <chapterinfo> and <bookinfo> to just <info>
+  o  Add a <bibliorelation> tag that can be used when creating canonical links
+  o  Move <option> tags out of <command> tags/restructure
+  o  Along the way, as lines are touched, try to reformat
+  o  There are some other minor things that were not specific to SolBook, but
+     were part of DocBook 4 and are gone in DocBook 5. Running the validator
+     will find them for you. Consult the DocBook guide for tips on what to do:
+
+     http://www.docbook.org/tdg5/en/html/ch01.html#introduction-whats-new
+
 Contributing:
 
 Treat this like you would ON with respect to bugs and the like.
