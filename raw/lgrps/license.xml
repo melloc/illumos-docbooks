@@ -1,12 +1,13 @@
-<appendix id="license"><title>Document License</title>
+<appendix xml:id="license">
+<title>Document License</title>
 <sect1>
 <title>Public Documentation License Notice</title>
 <para>
 The contents of this Documentation are subject to the Public
 Documentation License Version 1.01 (the "License"); you may only use
 this Documentation if you comply with the terms of this License. A copy
-of the License is available at <ulink url="http://illumos.org/license/PDL"
-type="text">http://illumos.org/license/PDL</ulink>
+of the License is available at
+<link xl:href="http://illumos.org/license/PDL">http://illumos.org/license/PDL</link>
 
 </para>
 
@@ -14,20 +15,19 @@ type="text">http://illumos.org/license/PDL</ulink>
 The Original Documentation is the Memory and Thread Placement Optimization
 Developer's Guide. The Initial Writer of the Original Documentation is Sun
 Microsystems Copyright (C) 2003-2009. All Rights Reserved. (Initial Writer
-contact(s): <ulink url="http://sun.com" type="text">http://sun.com</ulink>).
+contact(s): <link xl:href="http://sun.com">http://sun.com</link>).
 </para>
 
 <para>
 Contributor(s): Joyent, Inc. Portions created by Joyent, Inc. are
-Copyright (C) 2012. All Rights Reserved. (Contributor contact(s): <ulink
-url="http://joyent.com" type="text">http://joyent.com</ulink>).
+Copyright (C) 2012. All Rights Reserved. (Contributor contact(s):
+<link xl:href="http://joyent.com">http://joyent.com</link>).
 </para>
 
 <para>
-This documentation was derived from the source at <ulink
-url="https://github.com/rmustacc/illumos-docbooks"
-type="text">illumos docbooks</ulink>. For full changes as required by
-the PDL, please see the above URL.
+This documentation was derived from the source at
+<link xl:href="https://github.com/rmustacc/illumos-docbooks">illumos docbooks</link>.
+For full changes as required by the PDL, please see the above URL.
 </para>
 </sect1>
 </appendix>
