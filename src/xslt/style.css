@@ -1,0 +1,207 @@
+/**
+ * Copyright 2016 Cody Peter Mello
+ * Copyright 2013 The Rust Project Developers. 
+ *
+ * Licensed under the MIT license. This file may not be copied, modified, or
+ * distributed except according to those terms. The full text can be found at:
+ *
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+/*
+ * This CSS file is largely inspired by the Rust documentation with
+ * some modifications.
+ */
+
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* General structure and fonts */
+
+body {
+	color: #333;
+	font-family: "EB Garamond", serif;
+	font-size: 14pt;
+	margin: 0;
+	position: relative;
+	padding: 10px 15px 20px 15px;
+	-webkit-font-feature-settings: "kern", "liga";
+	-moz-font-feature-settings: "kern", "liga";
+	font-feature-settings: "kern", "liga";
+}
+
+p {
+	-webkit-font-variant-ligatures: common-ligatures;
+	font-variant-ligatures: common-ligatures;
+
+	-webkit-font-feature-settings: "kern";
+	font-feature-settings: "kern";
+	font-kerning: normal;
+
+	margin: 0 0 .6em 0;
+}
+
+h1 {
+	font-size: 1.5em;
+	margin: 20px 0 15px 0;
+}
+
+h2 {
+	font-size: 1.4em;
+	margin: 30px 0 15px 0;
+}
+
+h3 {
+	font-size: 1.3em;
+	margin: 20px 0 15px 0;
+}
+
+h1, h2, h3 {
+	color: black;
+	font-weight: 500;
+	padding-bottom: 6px;
+}
+
+h2, h3 {
+	border-bottom: 1px solid #DDDDDD;
+}
+
+code, pre, samp, kbd {
+	font-family: "Source Code Pro", monospace;
+	white-space: pre-wrap;
+	font-size: 0.9em;
+}
+
+.refentrytitle {
+	font-family: "Source Code Pro", monospace;
+	font-size: 0.9em;
+}
+
+pre {
+	background-color: #F5F5F5;
+	padding: 14px;
+}
+
+ol, ul {
+	padding-left: 25px;
+}
+
+ul ul, ol ul, ul ol, ol ol {
+	margin-bottom: 0;
+}
+
+:target {
+	background: #FDFFD3;
+}
+
+/* Page structure */
+
+.content, nav {
+	max-width: 960px;
+}
+
+.content {
+	margin-left: 21em;
+	padding: 15px 0;
+}
+
+nav {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+nav.sidebar {
+	width: 20em;
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	padding: 10px;
+	overflow: scroll;
+	line-height: 1.5em;
+}
+
+.sidebar img {
+	margin: 20px auto;
+	display: block;
+}
+
+table {
+	border-collapse: collapse;
+	empty-cells: show;
+	margin: 1em 0px;
+}
+
+th, td {
+	padding: 0.3em 0.8em;
+	border: 1px solid #999;
+	vertical-align: top;
+}
+
+nav > ul > li {
+	list-style-type: none;
+}
+
+/* Links */
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a:link {
+	color: #41B7D8;
+}
+
+a:hover, a:hover:visited {
+	color: #117D9C;
+}
+
+a:visited {
+	color: #148DB0;
+}
+
+/* Make sure HTML5 elements display as blocks in older browsers */
+section, article, aside, footer, header, nav, hgroup {
+	display: block;
+}
+
+
+/* Media Queries */
+
+@media (max-width: 700px) {
+	body {
+		padding-top: 0px;
+	}
+
+	nav.sidebar {
+		height: auto;
+		width: 100%;
+		margin: 0px;
+		padding: 0px;
+		position: static;
+		overflow: visible;
+	}
+
+	nav.sidebar img {
+		width: 75px;
+	}
+
+	.content {
+		margin-left: 0px;
+	}
+
+}
+
+@media print {
+	nav.sidebar, nav.content {
+		display: none;
+	}
+	.content {
+		margin-left: 0em;
+	}
+}
