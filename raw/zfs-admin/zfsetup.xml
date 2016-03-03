@@ -27,7 +27,7 @@ create a usable file system. When you create a new pool, a new ZFS file system
 is created and mounted automatically.</para><para>The following example illustrates how to create a non-redundant storage
 pool named <literal>tank</literal> and a ZFS file system name <filename>tank</filename> in
 one command. Assume that the whole disk <filename>/dev/dsk/c1t0d0</filename> is
-available for use.</para><screen># <userinput>zpool create tank c1t0d0</userinput></screen><note><para>This command creates a non-redundant pool. A non-redundant pool
+available for use.</para><screen># <userinput>zpool create tank c1t0d0</userinput></screen><para>The same command for Linux distribution might look like below: </para><screen># <userinput>zpool create tank /dev/sdb</userinput></screen><note><para>This command creates a non-redundant pool. A non-redundant pool
 configuration is not recommended for production environments even if the single
 storage object is presented from a hardware RAID array or from a software
 volume manager. ZFS can only detect errors in these configurations. ZFS can
