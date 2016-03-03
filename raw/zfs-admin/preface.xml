@@ -1,22 +1,20 @@
 <preface xml:id="preface">
 	<title>Preface</title>
 	<para>The <citetitle>ZFS Administration Guide</citetitle> provides information about setting up and managing ZFS file systems.</para>
-	<para>This guide contains information for both <trademark class="registered">SPARC</trademark> based and x86 based systems.</para>
+	<para>This guide contains information for both <trademark class="registered">SPARC</trademark> based and x86 based systems, running illumos distributions, FreeBSD and Linux implementations of ZFS.</para>
 	<note>
-		<para>This illumos release supports systems that use the SPARC and x86 families of processor architectures:  <trademark class="registered">UltraSPARC</trademark>, SPARC64, AMD64, Pentium, and Xeon EM64T. The supported systems appear in the <link xl:href="https://illumos.org/hcl/">illumos Hardware Compatibility List</link>. This document cites any implementation differences between the platform types.</para>
+		<para>This OpenZFS release supports systems that use the SPARC and x86 families of processor architectures:  <trademark class="registered">UltraSPARC</trademark>, SPARC64, AMD64, Pentium, and Xeon EM64T. The supported systems appear in the <link xl:href="https://illumos.org/hcl/">illumos Hardware Compatibility List</link>. This document cites any implementation differences between the platform types.</para>
 		<para>In this document these x86 terms mean the following:</para>
 		<itemizedlist>
-			<listitem><para>&ldquo;x86&rdquo; refers to the larger family of 64-bit and 32-bit x86 compatible products.</para></listitem>
-			<listitem><para>&ldquo;x64&rdquo; points out specific 64-bit information about AMD64 or EM64T systems.</para></listitem>
-			<listitem><para>&ldquo;32-bit x86&rdquo; points out specific 32-bit information about x86 based systems.</para></listitem>
+			<listitem><para>&ldquo;x86&rdquo; refers to the larger family of 64-bit and 32-bit x86 compatible products running illumos, Linux or FreeBSD.</para></listitem>
+			<listitem><para>&ldquo;x64&rdquo; points out specific 64-bit information about AMD64 or EM64T systems running illumos, Linux or FreeBSD.</para></listitem>
+			<listitem><para>&ldquo;32-bit x86&rdquo; points out specific 32-bit information about x86 based systems running illumos, Linux or FreeBSD.</para></listitem>
 		</itemizedlist>
-		<para>For supported systems, see the <citetitle>illumos Hardware Compatibility List</citetitle>.</para>
+		<para>For illumos supported systems, see the <citetitle>illumos Hardware Compatibility List</citetitle>. For FreeBSD and Linux supported systems, refer to appropriate hardware compatibility resources.</para>
 	</note>
 	<sect1 xml:id="preface-9">
 		<title xml:id="preface-2">Who Should Use This Book</title>
-		<para>This guide is intended for anyone who is interested in setting up and
-managing ZFS file systems. Experience using illumos or another <trademark class="registered">UNIX</trademark> operating system
-is recommended.</para>
+		<para>This guide is intended for anyone who is interested in setting up and managing ZFS file systems. Experience using illumos or another <trademark class="registered">UNIX</trademark> operating system (including FreeBSD and Linux distributions) is recommended.</para>
 </sect1>
 <sect1 xml:id="preface-4">
 	<title>How This Book Is Organized</title>
@@ -72,16 +70,5 @@ is recommended.</para>
 		</tgroup>
 	</informaltable>
 </sect1>
-<sect1 xml:id="preface-5">
-	<title>Related Books</title>
-	<para>Related information about general Solaris system administration topics
-		can be found in the following books:</para>
-	<itemizedlist>
-		<listitem><para><citetitle>Solaris System Administration: Basic Administration</citetitle></para></listitem>
-		<listitem><para><citetitle>Solaris System Administration: Advanced Administration</citetitle></para></listitem>
-		<listitem><para><citetitle>Solaris System Administration: Devices and File Systems</citetitle></para></listitem>
-		<listitem><para><citetitle>Solaris System Administration: Security Services</citetitle></para></listitem>
-		<listitem><para><citetitle>Solaris Volume Manager Administration Guide</citetitle></para></listitem>
-	</itemizedlist>
 </sect1>&sundocs;&typeconv;
 </preface>
