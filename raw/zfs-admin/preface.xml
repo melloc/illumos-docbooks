@@ -1,7 +1,7 @@
 <preface xml:id="preface">
 	<title>Preface</title>
 	<para>The <citetitle>ZFS Administration Guide</citetitle> provides information about setting up and managing ZFS file systems.</para>
-	<para>This guide contains information for both <trademark class="registered">SPARC</trademark> based and x86 based systems, running illumos distributions, FreeBSD and Linux implementations of ZFS.</para>
+	<para>This guide contains information for both <trademark class="registered">SPARC</trademark> based and x86 based systems, running illumos distributions, FreeBSD and Linux implementations of ZFS. It is revived and revised version of the original ZFS Administration Guide by <trademark>Sun Microsystems</trademark>. <note>As of now it is a Work In Progress. You can file issues against this work on <link xl:ref="https://github.com/madwizard/illumos-docbooks">My Github repository for the book</link>.</note></para>
 	<note>
 		<para>This OpenZFS release supports systems that use the SPARC and x86 families of processor architectures:  <trademark class="registered">UltraSPARC</trademark>, SPARC64, AMD64, Pentium, and Xeon EM64T. The supported systems appear in the <link xl:href="https://illumos.org/hcl/">illumos Hardware Compatibility List</link>. This document cites any implementation differences between the platform types.</para>
 		<para>In this document these x86 terms mean the following:</para>
