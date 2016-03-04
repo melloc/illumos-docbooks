@@ -7,7 +7,7 @@
 	<listitem><para><olink targetptr="gbcpt" remap="internal">ZFS Component Naming Requirements</olink></para></listitem>
 </itemizedlist>
 <sect1 xml:id="zfsover-2"><title>What Is ZFS?</title>
-<para>The ZFS file system is a revolutionary new file system that fundamentally changes the way file systems are administered, with features and benefits not found in any other file system available today. ZFS has been designed to be robust, scalable, and simple to administer.</para>
+<para>The ZFS file system is a revolutionary file system that fundamentally changes the way file systems are administered, with some features and benefits not found in any other file system available today. ZFS has been designed to be robust, scalable, and simple to administer.</para>
 <para>There are two implementations of ZFS filesystem currently: <trademark>Oracle Corp.</trademark> ZFS which is proprietary and as of now only available for <trademark>Oracle Solaris</trademark> operating system. Second implementation is maintained under the umbrella of OpenZFS Project. It is fully open source ZFS implementation, with the same codebase shared among illumos, *BSD and Linux operating systems. </para>
 <para>This guide treats about OpenZFS filesystem. Whenever ZFS is mentioned, OpenZFS is meant. </para>
 	<sect2 xml:id="gaypk"><title>ZFS Pooled Storage</title>
@@ -38,7 +38,8 @@
 	<variablelist>
 		<varlistentry><term>checksum</term><listitem><para>A 256-bit hash of the data in a file system block. The checksum capability can range from the simple and fast fletcher2 (the default) to cryptographically strong hashes such as SHA256.</para></listitem></varlistentry>
 		<varlistentry><term>clone</term><listitem><para>A file system whose initial contents are identical to the contents of a snapshot.</para><para>For information about clones, see <olink targetptr="gbcxz" remap="internal">Overview of ZFS Clones</olink>.</para></listitem></varlistentry>
-		<varlistentry><term>dataset</term><listitem><para>A generic name for the following ZFS entities: clones, file systems, snapshots, or volumes.</para><para>Each dataset is identified by a unique name in the ZFS namespace. Datasets are identified using the following format:</para><para><replaceable>pool</replaceable>/<replaceable>path</replaceable>[<replaceable>@snapshot</replaceable>]</para><variablelist><varlistentry><term><replaceable>pool</replaceable></term><listitem><para>Identifies the name of the storage pool that contains the dataset</para></listitem></varlistentry>
+		<varlistentry><term>dataset</term><listitem><para>A generic name for the following ZFS entities: clones, file systems, snapshots, or volumes.</para><para>Each dataset is identified by a unique name in the ZFS namespace. Datasets are identified using the following format:</para><para><replaceable>pool</replaceable>/<replaceable>path</replaceable>[<replaceable>@snapshot</replaceable>]</para>
+		<variablelist><varlistentry><term><replaceable>pool</replaceable></term><listitem><para>Identifies the name of the storage pool that contains the dataset</para></listitem></varlistentry>
 		<varlistentry><term><replaceable>path</replaceable></term><listitem><para>Is a slash-delimited path name for the dataset object</para></listitem></varlistentry>
 		<varlistentry><term><replaceable>snapshot</replaceable></term><listitem><para>Is an optional component that identifies a snapshot of a dataset</para></listitem></varlistentry>
 	</variablelist><para>For more information about datasets, see <olink targetptr="gavwq" remap="internal">Chapter&nbsp;5,Managing ZFS File Systems</olink>.</para></listitem></varlistentry>
@@ -64,25 +65,23 @@ device is known as <emphasis>resilvering</emphasis>. For example, if a mirror
 component is replaced or taken offline, the data from the up-to-date mirror
 component is copied to the newly restored mirror component. This process is
 referred to as <emphasis>mirror resynchronization</emphasis> in traditional
-volume management products.</para><para>For more information about ZFS resilvering, see <olink targetptr="gbcus" remap="internal">Viewing
-Resilvering Status</olink>.</para>
-</listitem>
-</varlistentry><varlistentry><term>snapshot</term><listitem><para>A read-only image of a file system or volume at a given point
+volume management products.</para>
+<para>For more information about ZFS resilvering, see <olink targetptr="gbcus" remap="internal">Viewing
+Resilvering Status</olink>.</para></listitem></varlistentry>
+<varlistentry><term>snapshot</term><listitem><para>A read-only image of a file system or volume at a given point
 in time.</para><para>For more information about snapshots, see <olink targetptr="gbciq" remap="internal">Overview
-of ZFS Snapshots</olink>.</para>
-</listitem>
-</varlistentry><varlistentry><term>virtual device</term><listitem><para>A logical device in a pool, which can be a physical device,
+of ZFS Snapshots</olink>.</para></listitem></varlistentry>
+<varlistentry><term>virtual device</term><listitem><para>A logical device in a pool, which can be a physical device,
 a file, or a collection of devices.</para><para>For more information about virtual devices, see <olink targetptr="gazca" remap="internal">Identifying
-Virtual Devices in a Storage Pool</olink>.</para>
-</listitem>
-</varlistentry><varlistentry><term>volume</term><listitem><para>A dataset used to emulate a physical device. For example,
+Virtual Devices in a Storage Pool</olink>.</para></listitem></varlistentry>
+<varlistentry><term>volume</term><listitem><para>A dataset used to emulate a physical device. For example,
 you can create an ZFS volume as a swap device.</para><para>For more information about ZFS volumes, see <olink targetptr="gaypf" remap="internal">ZFS
-Volumes</olink>.</para>
-</listitem>
-</varlistentry>
+Volumes</olink>.</para></listitem></varlistentry>
+<varlistentry><term>feature flags</term><listitem><para>A feature added to ZFS pool/filesystem in a plugin fashion. It is a replacement for ZFS versioning, allowing for cooperation of many ZFS implementators.</para></listitem></varlistentry>
 </variablelist>
 </sect1>
-<sect1 xml:id="gbcpt"><title>ZFS Component Naming Requirements</title><para>Each ZFS component must be named according to the following rules:</para><itemizedlist><listitem><para>Empty components are not allowed.</para>
+<sect1 xml:id="gbcpt"><title>ZFS Component Naming Requirements</title>
+	<para>Each ZFS component must be named according to the following rules:</para><itemizedlist><listitem><para>Empty components are not allowed.</para>
 </listitem><listitem><para>Each component can only contain alphanumeric characters in
 addition to the following four special characters:</para><itemizedlist><listitem><para>Underscore (_)</para>
 </listitem><listitem><para>Hyphen (-)</para>
@@ -103,5 +102,21 @@ names must not contain
 a percent sign (<literal>%</literal>).</para>
 </listitem>
 </itemizedlist>
+</sect1>
+<sect1 xml:id="dbdda"><title>Compatibility</title>
+	<sect2 xml:id="dbddb"><title>Pool versions and feature flags</title>
+	<para>When ZFS was a part of <trademark>Sun Microsystems</trademark> OpenSolaris project, it was developed solely within the company. There was no other ZFS codebase in the open. Thus ZFS versions were pretty good choice of introducing new features. When OpenSolaris code has been closed by <trademark>Oracle</trademark> in 2010, Garrett d'Amore started a truly open and free fork: illumos Project, creating a basis also for future OpenZFS Project. At around the same time first operating system started a port of ZFS: FreeBSD. The question of compatibility arised.</para> 
+	<para>To facilitate ability of various vendors and contributors to implement their enhancements, decision was made to freeze the ZFS version numbering. Pool version has been updated to 5000. Future enhancements are introduced as feature flags: plugin-like additions that provide new functionality. Example of feature flag is implementation of lz4 compression algorithm.</para>
+	<para>Any OpenZFS port: illumos, FreeBSD, Linux or otherwise are compatible provided they implement the same set of feature flags. </para>
+	<para>Current versions of <trademark>Oracle</trademark> ZFS and OpenZFS are incompatible. To be able to move pools between <trademark>Oracle</trademark> <trademark>Solaris</trademark> and OpenZFS supporting systems, you need to use pool version 28 or prior.</para>
+	</sect2>
+	<sect2 xml:id="dbddc"><title>More detailed information</title>
+	<para>More detailed information can be found on <link xl:href="http://open-zfs.org/wiki/Main_Page">OpenZFS</link> Project Page:
+	<itemizedlist>
+		<listitem><para><link xl:href="http://open-zfs.org/wiki/Features">Most important OpenZFS features</link></para></listitem>
+		<listitem><para><link xl:href="http://open-zfs.org/wiki/Feature_Flags">Feature flags and their implementation state on various platforms</link></para></listitem>
+	</itemizedlist>
+	</para>
+	</sect2>
 </sect1>
 </chapter>
