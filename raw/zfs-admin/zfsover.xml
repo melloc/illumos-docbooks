@@ -7,7 +7,7 @@
 	<listitem><para><olink targetptr="gbcpt" remap="internal">ZFS Component Naming Requirements</olink></para></listitem>
 </itemizedlist>
 <sect1 xml:id="zfsover-2"><title>What Is ZFS?</title>
-<para>The ZFS file system is a revolutionary file system that fundamentally changes the way file systems are administered, with some features and benefits not found in any other file system available today. ZFS has been designed to be robust, scalable, and simple to administer.</para>
+<para>The ZFS file system was first publicly introduced to <trademark>Sun OpenSolaris</trademark> operating system in 2005. It was revolutionary by then and until now contains features that cannot be found in many other file systems. It was designed to be robust, scalable and simple to administer.</para>
 <para>There are two implementations of ZFS filesystem currently: <trademark>Oracle Corp.</trademark> ZFS which is proprietary and as of now only available for <trademark>Oracle Solaris</trademark> operating system. Second implementation is maintained under the umbrella of OpenZFS Project. It is fully open source ZFS implementation, with the same codebase shared among illumos, *BSD and Linux operating systems. </para>
 <para>This guide treats about OpenZFS filesystem. Whenever ZFS is mentioned, OpenZFS is meant. </para>
 	<sect2 xml:id="gaypk"><title>ZFS Pooled Storage</title>
