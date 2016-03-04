@@ -6,44 +6,6 @@
 	<listitem><para><olink targetptr="ftyue" remap="internal">ZFS Terminology</olink></para></listitem>
 	<listitem><para><olink targetptr="gbcpt" remap="internal">ZFS Component Naming Requirements</olink></para></listitem>
 </itemizedlist>
-<sect1 xml:id="gbscy">
-	<itemizedlist><listitem><para><olink targetptr="gfxul" remap="internal">Using
-Cache Devices in Your ZFS Storage Pool</olink></para></listitem>
-		<listitem><para><olink targetptr="gfwqj" remap="internal">Enhancements to the zfs send Command</olink></para></listitem>
-		<listitem><para><olink targetptr="gfwpz" remap="internal">ZFS Quotas and Reservations for File System Data Only</olink></para></listitem>
-		<listitem><para><olink targetptr="gftgg" remap="internal">ZFS File System Properties for the Solaris CIFS Service</olink></para></listitem>
-		<listitem><para><olink targetptr="gftgp" remap="internal">ZFS Storage Pool Properties</olink></para></listitem>
-		<listitem><para><olink targetptr="gfwqw" remap="internal">ZFS and File System Mirror Mounts</olink></para></listitem>
-		<listitem><para><olink targetptr="gfiit" remap="internal">ZFS Command History Enhancements (zpool history)</olink></para></listitem>
-		<listitem><para><olink targetptr="gffys" remap="internal">Upgrading ZFS File Systems (zfs upgrade)</olink></para></listitem>
-		<listitem><para><olink targetptr="gfgak" remap="internal">ZFS Delegated Administration</olink></para></listitem>
-		<listitem><para><olink targetptr="gfgaa" remap="internal">Setting Up Separate ZFS Logging Devices</olink></para></listitem>
-		<listitem><para><olink targetptr="gfgam" remap="internal">Creating Intermediate ZFS Datasets</olink></para></listitem>
-		<listitem><para><olink targetptr="gfgac" remap="internal">ZFS Hotplugging Enhancements</olink></para></listitem>
-		<listitem><para><olink targetptr="gevnp" remap="internal">Recursively Renaming ZFS Snapshots (zfs rename -r)</olink></para></listitem>
-		<listitem><para><olink targetptr="gevpi" remap="internal">GZIP Compression is Available for ZFS</olink></para></listitem>
-		<listitem><para><olink targetptr="gevpg" remap="internal">Storing Multiple Copies of ZFS User Data</olink></para></listitem>
-		<listitem><para><olink targetptr="gebws" remap="internal">Improved zpool status Output</olink></para></listitem>
-		<listitem><para><olink targetptr="gebwq" remap="internal">ZFS and Solaris iSCSI Improvements</olink></para></listitem>
-		<listitem><para><olink targetptr="gebwp" remap="internal">Sharing ZFS File System Enhancements</olink></para></listitem>
-		<listitem><para><olink targetptr="gdswe" remap="internal">ZFS Command History (zpool history)</olink></para></listitem>
-		<listitem><para><olink targetptr="gdswf" remap="internal">ZFS Property Improvements</olink></para></listitem>
-		<listitem><para><olink targetptr="gdsvh" remap="internal">Displaying All ZFS File System Information</olink></para></listitem>
-		<listitem><para><olink targetptr="gdsup" remap="internal">New zfs receive -F Option</olink></para></listitem>
-		<listitem><para><olink targetptr="gdfdt" remap="internal">Recursive ZFS Snapshots</olink></para></listitem>
-		<listitem><para><olink targetptr="gcviu" remap="internal">Double Parity RAID-Z (raidz2)</olink></para></listitem>
-		<listitem><para><olink targetptr="gcvdm" remap="internal">Hot Spares for ZFS Storage Pool Devices</olink></para></listitem>
-		<listitem><para><olink targetptr="gcvgc" remap="internal">Replacing a ZFS File System With a ZFS Clone (zfs promote)</olink></para></listitem>
-		<listitem><para><olink targetptr="gcvit" remap="internal">Upgrading ZFS Storage Pools (zpool upgrade)</olink></para></listitem>
-		<listitem><para><olink targetptr="gcsxk" remap="internal">Using ZFS to Clone Non-Global Zones and Other Enhancements</olink></para></listitem>
-		<listitem><para><olink targetptr="gciui" remap="internal">ZFS Backup and Restore Commands are Renamed</olink></para></listitem>
-		<listitem><para><olink targetptr="gcitn" remap="internal">Recovering Destroyed Storage Pools</olink></para></listitem>
-		<listitem><para><olink targetptr="gcfhy" remap="internal">ZFS is Integrated With Fault Manager</olink></para></listitem>
-		<listitem><para><olink targetptr="gcfiw" remap="internal">New zpool clear Command</olink></para></listitem>
-		<listitem><para><olink targetptr="gcajn" remap="internal">Compact NFSv4 ACL Format</olink></para></listitem>
-		<listitem><para><olink targetptr="gcakl" remap="internal">File System Monitoring Tool (fsstat)</olink></para></listitem>
-	</itemizedlist>
-</sect1>
 <sect1 xml:id="zfsover-2"><title>What Is ZFS?</title>
 <para>The ZFS file system is a revolutionary new file system that fundamentally changes the way file systems are administered, with features and benefits not found in any other file system available today. ZFS has been designed to be robust, scalable, and simple to administer.</para>
 <para>There are two implementations of ZFS filesystem currently: <trademark>Oracle Corp.</trademark> ZFS which is proprietary and as of now only available for <trademark>Oracle Solaris</trademark> operating system. Second implementation is maintained under the umbrella of OpenZFS Project. It is fully open source ZFS implementation, with the same codebase shared among illumos, *BSD and Linux operating systems. </para>
