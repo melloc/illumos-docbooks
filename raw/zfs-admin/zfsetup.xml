@@ -1,5 +1,6 @@
 <chapter xml:id="setup-1"><title>Getting
-Started With ZFS</title><para>This chapter provides step-by-step instructions on setting up simple
+Started With ZFS</title>
+<para>This chapter provides step-by-step instructions on setting up simple
 ZFS configurations. By the end of this chapter, you should have a basic idea
 of how the ZFS commands work, and should be able to create simple pools and
 file systems. This chapter is not designed to be a comprehensive overview
@@ -11,10 +12,8 @@ and refers to later chapters for more detailed information.</para><para>The foll
 	<listitem><para><xref linkend="gaypa" /></para></listitem>
 </itemizedlist>
 <sect1 xml:id="gbgxg"><title>ZFS Hardware and Software Requirements and Recommendations</title><para>Make sure you review the following hardware and software requirements
-and recommendations before attempting to use the ZFS software:</para><itemizedlist><listitem><para>A <trademark>SPARC</trademark> or x86 system that is running
-the <trademark>Solaris</trademark> Nevada release, build 27 or later.</para>
-</listitem><listitem><para>The minimum disk size is 128 Mbytes. The minimum amount of
-disk space required for a storage pool is approximately 64 Mbytes.</para>
+and recommendations before attempting to use the ZFS software:</para><itemizedlist><listitem><para>A <trademark>SPARC</trademark> or x86 system that is running a <trademark>illumos</trademark> distribution, a FreeBSD release 9 or later or a Linux distribution with ZFS installed.</para>
+</listitem><listitem><para>The minimum disk size is 128 Mbytes. The minimum amount of disk space required for a storage pool is approximately 64 Mbytes.</para>
 </listitem><listitem><para>Currently, the minimum amount of memory recommended to install
 a Solaris system is 512 Mbytes. However, for good ZFS performance, at least
 one Gbyte or more of memory is recommended.</para>
@@ -28,7 +27,7 @@ create a usable file system. When you create a new pool, a new ZFS file system
 is created and mounted automatically.</para><para>The following example illustrates how to create a non-redundant storage
 pool named <literal>tank</literal> and a ZFS file system name <filename>tank</filename> in
 one command. Assume that the whole disk <filename>/dev/dsk/c1t0d0</filename> is
-available for use.</para><screen># <userinput>zpool create tank c1t0d0</userinput></screen><note><para>This command creates a non-redundant pool. A non-redundant pool
+available for use.</para><screen># <userinput>zpool create tank c1t0d0</userinput></screen><para>The same command for Linux distribution might look like below: </para><screen># <userinput>zpool create tank /dev/sdb</userinput></screen><note><para>This command creates a non-redundant pool. A non-redundant pool
 configuration is not recommended for production environments even if the single
 storage object is presented from a hardware RAID array or from a software
 volume manager. ZFS can only detect errors in these configurations. ZFS can

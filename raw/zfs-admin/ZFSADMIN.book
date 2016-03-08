@@ -27,7 +27,7 @@
 <!ENTITY appendixA SYSTEM "appendixA.xml">
 <!ENTITY abstract SYSTEM "Abstract.xml">
 <!ENTITY typeconv SYSTEM "typeconv.xml">
-<!ENTITY sundocs SYSTEM "sundocs.xml">
+<!ENTITY zfsdocs SYSTEM "zfsdocs.xml">
 <!ENTITY fr-other-trademarks SYSTEM "fr-other-trademarks.xml">
 <!ENTITY fr-sun-trademarks SYSTEM "fr-sun-trademarks.xml">
 <!ENTITY other-trademarks SYSTEM "other-trademarks.xml">
@@ -50,13 +50,15 @@
 <surname>Swearingen</surname>
 </personname>
 </author>
+<author>
+<personname>
+<firstname>Damian</firstname>
+<surname>Wojsław</surname>
+</personname>
+</author>
 </authorgroup>
-<biblioid class="pubsnumber">817-2271-12</biblioid>
 <bibliorelation type="isversionof" class="uri">https://illumos.org/books/zfs-admin</bibliorelation>
-<releaseinfo>The contents of this Documentation are subject to the Public Documentation
-License Version 1.01 (the "License"); you may only use this Documentation if
-you comply with the terms of this License. A copy of the License is
-available at http://www.opensolaris.org/os/community/documentation/license.
+<releaseinfo>The contents of this Documentation are subject to the Public Documentation License Version 1.01 (the "License"); you may only use this Documentation if you comply with the terms of this icense. A copy of the License is available at http://www.opensolaris.org/os/community/documentation/license.
 </releaseinfo>
 <pubdate>January 2008</pubdate>
 <publisher>
