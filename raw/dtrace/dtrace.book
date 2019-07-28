@@ -60,7 +60,7 @@
     xml:id="dtrace"
     xml:lang="en"
     remap="snv_23" role="unnumbered" label="fcs" userlevel="admin-developer">
-<info xml:id="bookinfo" role="all">
+<info xml:id="bookinfo">
 <title>Dynamic Tracing Guide</title>
 <biblioid class="pubsnumber">820-6747-10</biblioid>
 <bibliorelation type="isversionof" class="uri">https://dtrace.org/guide</bibliorelation>

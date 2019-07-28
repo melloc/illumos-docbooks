@@ -1,0 +1,26 @@
+<para>The contents of this Documentation are subject to the Public Documentation
+License Version 1.01 (the &ldquo;License&rdquo;); you may only use this Documentation if you
+comply with the terms of this License. Further information about the License is
+available in <xref linkend="license" />.</para>
+<para>Many of the designations used by manufacturers and sellers to distinguish
+their products are claimed as trademarks. Where those designations appear in
+this document, and the publisher was aware of the trademark claim, the
+designations have been followed by the &ldquo;<trademark />&rdquo; or the
+&ldquo;<trademark class="registered" />&rdquo; symbol, or printed with initial
+capital letters or in all capitals.</para>
+<para>This distribution may include materials developed by third parties.</para>
+<para>Parts of the product may be derived from Berkeley BSD systems, licensed
+from the University of California. UNIX is a registered trademark of The Open
+Group.</para>
+<para>illumos and the illumos logo are trademarks or registered trademarks of
+Garrett D'Amore. Sun, Sun Microsystems, StarOffice, Java, and Solaris are
+trademarks or registered trademarks of Oracle, Inc. or its subsidiaries in the
+U.S. and other countries. All SPARC trademarks are used under license and are
+trademarks or registered trademarks of SPARC International, Inc. in the U.S. and
+other countries. Products bearing SPARC trademarks are based upon an
+architecture developed by Sun Microsystems, Inc.</para>
+<para>DOCUMENTATION IS PROVIDED &ldquo;AS IS&rdquo; AND ALL EXPRESS OR IMPLIED
+CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE
+DISCLAIMED, EXCEPT TO THE EXTENT THAT SUCH DISCLAIMERS ARE HELD TO BE LEGALLY
+INVALID.</para>

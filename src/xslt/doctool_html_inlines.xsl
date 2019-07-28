@@ -90,6 +90,7 @@
 
 <!-- Other lists and kids -->
 <xsl:template match="//itemizedlist">
+	<xsl:apply-templates select="para" />
 	<ul>
 		<xsl:call-template name="add-id" />
 		<xsl:for-each select="listitem">
@@ -99,6 +100,7 @@
 </xsl:template>
 
 <xsl:template match="//orderedlist">
+	<xsl:apply-templates select="para" />
 	<ol>
 		<xsl:call-template name="add-id" />
 		<xsl:for-each select="listitem">

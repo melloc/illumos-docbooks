@@ -13,7 +13,8 @@
 # Copyright 2019, Joyent, Inc.
 #
 
-BOOKS =			lgrps dtrace mdb zfs-admin wdd
+BOOKS =			lgrps dtrace mdb zfs-admin wdd \
+			sysadm1 sysadm2 sysadm3
 PDF_TYPES =		print ebook
 
 BUILD_FILES =		$(shell find src/xslt src/dblatex -type f)
@@ -63,7 +64,7 @@ $(OUTDIR)/%/index.html:
 	cp src/xslt/phoenix.svg $(OUTDIR)/$*/figures
 	if [[ -d raw/$*/figures ]]; then \
 		$(MOGRIFY) $(MOGRIFY_OPTS) -path $(OUTDIR)/$*/figures \
-		    raw/$*/figures/*.eps; \
+		    raw/$*/figures/*.*; \
 	fi
 
 #

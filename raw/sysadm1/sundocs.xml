@@ -1,0 +1,15 @@
+<sect1>
+	<title>Additional Documentation</title>
+	<para>Additional resources can be found on the illumos website, including the
+		<link xl:href="https://illumos.org/man">manual pages</link>
+		referenced throughout this book, and additional
+		<link xl:href="https://illumos.org/books">books and guides</link>
+		for using illumos and its tools.</para>
+</sect1>
+<sect1>
+	<title>We Welcome Your Comments</title>
+	<para>The DTrace and illumos communities are interested in improving this documentation and welcome
+		your comments and suggestions. To share your comments, either join and e-mail the DTrace discussion mailing list or go to
+		<link xl:href="https://github.com/rmustacc/illumos-docbooks">the illumos-docbooks repository</link>
+		and click "Issues".</para>
+</sect1>

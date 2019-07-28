@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book [
+<!ENTITY % sun-iso-map SYSTEM "sun-iso-map.xml">
+%sun-iso-map;
+<!ENTITY sundocs SYSTEM "sundocs.xml">
+<!ENTITY setbootfs SYSTEM "setbootfs.xml">
+<!ENTITY swmgrpkgsgui SYSTEM "swmgrpkgsgui.xml">
+<!ENTITY swmgrpkgscli SYSTEM "swmgrpkgscli.xml">
+<!ENTITY swmgrpatchtasks SYSTEM "swmgrpatchtasks.xml">
+<!ENTITY sagset SYSTEM "sagset.xml">
+<!ENTITY medcdrw SYSTEM "medcdrw.xml">
+<!ENTITY bkupsnapshot SYSTEM "bkupsnapshot.xml">
+<!ENTITY medformat SYSTEM "medformat.xml">
+<!ENTITY medaccess SYSTEM "medaccess.xml">
+<!ENTITY saroadmap SYSTEM "saroadmap.xml">
+<!ENTITY smcover SYSTEM "smcover.xml">
+<!ENTITY satools SYSTEM "satools.xml">
+<!ENTITY clientsetup SYSTEM "clientsetup.xml">
+<!ENTITY devusb SYSTEM "devusb.xml">
+<!ENTITY typeconv SYSTEM "typeconv.xml">
+<!ENTITY devconfig2 SYSTEM "devconfig2.xml">
+<!ENTITY bkuptm SYSTEM "bkuptm.xml">
+<!ENTITY fstm SYSTEM "fstm.xml">
+<!ENTITY diskstm SYSTEM "diskstm.xml">
+<!ENTITY devtm SYSTEM "devtm.xml">
+<!ENTITY swmgrtm SYSTEM "swmgrtm.xml">
+<!ENTITY medtm SYSTEM "medtm.xml">
+<!ENTITY hbtm SYSTEM "hbtm.xml">
+<!ENTITY clienttm SYSTEM "clienttm.xml">
+<!ENTITY usertm SYSTEM "usertm.xml">
+<!ENTITY vol1preface SYSTEM "vol1preface.xml">
+<!ENTITY bkuptapedevice SYSTEM "bkuptapedevice.xml">
+<!ENTITY devconfig SYSTEM "devconfig.xml">
+<!ENTITY devaccess SYSTEM "devaccess.xml">
+<!ENTITY disksconcepts SYSTEM "disksconcepts.xml">
+<!ENTITY disksprep SYSTEM "disksprep.xml">
+<!ENTITY disksSadd SYSTEM "disksSadd.xml">
+<!ENTITY disksXadd SYSTEM "disksXadd.xml">
+<!ENTITY disksformat SYSTEM "disksformat.xml">
+<!ENTITY fsoverview SYSTEM "fsoverview.xml">
+<!ENTITY fscreate SYSTEM "fscreate.xml">
+<!ENTITY fsmount SYSTEM "fsmount.xml">
+<!ENTITY fscachefs SYSTEM "fscachefs.xml">
+<!ENTITY fsswap SYSTEM "fsswap.xml">
+<!ENTITY fsfilesysappx SYSTEM "fsfilesysappx.xml">
+<!ENTITY bkupconcepts SYSTEM "bkupconcepts.xml">
+<!ENTITY bkuptasks2 SYSTEM "bkuptasks2.xml">
+<!ENTITY bkuprestoretasks SYSTEM "bkuprestoretasks.xml">
+<!ENTITY bkupref SYSTEM "bkupref.xml">
+<!ENTITY bkupsavefiles SYSTEM "bkupsavefiles.xml">
+<!ENTITY swmgrpkgsconcepts SYSTEM "swmgrpkgsconcepts.xml">
+<!ENTITY swmgrpkgs SYSTEM "swmgrpkgs.xml">
+<!ENTITY medintro SYSTEM "medintro.xml">
+<!ENTITY medcdcl SYSTEM "medcdcl.xml">
+<!ENTITY medflopcl SYSTEM "medflopcl.xml">
+<!ENTITY medpcmcl SYSTEM "medpcmcl.xml">
+<!ENTITY hbintro SYSTEM "hbintro.xml">
+<!ENTITY hboverview SYSTEM "hboverview.xml">
+<!ENTITY hbrunlevels SYSTEM "hbrunlevels.xml">
+<!ENTITY hbsyshalt SYSTEM "hbsyshalt.xml">
+<!ENTITY hbsparcboot SYSTEM "hbsparcboot.xml">
+<!ENTITY hbtsboot SYSTEM "hbtsboot.xml">
+<!ENTITY grubadmin SYSTEM "grubadmin.xml">
+<!ENTITY grubboot SYSTEM "grubboot.xml">
+<!ENTITY hbx86boot SYSTEM "hbx86boot.xml">
+<!ENTITY hbsysboot SYSTEM "hbsysboot.xml">
+<!ENTITY clientconcept SYSTEM "clientconcept.xml">
+<!ENTITY userconcept SYSTEM "userconcept.xml">
+<!ENTITY usersetup SYSTEM "usersetup.xml">
+<!ENTITY abstract SYSTEM "Abstract.xml">
+<!ENTITY fstroublefsck SYSTEM "fstroublefsck.xml">
+<!ENTITY clientpart SYSTEM "clientpart.xml">
+<!ENTITY bkuppart SYSTEM "bkuppart.xml">
+<!ENTITY fspart SYSTEM "fspart.xml">
+<!ENTITY diskspart SYSTEM "diskspart.xml">
+<!ENTITY devpart SYSTEM "devpart.xml">
+<!ENTITY swmgrpart SYSTEM "swmgrpart.xml">
+<!ENTITY medpart SYSTEM "medpart.xml">
+<!ENTITY hbpart SYSTEM "hbpart.xml">
+<!ENTITY userpart SYSTEM "userpart.xml">
+<!ENTITY user SYSTEM "user">
+<!ENTITY vol1road SYSTEM "vol1road.xml">
+<!ENTITY rolestep.sgm SYSTEM "rolestep.xml">
+<!ENTITY rolestepA SYSTEM "rolestepA.xml">
+<!ENTITY smfappendix SYSTEM "smfappendix.xml">
+<!ENTITY smftask SYSTEM "smftask.xml">
+<!ENTITY lockadmins10.sgm SYSTEM "LockAdminS10.xml">
+<!ENTITY SuStep SYSTEM "SuStep.xml">
+<!ENTITY swconsole SYSTEM "swconsole.xml">
+<!ENTITY smfoverview SYSTEM "smfoverview.xml">
+<!ENTITY PatchOverview SYSTEM "swmgrpatchconcepts.xml">
+<!ENTITY PatchaddTasks SYSTEM "swmgrpatchtasks.xml">
+<!ENTITY platformnote SYSTEM "platformnote.xml">
+<!ENTITY Abstract SYSTEM "Abstract.xml">
+<!ENTITY Register SYSTEM "Registering_3options.xml">
+<!ENTITY Fake SYSTEM "Fake.xml">
+<!ENTITY br_registering SYSTEM "BR_registering.xml">
+<!ENTITY PatchManagerTasks SYSTEM "PatchManager.xml">
+<!ENTITY basicreg SYSTEM "basicreg.xml">
+<!ENTITY hbx86grub SYSTEM "hbx86grub.xml">
+<!ENTITY rootpooldev_asbootdev SYSTEM "bootdevice.xml">
+<!ENTITY sparcmenu.lst SYSTEM "sparcmenu.xml">
+<!ENTITY rootpooldev SYSTEM "bootdevice.xml">
+<!ENTITY swmgrpatchconcepts SYSTEM "swmgrpatchconcepts.xml">
+<!ENTITY other-trademarks SYSTEM "other-trademarks.xml">
+<!ENTITY sun-trademarks SYSTEM "sun-trademarks.xml">
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY license SYSTEM "license.xml">
+]>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xml:id="sysadm1"
+    xml:lang="en"
+    role="unnumbered" label="fcs" userlevel="admin">
+<info xml:id="bookinfo">
+<title>System Administration Guide: Basic Administration</title>
+<biblioid class="pubsnumber">819-2379-16</biblioid>
+<bibliorelation type="isversionof" class="uri">https://illumos.org/books/sysadm1</bibliorelation>
+<releaseinfo>The contents of this Documentation are subject to the Public Documentation
+	License Version 1.01 (the "License"); you may only use this Documentation if
+	you comply with the terms of this License. A copy of the License is
+	available at http://www.opensolaris.org/os/community/documentation/license.
+</releaseinfo>
+<pubdate>December 2008</pubdate>
+<publisher>
+	<publishername>Sun Microsystems, Inc.</publishername>
+	<address>
+		<street>4150 Network Circle</street>
+		<city>Santa Clara</city>
+		<state>CA</state>
+		<postcode>95054</postcode>
+		<country>U.S.A.</country>
+	</address>
+</publisher>
+<copyright>
+	<year>2008</year>
+	<holder>Sun Microsystems, Inc.</holder>
+</copyright>
+<abstract>&abstract;</abstract>
+<legalnotice>&legal;</legalnotice>
+<subjectset>
+	<subject>
+		<subjectterm>Installation &amp; Setup</subjectterm>
+		<subjectterm>Introduction &amp; Overview</subjectterm>
+		<subjectterm>Security</subjectterm>
+		<subjectterm>System Administration</subjectterm>
+		<subjectterm>Troubleshooting</subjectterm>
+	</subject>
+</subjectset>
+</info>
+&vol1preface;
+&saroadmap;
+&smcover;
+&swconsole;
+&userconcept;
+&usersetup;
+&clientconcept;
+&clientsetup;
+&hbintro;
+&hboverview;
+&hbsyshalt;
+&grubadmin;
+&hbsparcboot;
+&hbtsboot;
+&grubboot;
+&hbsysboot;
+&smfoverview;
+&smftask;
+&swmgrpkgsconcepts;
+&swmgrpkgsgui;
+&swmgrpkgscli;
+&swmgrpatchtasks;
+&smfappendix;
+&license;
+&glossary;
+<index xml:id="idx"><title>Index</title></index>
+</book>

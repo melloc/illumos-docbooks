@@ -1,0 +1,5 @@
+<step>
+<para>Become superuser or assume a role that includes the <literal>Service Management</literal> rights profile.</para>
+<para>Roles contain authorizations and privileged
+commands. For more information about roles, see <olink targetdoc="sysadv6" targetptr="rbactask-30" remap="external"><citetitle remap="section">Configuring RBAC</citetitle> in <citetitle remap="book">System Administration Guide: Security Services</citetitle></olink>.</para>
+</step>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book [
+<!ENTITY % sun-iso-map SYSTEM "sun-iso-map.xml">
+%sun-iso-map;
+<!ENTITY MIPImplementing SYSTEM "MIPImplementing.xml">
+<!ENTITY MIPManaging SYSTEM "MIPManaging.xml">
+<!ENTITY MIPOverview SYSTEM "MIPOverview.xml">
+<!ENTITY abstract SYSTEM "Abstract.xml">
+<!ENTITY dhcp-admin SYSTEM "dhcp-admin.xml">
+<!ENTITY dhcp-client SYSTEM "dhcp-client.xml">
+<!ENTITY dhcp-config SYSTEM "dhcp-config.xml">
+<!ENTITY dhcp-overview SYSTEM "dhcp-overview.xml">
+<!ENTITY dhcp-plan SYSTEM "dhcp-plan.xml">
+<!ENTITY dhcp-ref SYSTEM "dhcp-ref.xml">
+<!ENTITY dhcp-trouble SYSTEM "dhcp-trouble.xml">
+<!ENTITY dhcptm SYSTEM "dhcptm.xml">
+<!ENTITY fr-legal SYSTEM "fr-legal.xml">
+<!ENTITY fr-other-trademarks SYSTEM "fr-other-trademarks.xml">
+<!ENTITY fr-sun-trademarks SYSTEM "fr-sun-trademarks.xml">
+<!ENTITY glossary SYSTEM "glossary.xml">
+<!ENTITY ike SYSTEM "ike.xml">
+<!ENTITY ike-task SYSTEM "ike-task.xml">
+<!ENTITY ikeref SYSTEM "ikeref.xml">
+<!ENTITY impm-config SYSTEM "ipmp-config.xml">
+<!ENTITY int-groups-tm SYSTEM "int-groups-tm.xml">
+<!ENTITY interface-overview SYSTEM "interface-overview.xml">
+<!ENTITY ip-interface-config SYSTEM "ip-interface-config.xml">
+<!ENTITY ipconfig SYSTEM "ipconfig.xml">
+<!ENTITY ipfilter-admin SYSTEM "ipfilter-admin.xml">
+<!ENTITY ipfilter-overview SYSTEM "ipfilter-overview.xml">
+<!ENTITY ipmp-config SYSTEM "ipmp-config.xml">
+<!ENTITY ipmp-overview SYSTEM "ipmp-overview.xml">
+<!ENTITY ipmptm SYSTEM "ipmptm.xml">
+<!ENTITY ipov SYSTEM "ipov.xml">
+<!ENTITY ipplan SYSTEM "ipplan.xml">
+<!ENTITY ipplan-router SYSTEM "ipplan-router.xml">
+<!ENTITY ipqos-accounting SYSTEM "ipqos-accounting.xml">
+<!ENTITY ipqos-config-planning SYSTEM "ipqos-config-planning.xml">
+<!ENTITY ipqos-intro SYSTEM "ipqos-intro.xml">
+<!ENTITY ipqos-maint SYSTEM "ipqos-maint.xml">
+<!ENTITY ipqos-policy-planning SYSTEM "ipqos-policy-planning.xml">
+<!ENTITY ipqos-reference SYSTEM "ipqos-reference.xml">
+<!ENTITY ipqostm SYSTEM "ipqostm.xml">
+<!ENTITY ipref SYSTEM "ipref.xml">
+<!ENTITY ipsec-mgtasks SYSTEM "ipsec-mgtasks.xml">
+<!ENTITY ipsec-ov SYSTEM "ipsec-ov.xml">
+<!ENTITY ipsecref SYSTEM "ipsecref.xml">
+<!ENTITY iptm SYSTEM "iptm.xml">
+<!ENTITY ipv6-admintasks SYSTEM "ipv6-admintasks.xml">
+<!ENTITY ipv6-config-tasks SYSTEM "ipv6-config-tasks.xml">
+<!ENTITY ipv6-config-tunnels SYSTEM "ipv6-config-tunnels.xml">
+<!ENTITY ipv6-monitoring SYSTEM "ipv6-monitoring.xml">
+<!ENTITY ipv6-overview SYSTEM "ipv6-overview.xml">
+<!ENTITY ipv6-planning SYSTEM "ipv6-planning.xml">
+<!ENTITY ipv6-ref SYSTEM "ipv6-ref.xml">
+<!ENTITY ipv6-troubleshoot SYSTEM "ipv6-troubleshoot.xml">
+<!ENTITY ipv6-tunnels SYSTEM "ipv6-tunnels.xml">
+<!ENTITY net-virt-admin SYSTEM "net-virt-admin.xml">
+<!ENTITY net-virt-overview SYSTEM "net-virt-overview.xml">
+<!ENTITY net-virt-planning SYSTEM "net-virt-planning.xml">
+<!ENTITY net-virt-ref SYSTEM "net-virt-ref.xml">
+<!ENTITY net-virtual-tm SYSTEM "net-virtual-tm.xml">
+<!ENTITY nwam-config SYSTEM "nwam-config.xml">
+<!ENTITY oviewtm SYSTEM "oviewtm.xml">
+<!ENTITY platformnote SYSTEM "platformnote.xml">
+<!ENTITY preface SYSTEM "preface.xml">
+<!ENTITY roleDHCPstep SYSTEM "roleDHCPstep.xml">
+<!ENTITY sagset SYSTEM "sagset.xml">
+<!ENTITY single-int-tm SYSTEM "single-int-tm.xml">
+<!ENTITY tunnel-config SYSTEM "tunnel-config.xml">
+<!ENTITY typeconv SYSTEM "typeconv.xml">
+<!ENTITY vlan-linkaggr SYSTEM "vlan-linkaggr.xml">
+<!ENTITY wifi-config SYSTEM "wifi-config.xml">
+<!ENTITY ipconfig-sol10 SYSTEM "ipconfig-sol10.xml">
+<!ENTITY interface-vnic-ref SYSTEM "interface-vnic-ref.xml">
+<!ENTITY interface-vnic-admin SYSTEM "interface-vnic-admin.xml">
+<!ENTITY interface-vnic-config SYSTEM "interface-vnic-config.xml">
+<!ENTITY interface-vnic-plan SYSTEM "interface-vnic-plan.xml">
+<!ENTITY interface-virt-tm SYSTEM "interface-virt-tm.xml">
+<!ENTITY interface-vnic-overview SYSTEM "interface-vnic-overview.xml">
+<!ENTITY interface-groups SYSTEM "interface-groups-tm.xml">
+<!ENTITY interface-ipmp SYSTEM "interface-ipmp.xml">
+<!ENTITY interface-link-aggr SYSTEM "interface-link-aggr.xml">
+<!ENTITY interface-vlan SYSTEM "interface-vlan.xml">
+<!ENTITY interface-troubleshoot SYSTEM "interface-troubleshoot.xml">
+<!ENTITY interface-wifi SYSTEM "interface-wifi.xml">
+<!ENTITY interface-single-admin SYSTEM "interface-single-admin.xml">
+<!ENTITY interface-single.tm SYSTEM "interface.single.tm.xml">
+<!ENTITY single-int SYSTEM "single-int.tm">
+<!ENTITY dummy.chapter SYSTEM "dummy.chapter.xml">
+<!ENTITY ikeerror SYSTEM "ikeerror.xml">
+<!ENTITY other-trademarks SYSTEM "other-trademarks.xml">
+<!ENTITY sun-trademarks SYSTEM "sun-trademarks.xml">
+<!ENTITY sundocs SYSTEM "sundocs.xml">
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY license SYSTEM "license.xml">
+]>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xml:id="sysadm3"
+    xml:lang="en"
+    role="unnumbered" label="fcs" userlevel="user-admin">
+<info xml:id="bookinfo">
+<title>System Administration Guide: IP Services</title>
+<biblioid class="pubsnumber">819-3000-01</biblioid>
+<bibliorelation type="isversionof" class="uri">https://illumos.org/books/sysadm3</bibliorelation>
+<releaseinfo>The contents of this Documentation are subject to the Public Documentation
+	License Version 1.01 (the "License"); you may only use this Documentation if
+	you comply with the terms of this License. A copy of the License is
+	available at http://www.opensolaris.org/os/community/documentation/license.
+</releaseinfo>
+<pubdate>February 2007</pubdate>
+<publisher>
+	<publishername>Sun Microsystems, Inc.</publishername>
+	<address>
+		<street>4150 Network Circle</street>
+		<city>Santa Clara</city>
+		<state>CA</state>
+		<postcode>95054</postcode>
+		<country>U.S.A.</country>
+	</address>
+</publisher>
+<copyright>
+	<year>2007</year>
+	<holder>Sun Microsystems, Inc.</holder>
+</copyright>
+<abstract>&abstract;</abstract>
+<legalnotice>&legal;</legalnotice>
+<subjectset>
+	<subject>
+		<subjectterm>Installation &amp; Setup</subjectterm>
+		<subjectterm>Introduction &amp; Overview</subjectterm>
+		<subjectterm>Network Software</subjectterm>
+		<subjectterm>Other Reference</subjectterm>
+		<subjectterm>Security</subjectterm>
+		<subjectterm>System Administration</subjectterm>
+		<subjectterm>Troubleshooting</subjectterm>
+</subject>
+</subjectset>
+</info>
+&preface;
+<part xml:id="iptm-1">
+	<title>TCP/IP Administration</title>
+	<partintro xml:id="partintro-tcp-ip">
+		<para>This part contains tasks and conceptual information for configuring, administering, and troubleshooting TCP/IP networks.</para>
+	</partintro>
+	&ipov;
+	&ipplan;
+	&ipv6-overview;
+	&ipv6-planning;
+	&ipconfig;
+	&ip-interface-config;
+	&ipv6-config-tasks;
+	&ipv6-admintasks;
+	&ipv6-troubleshoot;
+	&ipref;
+	&ipv6-ref;
+</part>
+<part xml:id="dhcptm-1">
+	<title>DHCP</title>
+	<partintro xml:id="partintro-dhcp">
+		<para>
+			This part contains conceptual information about the Dynamic Host Configuration Protocol (DHCP), and tasks
+			for planning, configuring, administering, and troubleshooting the Solaris DHCP service.
+		</para>
+	</partintro>
+	&dhcp-overview;
+	&dhcp-plan;
+	&dhcp-config;
+	&dhcp-admin;
+	&dhcp-client;
+	&dhcp-trouble;
+	&dhcp-ref;
+</part>
+<part xml:id="ipsectm-1">
+	<title>IP Security</title>
+	<partintro xml:id="partintro-ipsec">
+		<para>
+			This section focuses on  network security. IP security architecture (IPsec) protects the network at the packet
+			level. Internet key management (IKE) manages the keys for IPsec. Solaris IP filter provides a firewall.
+		</para>
+	</partintro>
+	&ipsec-ov;
+	&ipsec-mgtasks;
+	&ipsecref;
+	&ike;
+	&ike-task;
+	&ikeref;
+	&ipfilter-overview;
+	&ipfilter-admin;
+</part>
+<part xml:id="miptm-1">
+	<title>Mobile IP</title>
+	<partintro xml:id="partintro-mobile-ip">
+		<para>
+			This part introduces Mobile Internet Protocol (Mobile IP) and contains
+			tasks for Mobile IP administration. You can install Mobile IP on systems such
+			as laptops and wireless communications, enabling these computers to operate
+			on foreign networks.
+		</para>
+	</partintro>
+	&MIPOverview;
+	&MIPImplementing;
+	&MIPManaging;
+</part>
+<part xml:id="ipmptm-1">
+	<title>IPMP</title>
+	<partintro xml:id="partintro-ipmp">
+		<para>
+			This part introduces IP network multipathing (IPMP) and contains tasks
+			for administering IPMP. IPMP provides failure detection and failover for interfaces
+			on a system that are attached to the same link.
+		</para>
+	</partintro>
+	&ipmp-overview;
+	&ipmp-config;
+</part>
+<part xml:id="ipqostm-1">
+	<title>IP Quality of Service (IPQoS)</title>
+	<partintro xml:id="partintro-ip-qos">
+		<para>
+			This part contains tasks and information about IP Quality of Service
+			(IPQoS), the Solaris operating system's implementation of differentiated services.
+		</para>
+	</partintro>
+	&ipqos-intro;
+	&ipqos-config-planning;
+	&ipqos-policy-planning;
+	&ipqos-maint;
+	&ipqos-accounting;
+	&ipqos-reference;
+</part>
+&license;
+&glossary;
+<index xml:id="idx"><title>Index</title></index>
+</book>

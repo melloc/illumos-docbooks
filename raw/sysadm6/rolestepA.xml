@@ -1,0 +1,4 @@
+<step>
+<para>Become superuser or assume an equivalent role.</para>
+<para>Roles contain authorizations and privileged commands. For more information about roles, see <xref linkend="rbactask-15" />.</para>
+</step>

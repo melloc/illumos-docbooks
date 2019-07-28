@@ -39,6 +39,12 @@
 						<argument>raw/dtrace/dtrace.book</argument>
 						<argument>raw/lgrps/lgrps.book</argument>
 						<argument>raw/mdb/mdb.book</argument>
+						<argument>raw/sysadm1/sysadm1.book</argument>
+						<argument>raw/sysadm2/sysadm2.book</argument>
+						<argument>raw/sysadm3/sysadm3.book</argument>
+						<!-- <argument>raw/sysadm4/sysadm4.book</argument>
+						<argument>raw/sysadm5/sysadm5.book</argument>
+						<argument>raw/sysadm6/sysadm6.book</argument> -->
 						<argument>raw/wdd/wdd.book</argument>
 						<argument>raw/zfs-admin/zfs-admin.book</argument>
 					</arguments>

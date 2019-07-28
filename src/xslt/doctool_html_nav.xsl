@@ -20,11 +20,6 @@
 		<xsl:when test="local-name() = 'title'">
 			<!-- do nothing -->
 		</xsl:when>
-		<xsl:when test="local-name() = 'partintro'">
-			<xsl:text>partintro-</xsl:text>
-			<xsl:value-of select="$elementNum" />
-			<xsl:text>.html</xsl:text>
-		</xsl:when>
 		<xsl:otherwise>
 			<xsl:value-of select="@xml:id" />
 			<xsl:text>.html</xsl:text>

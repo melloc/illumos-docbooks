@@ -1,0 +1,6 @@
+<part xml:id="audittm-1">
+<title>Solaris Auditing</title>
+<partintro><para>This section provides information
+on the configuration, management, and use of the Solaris auditing subsystem.</para>
+</partintro>&auditov;&auditplan;&audittask;&auditref;
+</part>

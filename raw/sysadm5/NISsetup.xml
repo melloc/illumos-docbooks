@@ -1,0 +1,6 @@
+<part xml:id="nissetup-1">
+<title>NIS Setup and Administration</title>
+<partintro><para>This part provides an overview of the NIS naming service, as well as
+the setup, administration and troubleshooting of NIS within the Solaris OS.</para>
+</partintro>&anis1;&cnis1;&anis2;&abtrbl;
+</part>

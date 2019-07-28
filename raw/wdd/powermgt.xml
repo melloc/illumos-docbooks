@@ -412,7 +412,7 @@ model. The model includes the following components:</para><itemizedlist><listite
 system can be shut down, that is, powered off, automatically after a configurable
 period of idleness. This period is known as the <emphasis>autoshutdown threshold</emphasis>.
 This behavior is enabled by default for SPARC desktop systems first shipped
-after October 1, 1995 and before July 1, 1999. See the <citerefentry><refentrytitle>power.conf</refentrytitle><manvolnum>4</manvolnum></citerefentry>man page for more information.
+after October 1, 1995 and before July 1, 1999. See the <citerefentry><refentrytitle>power.conf</refentrytitle><manvolnum>4</manvolnum></citerefentry> man page for more information.
 Autoshutdown can be overridden using <citerefentry><refentrytitle>dtpower</refentrytitle><manvolnum>1M</manvolnum></citerefentry> or <citerefentry><refentrytitle>power.conf</refentrytitle><manvolnum>4</manvolnum></citerefentry>.</para>
 </sect2><sect2 xml:id="powermgt-135"><title>Busy State</title><para>The busy state of the system can be measured in several ways. The currently
 supported built-in metric items are keyboard characters, mouse activity, <literal>tty</literal> characters, load average, disk reads, and NFS requests. Any

@@ -44,7 +44,7 @@
 	xml:lang="en"
 	xml:id="wdd"
 	label="fcs" userlevel="developer">
-<info xml:id="bookinfo" role="all">
+<info xml:id="bookinfo">
 <title>Writing Device Drivers</title>
 <biblioid class="pubsnumber">819-3196-11</biblioid>
 <bibliorelation type="isversionof" class="uri">https://illumos.org/books/wdd</bibliorelation>

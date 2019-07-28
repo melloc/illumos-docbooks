@@ -1,0 +1,6 @@
+<part xml:id="dnsadmin-1">
+<title>DNS Setup and Administration</title>
+<partintro><para>This part describes the configuration and administration of the BIND
+9 DNS naming service in the Solaris OS.</para>
+</partintro>&DNSref;
+</part>

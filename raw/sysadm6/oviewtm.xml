@@ -1,0 +1,8 @@
+<part xml:id="oview-1">
+<title>Security Overview</title>
+<partintro><para>This book focuses on the features that enhance security in the Solaris
+Operating System. This book is intended for system administrators and users
+of these security features. The overview chapter introduces the topics in
+the book.</para>
+</partintro>&secov;
+</part>

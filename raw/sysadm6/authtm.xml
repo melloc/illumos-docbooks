@@ -1,0 +1,7 @@
+<part xml:id="authtm-1">
+<title>Authentication Services and Secure Communication</title>
+<partintro><para>This section discusses authentication services that can be configured
+on a non-networked system, or between two systems. To configure a network
+of authenticated users and systems, see <xref linkend="seamtm-1" />.</para>
+</partintro>&auth;&pam;&sasl;&sshuser;&sshref;
+</part>

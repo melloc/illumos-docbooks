@@ -1,0 +1,6 @@
+<part xml:id="seamtm-1">
+<title>Kerberos Service</title>
+<partintro><para>This section provides information on the configuration, management and
+use of the Kerberos service.</para>
+</partintro>&seamov;&seamplan;&seamtask;&seamtrouble;&seamgadmin;&seamuser;&seamref;
+</part>

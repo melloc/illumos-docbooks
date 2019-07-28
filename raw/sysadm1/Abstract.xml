@@ -1,0 +1,7 @@
+<para>This
+book is for anyone who is responsible for administering one or more systems
+that run the Solaris Operating System. The book covers a broad range of Solaris
+system administration topics such as managing
+user accounts, diskless clients, booting a system, using the Service Management Facility (SMF), and managing software and patches.</para>
+<para>Topics are described for both <trademark>SPARC</trademark> and x86 based
+systems, where appropriate.</para>

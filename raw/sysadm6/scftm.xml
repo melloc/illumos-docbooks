@@ -1,0 +1,6 @@
+<part xml:id="scftm-1">
+<title>Solaris Cryptographic Services</title>
+<partintro><para>This section describes the centralized cryptographic and public key
+technology services that the Solaris OS provides.</para>
+</partintro>&scf;&scftask;&kmf;
+</part>

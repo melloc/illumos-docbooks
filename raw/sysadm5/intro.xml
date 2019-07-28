@@ -1,0 +1,7 @@
+<part xml:id="intro-1">
+<title>About Naming and Directory Services</title>
+<partintro><para>This part introduces the naming and directory services for the Solaris OS.
+It also describes the <filename>nsswitch.conf</filename> file that you use
+to coordinate the use of the different services.</para>
+</partintro>&intro2NDS;&a12swit;
+</part>

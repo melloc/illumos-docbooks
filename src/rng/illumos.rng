@@ -47,6 +47,9 @@
 				</interleave>
 			</element>
 		</define>
+		<define name="db.info.attlist" combine="interleave">
+			<ref name="db.xml.id.attribute" />
+		</define>
 		<define name="db.partintro.attlist" combine="interleave">
 			<ref name="db.xml.id.attribute" />
 		</define>

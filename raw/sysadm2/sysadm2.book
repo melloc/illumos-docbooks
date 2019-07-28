@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE book [
+<!ENTITY % sun-iso-map SYSTEM "sun-iso-map.xml">
+%sun-iso-map;
+<!ENTITY whatsnew-ref SYSTEM "wnref.xml">
+<!ENTITY platform SYSTEM "platformnote.xml">
+<!ENTITY devsec.sgm SYSTEM "devsec.xml">
+<!ENTITY rolestep.sgm SYSTEM "rolestep.xml">
+<!ENTITY rolePAstepOpt.sgm SYSTEM "rolePAstepOpt.xml">
+<!ENTITY rolePAstep.sgm SYSTEM "rolePAstep.xml">
+<!ENTITY tssysmessg SYSTEM "tssysmessg.xml">
+<!ENTITY howdy SYSTEM "tssysmessg.xml">
+<!ENTITY sagset SYSTEM "sagset.xml">
+<!ENTITY tscore SYSTEM "tscore.xml">
+<!ENTITY figure10.gif SYSTEM "figures/figure10.gif" NDATA GIF>
+<!ENTITY figure9.gif SYSTEM "figures/figure9.gif" NDATA GIF>
+<!ENTITY figure8.gif SYSTEM "figures/figure8.gif" NDATA GIF>
+<!ENTITY figure7.gif SYSTEM "figures/figure7.gif" NDATA GIF>
+<!ENTITY figure6.gif SYSTEM "figures/figure6.gif" NDATA GIF>
+<!ENTITY figure5.gif SYSTEM "figures/figure5.gif" NDATA GIF>
+<!ENTITY figure4.gif SYSTEM "figures/figure4.gif" NDATA GIF>
+<!ENTITY figure3.gif SYSTEM "figures/figure3.gif" NDATA GIF>
+<!ENTITY figure2.gif SYSTEM "figures/figure2.gif" NDATA GIF>
+<!ENTITY figure1.gif SYSTEM "figures/figure1.gif" NDATA GIF>
+<!ENTITY secrbac SYSTEM "secrbac.xml">
+<!ENTITY tstm SYSTEM "tstm.xml">
+<!ENTITY sptm SYSTEM "sptm.xml">
+<!ENTITY sysrestm SYSTEM "sysrestm.xml">
+<!ENTITY sectm SYSTEM "sectm.xml">
+<!ENTITY modtm SYSTEM "modtm.xml">
+<!ENTITY remotetm SYSTEM "remotetm.xml">
+<!ENTITY printtm SYSTEM "printtm.xml">
+<!ENTITY fr-other-trademarks SYSTEM "fr-other-trademarks.xml">
+<!ENTITY fr-sun-trademarks SYSTEM "fr-sun-trademarks.xml">
+<!ENTITY other-trademarks SYSTEM "other-trademarks.xml">
+<!ENTITY sun-trademarks SYSTEM "sun-trademarks.xml">
+<!ENTITY printplan SYSTEM "printplan.xml">
+<!ENTITY printref SYSTEM "printref.xml">
+<!ENTITY fr-legal SYSTEM "fr-legal.xml">
+<!ENTITY secauth SYSTEM "secauth.xml">
+<!ENTITY tsoverview SYSTEM "tsoverview.xml">
+<!ENTITY tscrashdumps SYSTEM "tscrashdumps.xml">
+<!ENTITY tsgeneral SYSTEM "tsgeneral.xml">
+<!ENTITY tsfileaccess SYSTEM "tsfileaccess.xml">
+<!ENTITY tsprint SYSTEM "tsprint.xml">
+<!ENTITY tsfsck SYSTEM "tsfsck.xml">
+<!ENTITY tsswmgr SYSTEM "tsswmgr.xml">
+<!ENTITY spconcepts SYSTEM "spconcepts.xml">
+<!ENTITY spprocess SYSTEM "spprocess.xml">
+<!ENTITY spmonitor SYSTEM "spmonitor.xml">
+<!ENTITY sysresconcepts SYSTEM "sysresconcepts.xml">
+<!ENTITY sysressysinfo SYSTEM "sysressysinfo.xml">
+<!ENTITY sysresdiskuse SYSTEM "sysresdiskuse.xml">
+<!ENTITY sysresquotas SYSTEM "sysresquotas.xml">
+<!ENTITY sysrescron SYSTEM "sysrescron.xml">
+<!ENTITY sysresacctsetup SYSTEM "sysresacctsetup.xml">
+<!ENTITY sysresacctref SYSTEM "sysresacctref.xml">
+<!ENTITY secconcepts SYSTEM "secconcepts.xml">
+<!ENTITY secfiles SYSTEM "secfiles.xml">
+<!ENTITY secsys SYSTEM "secsys.xml">
+<!ENTITY secaset SYSTEM "secaset.xml">
+<!ENTITY modconcepts SYSTEM "modconcepts.xml">
+<!ENTITY modsetup SYSTEM "modsetup.xml">
+<!ENTITY modsafapp SYSTEM "modsafapp.xml">
+<!ENTITY remoteHowToAccess SYSTEM "remoteHowToAccess.xml">
+<!ENTITY printconcept SYSTEM "printconcept.xml">
+<!ENTITY printsetup SYSTEM "printsetup.xml">
+<!ENTITY printadmin SYSTEM "printadmin.xml">
+<!ENTITY printforms SYSTEM "printforms.xml">
+<!ENTITY printcust SYSTEM "printcust.xml">
+<!ENTITY vol2preface SYSTEM "vol2preface.xml">
+<!ENTITY legal SYSTEM "legal.xml">
+<!ENTITY license SYSTEM "license.xml">
+<!ENTITY abstract SYSTEM "Abstract.xml">
+<!ENTITY typeconv SYSTEM "typeconv.xml">
+<!ENTITY sundocs SYSTEM "sundocs.xml">
+]>
+
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xl="http://www.w3.org/1999/xlink"
+    xml:id="sysadm2"
+    xml:lang="en"
+    role="unnumbered" label="fcs" userlevel="admin">
+<info xml:id="bookinfo">
+<title>System Administration Guide: Advanced Administration</title>
+<biblioid class="pubsnumber">819-2380-13</biblioid>
+<bibliorelation type="isversionof" class="uri">https://illumos.org/books/sysadm2</bibliorelation>
+<releaseinfo>The contents of this Documentation are subject to the Public Documentation
+	License Version 1.01 (the "License"); you may only use this Documentation if
+	you comply with the terms of this License. A copy of the License is
+	available at http://www.opensolaris.org/os/community/documentation/license.
+</releaseinfo>
+<pubdate>May 2008</pubdate>
+<publisher>
+	<publishername>Sun Microsystems, Inc.</publishername>
+	<address>
+		<street>4150 Network Circle</street>
+		<city>Santa Clara</city>
+		<state>CA</state>
+		<postcode>95054</postcode>
+		<country>U.S.A.</country>
+	</address>
+</publisher>
+<copyright>
+	<year>2008</year>
+	<holder>Sun Microsystems, Inc.</holder>
+</copyright>
+<abstract>&abstract;</abstract>
+<legalnotice>&legal;</legalnotice>
+<subjectset>
+	<subject>
+		<subjectterm>Installation &amp; Setup</subjectterm>
+		<subjectterm>Introduction &amp; Overview</subjectterm>
+		<subjectterm>System Administration</subjectterm>
+		<subjectterm>Troubleshooting</subjectterm>
+	</subject>
+</subjectset>
+</info>
+&vol2preface;
+&modconcepts;
+&modsetup;
+&modsafapp;
+&sysresconcepts;
+&sysressysinfo;
+&sysresdiskuse;
+&sysresquotas;
+&sysrescron;
+&sysresacctsetup;
+&sysresacctref;
+&spconcepts;
+&spprocess;
+&spmonitor;
+&tsoverview;
+&tssysmessg;
+&tscore;
+&tscrashdumps;
+&tsgeneral;
+&tsfileaccess;
+&tsfsck;
+&tsswmgr;
+&license;
+<index xml:id="idx"><title>Index</title></index>
+</book>

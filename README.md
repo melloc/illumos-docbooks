@@ -93,6 +93,10 @@ And convert the sources from SolBook to Docbook 5:
 -  Along the way, as lines are touched, try to reformat
 -  Assign `<partintro>` tags IDs, and update any references to the parent
    `<part>` to point at the `<partintro>` instead.
+-  `<imagedata>` tags should have their `fileref` attributes updated to not
+   include the extension (e.g. `"figures/fig1.eps"` becomes `"figures/fig1"`)
+-  `<imagedata>` tags should have their `entityref` attributes converted to
+   `fileref` attributes that point to the correct file under `figures/`
 -  There are some other minor things that were not specific to SolBook, but
    were part of DocBook 4 and are gone in DocBook 5. Running the validator
    will find them for you. Consult the DocBook guide for tips on what to do:

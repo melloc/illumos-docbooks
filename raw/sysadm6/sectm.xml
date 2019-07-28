@@ -1,0 +1,8 @@
+<part xml:id="sectm-1">
+<title>System, File, and Device Security</title>
+<partintro><para>This section covers security that can be configured on a non-networked
+system. The chapters discuss planning, monitoring, and controlling access
+to the disk, to files, and to peripheral devices. This section
+also includes a chapter about scanning files for viruses.</para>
+</partintro>&concept;&secsys;&vscan;&devtask;&bart;&secfile;
+</part>
