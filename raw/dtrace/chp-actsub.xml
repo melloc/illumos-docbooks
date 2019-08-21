@@ -860,6 +860,20 @@ The subroutine converts a <literal>uint64_t</literal> from the host's byte order
 <replaceable>ptrn</replaceable> first occurs. If it never occurs, then
 <literal>-1</literal> is returned.</para></sect2>
 
+<sect2 xml:id="chp-actsub-json">
+	<title><function>json</function></title>
+	<programlisting>string json(string <replaceable>str</replaceable>, string <replaceable>path</replaceable>)</programlisting>
+	<para>
+		<indexterm><primary>subroutines</primary><secondary><function>json</function></secondary></indexterm>
+		<function>json</function> fetches a value from a stringified representation of JSON.
+		The value to fetch is determined by <replaceable>path</replaceable>, which uses a
+		JavaScript-like notation. For example, a field could be accessed as "name", or if
+		objects are nested navigated with "outer.inner". Array elements can be accessed using
+		subscript notation ("[1]"), or if <replaceable>str</replaceable> is an array as the
+		first fieldname ("0" or "0.foo" for example).
+	</para>
+</sect2>
+
 <sect2 xml:id="chp-actsub-inet_ntoa">
 <title><function>inet_ntoa</function></title>
 <programlisting>string inet_ntoa(ipaddr_t <replaceable>in</replaceable>)</programlisting>
